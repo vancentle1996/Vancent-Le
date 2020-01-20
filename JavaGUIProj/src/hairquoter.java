@@ -3416,30 +3416,31 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String straightOrder()
 	{
+		int numOfStraight = straightQuantity.getSelectedIndex();
 		if(straightLengths.getSelectedIndex() == 0)
 			straightString = "";
 		if(straightLengths.getSelectedIndex() == 1)
-			straightString += "10\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "10\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 2)
-			straightString += "12\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "12\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 3)
-			straightString += "14\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "14\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 4)
-			straightString += "16\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "16\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 5)
-			straightString += "18\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "18\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 6)
-			straightString += "20\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "20\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 7)
-			straightString += "22\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "22\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 8)
-			straightString += "24\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "24\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 9)
-			straightString += "26\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "26\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 10)
-			straightString += "28\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "28\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 11)
-			straightString += "30\" x " + straightQuantity.getSelectedIndex() + "\n";
+			straightString += "30\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		
 		return straightString;
 	}
