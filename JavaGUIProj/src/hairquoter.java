@@ -17,8 +17,7 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.border.BevelBorder;
 import java.awt.Cursor;
-import javax.swing.ImageIcon;
-import java.awt.Image;
+import java.awt.SystemColor;
 
 public class hairquoter {
 
@@ -36,9 +35,61 @@ public class hairquoter {
 	private JSeparator separator_1;
 	private JSeparator separator_2;
 	private JSeparator separator_3;
-	private JSeparator separator_4;
 	private JComboBox<String>straightLengths;
 	private JComboBox<String>straightQuantity;
+	private JComboBox<String>looseLengths;
+	private JComboBox<String>looseQuantity;
+	private JComboBox<String>bodyLengths;
+	private JComboBox<String>bodyQuantity;
+	private JComboBox<String>deepLengths;
+	private JComboBox<String>deepQuantity;
+	private JComboBox<String>rareLengths;
+	private JComboBox<String>rareQuantity;
+	private JComboBox<String>steam1Lengths;
+	private JComboBox<String>steam1Quantity;
+	private JComboBox<String>steam2Lengths;
+	private JComboBox<String>steam2Quantity;
+	private JComboBox<String>blondeLengths;
+	private JComboBox<String>blondeQuantity;
+	private JComboBox<String>greyLengths;
+	private JComboBox<String>greyQuantity;
+	private JComboBox<String>straightClosureLengths;
+	private JComboBox<String>straightClosureQuantity;
+	private JComboBox<String>looseClosureLengths;
+	private JComboBox<String>looseClosureQuantity;
+	private JComboBox<String>bodyClosureLengths;
+	private JComboBox<String>bodyClosureQuantity;
+	private JComboBox<String>deepClosureLengths;
+	private JComboBox<String>deepClosureQuantity;
+	private JComboBox<String>rareClosureLengths;
+	private JComboBox<String>rareClosureQuantity;
+	private JComboBox<String>steam1ClosureLengths;
+	private JComboBox<String>steam1ClosureQuantity;
+	private JComboBox<String>steam2ClosureLengths;
+	private JComboBox<String>steam2ClosureQuantity;
+	private JComboBox<String>blondeClosureLengths;
+	private JComboBox<String>blondeClosureQuantity;
+	private JComboBox<String>greyClosureLengths;
+	private JComboBox<String>greyClosureQuantity;
+	private JComboBox<String>straightFrontalLengths;
+	private JComboBox<String>straightFrontalQuantity;
+	private JComboBox<String>looseFrontalLengths;
+	private JComboBox<String>looseFrontalQuantity;
+	private JComboBox<String>bodyFrontalLengths;
+	private JComboBox<String>bodyFrontalQuantity;
+	private JComboBox<String>deepFrontalLengths;
+	private JComboBox<String>deepFrontalQuantity;
+	private JComboBox<String>rareFrontalLengths;
+	private JComboBox<String>rareFrontalQuantity;
+	private JComboBox<String>steam1FrontalLengths;
+	private JComboBox<String>steam1FrontalQuantity;
+	private JComboBox<String>steam2FrontalLengths;
+	private JComboBox<String>steam2FrontalQuantity;
+	private JComboBox<String>blondeFrontalLengths;
+	private JComboBox<String>blondeFrontalQuantity;
+	private JComboBox<String>greyFrontalLengths;
+	private JComboBox<String>greyFrontalQuantity;
+	
 
 	// VARIABLES
 	final double STANDARD_SHIPPING = 8.0;
@@ -57,7 +108,13 @@ public class hairquoter {
 	double straight, loose, body, deep, rare, steam1, steam2, blonde, grey, straightClosure, looseClosure, bodyClosure, deepClosure, rareClosure, steam1Closure, steam2Closure, blondeClosure, 
 	greyClosure, straightFrontal, looseFrontal, bodyFrontal, deepFrontal, rareFrontal, steam1Frontal, steam2Frontal, blondeFrontal,greyFrontal;
 	
-	String straightString = "Straight\n";
+	// Creating variables to store the values of chosen patterns 
+	String straightString = "Straight\n", looseString = "Loose Wave\n", bodyString = "Body Wave\n", deepString = "Deep Wave\n", rareString = "Rare Curly\n", steam1String = "Steam #1\n",
+	steam2String = "Steam #2\n", blondeString = "Straight Blonde\n", greyString = "Grey\n", straightClosureString = "Straight Closure\n", looseClosureString = "Loose Wave Closure\n", 
+	bodyClosureString = "Body Wave Closure\n", deepClosureString = "Deep Wave Closure\n", rareClosureString = "Rare Curly Closure\n", steam1ClosureString = "Steam #1 Closure\n", 
+	steam2ClosureString = "Steam #2 Closure\n", blondeClosureString = "Straight Blonde Closure\n", greyClosureString = "Grey Closure\n", straightFrontalString = "Straight Frontal\n", 
+	looseFrontalString = "Loose Wave Frontal\n", bodyFrontalString = "Body Wave Frontal\n", deepFrontalString = "Deep Wave Frontal\n", rareFrontalString = "Rare Curly Frontal\n", 
+	steam1FrontalString = "Steam #1 Frontal\n", steam2FrontalString = "Steam #2 Frontal\n", blondeFrontalString = "Straight Blonde Frontal\n", greyFrontalString = "Grey Frontal\n";
 	
 	/**
 	 * Launch the application.
@@ -87,15 +144,16 @@ public class hairquoter {
 	 */
 	private void initialize() {
 		frmHairProductsCalculator = new JFrame();
+		frmHairProductsCalculator.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 11));
 		frmHairProductsCalculator.setResizable(false);
 		frmHairProductsCalculator.setFont(new Font("Arial Black", Font.BOLD, 13));
 		frmHairProductsCalculator.setForeground(Color.BLACK);
 		frmHairProductsCalculator.setTitle("Hair Extensions Calculator");
-		frmHairProductsCalculator.getContentPane().setBackground(new Color(192, 192, 192));
+		frmHairProductsCalculator.getContentPane().setBackground(SystemColor.control);
 		frmHairProductsCalculator.getContentPane().setEnabled(false);
 		frmHairProductsCalculator.getContentPane().setSize(new Dimension(5, 5));
 		frmHairProductsCalculator.setBackground(new Color(255, 255, 255));
-		frmHairProductsCalculator.setBounds(350, 350, 700, 750);
+		frmHairProductsCalculator.setBounds(350, 350, 725, 775);
 		frmHairProductsCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHairProductsCalculator.getContentPane().setLayout(null);
 
@@ -226,34 +284,35 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(greyFrontal_Label);
 
 		JLabel shippingMethod_Label = new JLabel("Shipping Methods: ");
-		shippingMethod_Label.setFont(new Font("Tahoma", Font.BOLD, 12));
-		shippingMethod_Label.setBounds(428, 144, 176, 14);
+		shippingMethod_Label.setFont(new Font("Consolas", Font.BOLD, 13));
+		shippingMethod_Label.setBounds(428, 144, 152, 14);
 		frmHairProductsCalculator.getContentPane().add(shippingMethod_Label);
 
 		JLabel totalQuantity_Label = new JLabel("Total Quantity:");
-		totalQuantity_Label.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		totalQuantity_Label.setBounds(428, 488, 101, 14);
+		totalQuantity_Label.setFont(new Font("Consolas", Font.BOLD, 11));
+		totalQuantity_Label.setBounds(577, 361, 101, 14);
 		frmHairProductsCalculator.getContentPane().add(totalQuantity_Label);
 
 		JLabel subTotal_Label = new JLabel("Subtotal:");
-		subTotal_Label.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		subTotal_Label.setBounds(428, 97, 73, 14);
+		subTotal_Label.setFont(new Font("Consolas", Font.BOLD, 14));
+		subTotal_Label.setBounds(428, 106, 73, 14);
 		frmHairProductsCalculator.getContentPane().add(subTotal_Label);
 		
 		total_With_Paypal_Label = new JLabel("Total w/ Paypal Fee:");
-		total_With_Paypal_Label.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		total_With_Paypal_Label.setBounds(428, 538, 143, 14);
+		total_With_Paypal_Label.setFont(new Font("Consolas", Font.BOLD, 11));
+		total_With_Paypal_Label.setBounds(577, 450, 121, 14);
 		frmHairProductsCalculator.getContentPane().add(total_With_Paypal_Label);
 
 		total_Without_Paypal_Label = new JLabel("Total w/o Paypal Fee:");
-		total_Without_Paypal_Label.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		total_Without_Paypal_Label.setBounds(428, 587, 173, 14);
+		total_Without_Paypal_Label.setFont(new Font("Consolas", Font.BOLD, 11));
+		total_Without_Paypal_Label.setBounds(579, 550, 130, 14);
 		frmHairProductsCalculator.getContentPane().add(total_Without_Paypal_Label);
 
 		JTextArea show_Addition_txtArea = new JTextArea();
+		show_Addition_txtArea.setFont(new Font("Cambria", Font.PLAIN, 13));
 		show_Addition_txtArea.setColumns(20);
 		show_Addition_txtArea.setLineWrap(true);
-		show_Addition_txtArea.setBounds(428, 373, 231, 93);
+		show_Addition_txtArea.setBounds(428, 383, 139, 316);
 		frmHairProductsCalculator.getContentPane().add(show_Addition_txtArea);
 
 		// THE COMBO BOX FOR STRAIGHT'S LENGTHS
@@ -306,6 +365,7 @@ public class hairquoter {
 
 		// THE COMBO BOX FOR STRAIGHT QUANTITY
 		straightQuantity = new JComboBox<>();
+		straightQuantity.setBackground(Color.WHITE);
 		straightQuantity.addItem("0");
 		straightQuantity.addItem("1");
 		straightQuantity.addItem("2");
@@ -377,7 +437,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(straightQuantity);
 
 		// THE COMBO BOX FOR LOOSE WAVE'S LENGTHS
-		JComboBox<String>looseLengths = new JComboBox<>();
+		looseLengths = new JComboBox<>();
+		looseLengths.setBackground(Color.WHITE);
 		looseLengths.addItem("0\"");
 		looseLengths.addItem("12\"");
 		looseLengths.addItem("14\"");
@@ -419,7 +480,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(looseLengths);
 
 		// THE COMBO BOX FOR LOOSE WAVE QUANTITY
-		JComboBox<String>looseQuantity = new JComboBox<>();
+		looseQuantity = new JComboBox<>();
+		looseQuantity.setBackground(Color.WHITE);
 		looseQuantity.addItem("0");
 		looseQuantity.addItem("1");
 		looseQuantity.addItem("2");
@@ -491,7 +553,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(looseQuantity);
 
 		// THE COMBO BOX FOR BODY WAVE LENGTHS
-		JComboBox<String>bodyLengths = new JComboBox<String>();
+		bodyLengths = new JComboBox<String>();
+		bodyLengths.setBackground(Color.WHITE);
 		bodyLengths.addItem("0\"");
 		bodyLengths.addItem("10\"");
 		bodyLengths.addItem("12\"");
@@ -536,7 +599,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(bodyLengths);
 
 		// THE COMBO BOX FOR BODY WAVE QUANTITY
-		JComboBox<String>bodyQuantity = new JComboBox<String>();
+		bodyQuantity = new JComboBox<String>();
+		bodyQuantity.setBackground(Color.WHITE);
 		bodyQuantity.addItem("0");
 		bodyQuantity.addItem("1");
 		bodyQuantity.addItem("2");
@@ -608,7 +672,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(bodyQuantity);
 
 		// THE COMBO BOX FOR DEEP WAVE LENGTHS
-		JComboBox<String> deepLengths = new JComboBox<String>();
+		deepLengths = new JComboBox<String>();
+		deepLengths.setBackground(Color.WHITE);
 		deepLengths.addItem("0\"");
 		deepLengths.addItem("12\"");
 		deepLengths.addItem("14\"");
@@ -649,7 +714,8 @@ public class hairquoter {
 		deepLengths.setBounds(210, 106, 63, 22);
 		frmHairProductsCalculator.getContentPane().add(deepLengths);
 
-		JComboBox<String> deepQuantity = new JComboBox<String>();
+		deepQuantity = new JComboBox<String>();
+		deepQuantity.setBackground(Color.WHITE);
 		deepQuantity.addItem("0");
 		deepQuantity.addItem("1");
 		deepQuantity.addItem("2");
@@ -721,7 +787,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(deepQuantity);
 
 		// THE COMBO BOX FOR RARE CURLY LENGTHS
-		JComboBox<String> rareLengths = new JComboBox<>();
+		rareLengths = new JComboBox<>();
+		rareLengths.setBackground(Color.WHITE);
 		rareLengths.addItem("0\"");
 		rareLengths.addItem("10\"");
 		rareLengths.addItem("12\"");
@@ -760,7 +827,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(rareLengths);
 
 		// THE COMBO BOX FOR RARE CURLY QUANTITY
-		JComboBox<String> rareQuantity = new JComboBox<>();
+		rareQuantity = new JComboBox<>();
+		rareQuantity.setBackground(Color.WHITE);
 		rareQuantity.addItem("0");
 		rareQuantity.addItem("1");
 		rareQuantity.addItem("2");
@@ -832,7 +900,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(rareQuantity);
 
 		// THE COMBO BOX FOR STEAM #1's LENGTHS
-		JComboBox<String> steam1Lengths = new JComboBox<>();
+		steam1Lengths = new JComboBox<>();
+		steam1Lengths.setBackground(Color.WHITE);
 		steam1Lengths.addItem("0\"");
 		steam1Lengths.addItem("12\"");
 		steam1Lengths.addItem("14\"");
@@ -871,7 +940,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam1Lengths);
 
 		// THE COMBO BOX FOR STEAM #1's QUANTITY
-		JComboBox<String> steam1Quantity = new JComboBox<>();
+		steam1Quantity = new JComboBox<>();
+		steam1Quantity.setBackground(Color.WHITE);
 		steam1Quantity.addItem("0");
 		steam1Quantity.addItem("1");
 		steam1Quantity.addItem("2");
@@ -943,7 +1013,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam1Quantity);
 
 		// THE COMBO BOX FOR STEAM #2's LENGTHS
-		JComboBox<String> steam2Lengths = new JComboBox<>();
+		steam2Lengths = new JComboBox<>();
+		steam2Lengths.setBackground(Color.WHITE);
 		steam2Lengths.addItem("0\"");
 		steam2Lengths.addItem("12\"");
 		steam2Lengths.addItem("14\"");
@@ -982,7 +1053,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam2Lengths);
 
 		// THE COMBO BOX FOR STEAM #2's QUANTITY
-		JComboBox<String> steam2Quantity = new JComboBox<>();
+		steam2Quantity = new JComboBox<>();
+		steam2Quantity.setBackground(Color.WHITE);
 		steam2Quantity.addItem("0");
 		steam2Quantity.addItem("1");
 		steam2Quantity.addItem("2");
@@ -1054,7 +1126,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam2Quantity);
 
 		// THE COMBO BOX FOR BLONDE'S LENGTHS
-		JComboBox<String> blondeLengths = new JComboBox<>();
+		blondeLengths = new JComboBox<>();
+		blondeLengths.setBackground(Color.WHITE);
 		blondeLengths.addItem("0\"");
 		blondeLengths.addItem("12\"");
 		blondeLengths.addItem("14\"");
@@ -1093,7 +1166,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(blondeLengths);
 		
 		// THE COMBO BOX FOR BLONDE'S QUANTITY
-		JComboBox<String> blondeQuantity = new JComboBox<>();
+		blondeQuantity = new JComboBox<>();
+		blondeQuantity.setBackground(Color.WHITE);
 		blondeQuantity.addItem("0");
 		blondeQuantity.addItem("1");
 		blondeQuantity.addItem("2");
@@ -1165,7 +1239,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(blondeQuantity);
 
 		// THE COMBO BOX FOR GREY'S LENGTHS
-		JComboBox<String> greyLengths = new JComboBox<>();
+		greyLengths = new JComboBox<>();
+		greyLengths.setBackground(Color.WHITE);
 		greyLengths.addItem("0\"");
 		greyLengths.addItem("12\"");
 		greyLengths.addItem("14\"");
@@ -1207,7 +1282,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(greyLengths);
 
 		// THE COMBO BOX FOR GREY'S QUANTITY
-		JComboBox<String> greyQuantity = new JComboBox<>();
+		greyQuantity = new JComboBox<>();
+		greyQuantity.setBackground(Color.WHITE);
 		greyQuantity.addItem("0");
 		greyQuantity.addItem("1");
 		greyQuantity.addItem("2");
@@ -1279,7 +1355,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(greyQuantity);
 
 		// THE COMBOX FOR STRAIGHT CLOSURE'S LENGTHS
-		JComboBox<String> straightClosureLengths = new JComboBox<>();
+		straightClosureLengths = new JComboBox<>();
+		straightClosureLengths.setBackground(Color.WHITE);
 		straightClosureLengths.addItem("0\"");
 		straightClosureLengths.addItem("12\"");
 		straightClosureLengths.addItem("14\"");
@@ -1306,7 +1383,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(straightClosureLengths);
 
 		// THE COMBOX FOR STRAIGHT CLOSURE'S QUANITTY
-		JComboBox<String> straightClosureQuantity = new JComboBox<>();
+		straightClosureQuantity = new JComboBox<>();
+		straightClosureQuantity.setBackground(Color.WHITE);
 		straightClosureQuantity.addItem("0");
 		straightClosureQuantity.addItem("1");
 		straightClosureQuantity.addItem("2");
@@ -1378,7 +1456,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(straightClosureQuantity);
 
 		// THE COMBO BOX FOR THE LOOSE CLOSURE'S LENGTHS
-		JComboBox<String> looseClosureLengths = new JComboBox<>();
+		looseClosureLengths = new JComboBox<>();
+		looseClosureLengths.setBackground(Color.WHITE);
 		looseClosureLengths.addItem("0\"");
 		looseClosureLengths.addItem("12\"");
 		looseClosureLengths.addItem("14\"");
@@ -1405,7 +1484,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(looseClosureLengths);
 
 		// THE COMBO BOX FOR THE LOOSE CLOSURE'S QUANTITY
-		JComboBox<String> looseClosureQuantity = new JComboBox<>();
+		looseClosureQuantity = new JComboBox<>();
+		looseClosureQuantity.setBackground(Color.WHITE);
 		looseClosureQuantity.addItem("0");
 		looseClosureQuantity.addItem("1");
 		looseClosureQuantity.addItem("2");
@@ -1477,7 +1557,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(looseClosureQuantity);
 
 		// THE COMBO BOX FOR THE BODY CLOSURE'S LENGTHS
-		JComboBox<String> bodyClosureLengths = new JComboBox<>();
+		bodyClosureLengths = new JComboBox<>();
+		bodyClosureLengths.setBackground(Color.WHITE);
 		bodyClosureLengths.addItem("0\"");
 		bodyClosureLengths.addItem("12\"");
 		bodyClosureLengths.addItem("14\"");
@@ -1504,7 +1585,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(bodyClosureLengths);
 
 		// THE COMBO BOX FOR THE BODY CLOSURE'S QUANTITY
-		JComboBox<String> bodyClosureQuantity = new JComboBox<>();
+		bodyClosureQuantity = new JComboBox<>();
+		bodyClosureQuantity.setBackground(Color.WHITE);
 		bodyClosureQuantity.addItem("0");
 		bodyClosureQuantity.addItem("1");
 		bodyClosureQuantity.addItem("2");
@@ -1576,7 +1658,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(bodyClosureQuantity);
 
 		// THE COMBO BOX FOR DEEP CLOSURE'S LENGTHS
-		JComboBox<String> deepClosureLengths = new JComboBox<>();
+		deepClosureLengths = new JComboBox<>();
+		deepClosureLengths.setBackground(Color.WHITE);
 		deepClosureLengths.addItem("0\"");
 		deepClosureLengths.addItem("12\"");
 		deepClosureLengths.addItem("14\"");
@@ -1603,7 +1686,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(deepClosureLengths);
 
 		// THE COMBO BOX FOR DEEP CLOSURE'S QUANTITY
-		JComboBox<String> deepClosureQuantity = new JComboBox<>();
+		deepClosureQuantity = new JComboBox<>();
+		deepClosureQuantity.setBackground(Color.WHITE);
 		deepClosureQuantity.addItem("0");
 		deepClosureQuantity.addItem("1");
 		deepClosureQuantity.addItem("2");
@@ -1675,7 +1759,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(deepClosureQuantity);
 
 		// THE COMBO BOX FOR RARE CLOSURE'S LENGTHS
-		JComboBox<String> rareClosureLengths = new JComboBox<>();
+		rareClosureLengths = new JComboBox<>();
+		rareClosureLengths.setBackground(Color.WHITE);
 		rareClosureLengths.addItem("0\"");
 		rareClosureLengths.addItem("12\"");
 		rareClosureLengths.addItem("14\"");
@@ -1702,7 +1787,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(rareClosureLengths);
 
 		// THE COMBO BOX FOR RARE CLOSURE'S QUANTITY
-		JComboBox<String> rareClosureQuantity = new JComboBox<>();
+		rareClosureQuantity = new JComboBox<>();
+		rareClosureQuantity.setBackground(Color.WHITE);
 		rareClosureQuantity.addItem("0");
 		rareClosureQuantity.addItem("1");
 		rareClosureQuantity.addItem("2");
@@ -1774,7 +1860,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(rareClosureQuantity);
 
 		// THE COMBO BOX FOR STEAM #1 CLOSURE'S LENGTHS
-		JComboBox<String> steam1ClosureLengths = new JComboBox<>();
+		steam1ClosureLengths = new JComboBox<>();
+		steam1ClosureLengths.setBackground(Color.WHITE);
 		steam1ClosureLengths.addItem("0\"");
 		steam1ClosureLengths.addItem("12\"");
 		steam1ClosureLengths.addItem("14\"");
@@ -1801,7 +1888,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam1ClosureLengths);
 
 		// THE COMBO BOX FOR STEAM #1 CLOSURE'S QUANTITY
-		JComboBox<String> steam1ClosureQuantity = new JComboBox<>();
+		steam1ClosureQuantity = new JComboBox<>();
+		steam1ClosureQuantity.setBackground(Color.WHITE);
 		steam1ClosureQuantity.addItem("0");
 		steam1ClosureQuantity.addItem("1");
 		steam1ClosureQuantity.addItem("2");
@@ -1873,7 +1961,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam1ClosureQuantity);
 
 		// THE COMBO BOX FOR STEAM #2 CLOSURE'S LENGTHS
-		JComboBox<String> steam2ClosureLengths = new JComboBox<>();
+		steam2ClosureLengths = new JComboBox<>();
+		steam2ClosureLengths.setBackground(Color.WHITE);
 		steam2ClosureLengths.addItem("0\"");
 		steam2ClosureLengths.addItem("12\"");
 		steam2ClosureLengths.addItem("14\"");
@@ -1900,7 +1989,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam2ClosureLengths);
 
 		// THE COMBO BOX FOR STEAM #2 CLOSURE'S QUANTITY
-		JComboBox<String> steam2ClosureQuantity = new JComboBox<>();
+		steam2ClosureQuantity = new JComboBox<>();
+		steam2ClosureQuantity.setBackground(Color.WHITE);
 		steam2ClosureQuantity.addItem("0");
 		steam2ClosureQuantity.addItem("1");
 		steam2ClosureQuantity.addItem("2");
@@ -1972,7 +2062,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam2ClosureQuantity);
 
 		// THE COMBO BOX FOR BLONDE CLOSURES'S LENGTHS
-		JComboBox<String> blondeClosureLengths = new JComboBox<>();
+		blondeClosureLengths = new JComboBox<>();
+		blondeClosureLengths.setBackground(Color.WHITE);
 		blondeClosureLengths.addItem("0\"");
 		blondeClosureLengths.addItem("12\"");
 		blondeClosureLengths.addItem("14\"");
@@ -1999,7 +2090,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(blondeClosureLengths);
 
 		// THE COMBO BOX FOR BLONDE CLOSURES'S QUANTITY
-		JComboBox<String> blondeClosureQuantity = new JComboBox<>();
+		blondeClosureQuantity = new JComboBox<>();
+		blondeClosureQuantity.setBackground(Color.WHITE);
 		blondeClosureQuantity.addItem("0");
 		blondeClosureQuantity.addItem("1");
 		blondeClosureQuantity.addItem("2");
@@ -2071,7 +2163,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(blondeClosureQuantity);
 
 		// THE COMBO BOX FOR GREY CLOSURE'S LENGTHS
-		JComboBox<String> greyClosureLengths = new JComboBox<>();
+		greyClosureLengths = new JComboBox<>();
+		greyClosureLengths.setBackground(Color.WHITE);
 		greyClosureLengths.addItem("0\"");
 		greyClosureLengths.addItem("12\"");
 		greyClosureLengths.addItem("14\"");
@@ -2098,7 +2191,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(greyClosureLengths);
 
 		// THE COMBO BOX FOR GREY CLOSURE'S QUANTITY
-		JComboBox<String> greyClosureQuantity = new JComboBox<>();
+		greyClosureQuantity = new JComboBox<>();
+		greyClosureQuantity.setBackground(Color.WHITE);
 		greyClosureQuantity.addItem("0");
 		greyClosureQuantity.addItem("1");
 		greyClosureQuantity.addItem("2");
@@ -2170,7 +2264,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(greyClosureQuantity);
 
 		// THE COMBO BOX FOR STRAIGHT FRONTAL'S LENGTHS
-		JComboBox<String> straightFrontalLengths = new JComboBox<>();
+		straightFrontalLengths = new JComboBox<>();
+		straightFrontalLengths.setBackground(Color.WHITE);
 		straightFrontalLengths.addItem("0\"");
 		straightFrontalLengths.addItem("12\"");
 		straightFrontalLengths.addItem("14\"");
@@ -2197,7 +2292,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(straightFrontalLengths);
 
 		// THE COMBO BOX FOR STRAIGHT FRONTAL'S QUANTITY
-		JComboBox<String> straightFrontalQuantity = new JComboBox<>();
+		straightFrontalQuantity = new JComboBox<>();
+		straightFrontalQuantity.setBackground(Color.WHITE);
 		straightFrontalQuantity.addItem("0");
 		straightFrontalQuantity.addItem("1");
 		straightFrontalQuantity.addItem("2");
@@ -2269,7 +2365,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(straightFrontalQuantity);
 
 		// THE COMBO BOX FOR LOOSE WAVE FRONTAL'S LENGTHS
-		JComboBox<String> looseFrontalLengths = new JComboBox<>();
+		looseFrontalLengths = new JComboBox<>();
+		looseFrontalLengths.setBackground(Color.WHITE);
 		looseFrontalLengths.addItem("0\"");
 		looseFrontalLengths.addItem("12\"");
 		looseFrontalLengths.addItem("14\"");
@@ -2296,7 +2393,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(looseFrontalLengths);
 
 		// THE COMBO BOX FOR LOOSE WAVE FRONTAL'S QUANTITY
-		JComboBox<String> looseFrontalQuantity = new JComboBox<>();
+		looseFrontalQuantity = new JComboBox<>();
+		looseFrontalQuantity.setBackground(Color.WHITE);
 		looseFrontalQuantity.addItem("0");
 		looseFrontalQuantity.addItem("1");
 		looseFrontalQuantity.addItem("2");
@@ -2368,7 +2466,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(looseFrontalQuantity);
 
 		// THE COMBO BOX FOR BODY WAVE FRONTAL'S LENGTHS
-		JComboBox<String> bodyFrontalLengths = new JComboBox<>();
+		bodyFrontalLengths = new JComboBox<>();
+		bodyFrontalLengths.setBackground(Color.WHITE);
 		bodyFrontalLengths.addItem("0\"");
 		bodyFrontalLengths.addItem("12\"");
 		bodyFrontalLengths.addItem("14\"");
@@ -2395,7 +2494,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(bodyFrontalLengths);
 
 		// THE COMBO BOX FOR BODY WAVE FRONTAL'S QUANTITY
-		JComboBox<String> bodyFrontalQuantity = new JComboBox<>();
+		bodyFrontalQuantity = new JComboBox<>();
+		bodyFrontalQuantity.setBackground(Color.WHITE);
 		bodyFrontalQuantity.addItem("0");
 		bodyFrontalQuantity.addItem("1");
 		bodyFrontalQuantity.addItem("2");
@@ -2467,7 +2567,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(bodyFrontalQuantity);
 
 		// THE COMBO BOX FOR DEEP WAVE FRONTAL'S LENGTHS
-		JComboBox<String> deepFrontalLengths = new JComboBox<>();
+		deepFrontalLengths = new JComboBox<>();
+		deepFrontalLengths.setBackground(Color.WHITE);
 		deepFrontalLengths.addItem("0\"");
 		deepFrontalLengths.addItem("12\"");
 		deepFrontalLengths.addItem("14\"");
@@ -2494,7 +2595,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(deepFrontalLengths);
 
 		// THE COMBO BOX FOR DEEP WAVE FRONTAL'S QUANTITY
-		JComboBox<String> deepFrontalQuantity = new JComboBox<>();
+		deepFrontalQuantity = new JComboBox<>();
+		deepFrontalQuantity.setBackground(Color.WHITE);
 		deepFrontalQuantity.addItem("0");
 		deepFrontalQuantity.addItem("1");
 		deepFrontalQuantity.addItem("2");
@@ -2566,7 +2668,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(deepFrontalQuantity);
 
 		// THE COMBO BOX FOR RARE CURLY FRONTAL'S LENGTHS
-		JComboBox<String> rareFrontalLengths = new JComboBox<>();
+		rareFrontalLengths = new JComboBox<>();
+		rareFrontalLengths.setBackground(Color.WHITE);
 		rareFrontalLengths.addItem("0\"");
 		rareFrontalLengths.addItem("12\"");
 		rareFrontalLengths.addItem("14\"");
@@ -2593,7 +2696,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(rareFrontalLengths);
 
 		// THE COMBO BOX FOR RARE CURLY FRONTAL'S QUANTITY
-		JComboBox<String> rareFrontalQuantity = new JComboBox<>();
+		rareFrontalQuantity = new JComboBox<>();
+		rareFrontalQuantity.setBackground(Color.WHITE);
 		rareFrontalQuantity.addItem("0");
 		rareFrontalQuantity.addItem("1");
 		rareFrontalQuantity.addItem("2");
@@ -2665,7 +2769,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(rareFrontalQuantity);
 
 		// THE COMBO BOX FOR STEAM #1 FRONTAL'S LENGTHS
-		JComboBox<String> steam1FrontalLengths = new JComboBox<>();
+		steam1FrontalLengths = new JComboBox<>();
+		steam1FrontalLengths.setBackground(Color.WHITE);
 		steam1FrontalLengths.addItem("0\"");
 		steam1FrontalLengths.addItem("12\"");
 		steam1FrontalLengths.addItem("14\"");
@@ -2692,7 +2797,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam1FrontalLengths);
 
 		// THE COMBO BOX FOR STEAM #1 FRONTAL'S QUANTITY
-		JComboBox<String> steam1FrontalQuantity = new JComboBox<>();
+		steam1FrontalQuantity = new JComboBox<>();
+		steam1FrontalQuantity.setBackground(Color.WHITE);
 		steam1FrontalQuantity.addItem("0");
 		steam1FrontalQuantity.addItem("1");
 		steam1FrontalQuantity.addItem("2");
@@ -2764,7 +2870,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam1FrontalQuantity);
 
 		// THE COMBO BOX FOR STEAM #2 FRONTAL'S LENGTHS
-		JComboBox<String> steam2FrontalLengths = new JComboBox<>();
+		steam2FrontalLengths = new JComboBox<>();
+		steam2FrontalLengths.setBackground(Color.WHITE);
 		steam2FrontalLengths.addItem("0\"");
 		steam2FrontalLengths.addItem("12\"");
 		steam2FrontalLengths.addItem("14\"");
@@ -2791,7 +2898,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam2FrontalLengths);
 
 		// THE COMBO BOX FOR STEAM #2 FRONTAL'S QUANITTY
-		JComboBox<String> steam2FrontalQuantity = new JComboBox<>();
+		steam2FrontalQuantity = new JComboBox<>();
+		steam2FrontalQuantity.setBackground(Color.WHITE);
 		steam2FrontalQuantity.addItem("0");
 		steam2FrontalQuantity.addItem("1");
 		steam2FrontalQuantity.addItem("2");
@@ -2863,7 +2971,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam2FrontalQuantity);
 
 		// THE COMBO BOX FOR BLONDE FRONTAL'S LENGTHS
-		JComboBox<String> blondeFrontalLengths = new JComboBox<>();
+		blondeFrontalLengths = new JComboBox<>();
+		blondeFrontalLengths.setBackground(Color.WHITE);
 		blondeFrontalLengths.addItem("0\"");
 		blondeFrontalLengths.addItem("12\"");
 		blondeFrontalLengths.addItem("14\"");
@@ -2890,7 +2999,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(blondeFrontalLengths);
 
 		// THE COMBO BOX FOR BLONDE FRONTAL'S QUANTITY
-		JComboBox<String> blondeFrontalQuantity = new JComboBox<>();
+		blondeFrontalQuantity = new JComboBox<>();
+		blondeFrontalQuantity.setBackground(Color.WHITE);
 		blondeFrontalQuantity.addItem("0");
 		blondeFrontalQuantity.addItem("1");
 		blondeFrontalQuantity.addItem("2");
@@ -2962,7 +3072,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(blondeFrontalQuantity);
 
 		// THE COMBO BOX FOR GREY FRONTAL'S LENGTHS
-		JComboBox<String> greyFrontalLengths = new JComboBox<>();
+		greyFrontalLengths = new JComboBox<>();
+		greyFrontalLengths.setBackground(Color.WHITE);
 		greyFrontalLengths.addItem("0\"");
 		greyFrontalLengths.addItem("12\"");
 		greyFrontalLengths.addItem("14\"");
@@ -2989,7 +3100,8 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(greyFrontalLengths);
 
 		// THE COMBO BOX FOR GREY FRONTAL'S QUANTITY
-		JComboBox<String> greyFrontalQuantity = new JComboBox<>();
+		greyFrontalQuantity = new JComboBox<>();
+		greyFrontalQuantity.setBackground(Color.WHITE);
 		greyFrontalQuantity.addItem("0");
 		greyFrontalQuantity.addItem("1");
 		greyFrontalQuantity.addItem("2");
@@ -3062,15 +3174,18 @@ public class hairquoter {
 
 		// ADD BUTTON - ADDING ALL THE PRICES OF CHOSEN PRODUCTS/PATTERNS ALONG WITH THEIR QUANTITY
 		add_Button = new JButton("Add For \r\nCalculation");
-		add_Button.setForeground(new Color(255, 255, 255));
+		add_Button.setForeground(Color.BLACK);
 		add_Button.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		add_Button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		add_Button.setBackground(new Color(0, 128, 0));
-		add_Button.setFont(new Font("Consolas", Font.BOLD, 15));
+		add_Button.setBackground(Color.WHITE);
+		add_Button.setFont(new Font("Constantia", Font.BOLD, 15));
 		add_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				straightOrder();
+				straightOrder(); looseOrder(); bodyOrder(); deepOrder(); rareOrder(); steam1Order(); steam2Order(); blondeOrder(); greyOrder();
+				straightClosureOrder(); looseClosureOrder(); bodyClosureOrder(); deepClosureOrder(); rareClosureOrder(); steam1ClosureOrder(); steam2ClosureOrder(); blondeClosureOrder(); greyClosureOrder();
+				straightFrontalOrder(); looseFrontalOrder(); bodyFrontalOrder(); deepFrontalOrder(); rareFrontalOrder(); steam1FrontalOrder(); steam2FrontalOrder(); blondeFrontalOrder(); greyFrontalOrder();
+				
 				
 				// Add the number of pieces/products
 				quantity_Counter += straightQuantity.getSelectedIndex() + looseQuantity.getSelectedIndex() + bodyQuantity.getSelectedIndex() + deepQuantity.getSelectedIndex() +
@@ -3100,7 +3215,8 @@ public class hairquoter {
 
 		// STANDARD SHIPPING CHECKBOX
 		standardshipping_checkbox = new JCheckBox("USPS Standard Shipping ($8)");
-		standardshipping_checkbox.setBackground(new Color(192, 192, 192));
+		standardshipping_checkbox.setFont(new Font("Consolas", Font.PLAIN, 11));
+		standardshipping_checkbox.setBackground(SystemColor.control);
 		standardshipping_checkbox.setForeground(Color.BLACK);
 		standardshipping_checkbox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -3119,7 +3235,8 @@ public class hairquoter {
 
 		// EXPRESS SHIPPING CHECKBOX
 		expressshipping_checkbox = new JCheckBox("USPS Express Shipping ($24)");
-		expressshipping_checkbox.setBackground(new Color(192, 192, 192));
+		expressshipping_checkbox.setFont(new Font("Consolas", Font.PLAIN, 11));
+		expressshipping_checkbox.setBackground(SystemColor.control);
 		expressshipping_checkbox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
@@ -3138,13 +3255,15 @@ public class hairquoter {
 		// CALCULATE BUTTON - CALCULATING THE GRAND TOTAL WITH AND WITHOUT PAYPAL FEE
 		JButton calculate_button = new JButton("Calculate");
 		calculate_button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		calculate_button.setFont(new Font("Consolas", Font.BOLD, 24));
+		calculate_button.setFont(new Font("Constantia", Font.BOLD, 24));
 		calculate_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String totalOut;
 					
-					show_Addition_txtArea.setText(straightString);
+					show_Addition_txtArea.setText(straightString + looseString + bodyString + deepString + rareString + steam1String + steam2String + blondeString + greyString + 
+							straightClosureString + looseClosureString + bodyClosureString + deepClosureString + rareClosureString + steam1ClosureString + steam2ClosureString + blondeClosureString + greyClosureString +
+							straightFrontalString + looseFrontalString + bodyFrontalString + deepFrontalString + rareFrontalString + steam1FrontalString + steam2FrontalString + blondeFrontalString + greyFrontalString);
 					
 					// Formatting the total WITH PayPal fee
 					DecimalFormat myFormatter = new DecimalFormat();
@@ -3169,15 +3288,13 @@ public class hairquoter {
 				}
 			}
 		});
-		calculate_button.setBackground(new Color(25, 25, 112));
-		calculate_button.setForeground(new Color(255, 255, 255));
-		calculate_button.setBounds(465, 256, 152, 74);
+		calculate_button.setBackground(Color.WHITE);
+		calculate_button.setForeground(Color.BLACK);
+		calculate_button.setBounds(469, 256, 152, 74);
 		frmHairProductsCalculator.getContentPane().add(calculate_button);
 
 		// CLEAR BUTTON - SETTING EVERYTHING TO ZERO OR EMPTY 
 		clear_Button = new JButton("Clear");
-		Image recycle = new ImageIcon(this.getClass().getResource("Oxygen-Icons.org-Oxygen-Actions-trash-empty.ico")).getImage();
-		clear_Button.setIcon(new ImageIcon(recycle));
 		clear_Button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		clear_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -3210,11 +3327,14 @@ public class hairquoter {
 				steam2FrontalLengths.setSelectedItem("0\"");steam2FrontalQuantity.setSelectedItem("0");
 				blondeFrontalLengths.setSelectedItem("0\"");blondeFrontalQuantity.setSelectedItem("0");
 				greyFrontalLengths.setSelectedItem("0\"");greyFrontalQuantity.setSelectedItem("0");
+				straightString = ""; looseString = ""; bodyString = ""; deepString = ""; rareString = ""; steam1String = ""; steam2String = ""; blondeString = ""; greyString = "";
+				straightClosureString = ""; looseClosureString = ""; bodyClosureString = ""; deepClosureString = ""; rareClosureString = ""; steam1ClosureString = ""; steam2ClosureString = ""; blondeClosureString = ""; greyClosureString = "";
+				straightFrontalString = ""; looseFrontalString = ""; bodyFrontalString = ""; deepFrontalString = ""; rareFrontalString = ""; steam1FrontalString = ""; steam2FrontalString = ""; blondeFrontalString = ""; greyFrontalString = "";
+				show_Addition_txtArea.setText(null);
 				subtotal = 0;
 				subTotal_txtField.setText(Double.toString(0.0));
 				standardshipping_checkbox.setSelected(false);
 				expressshipping_checkbox.setSelected(false);
-				show_Addition_txtArea.setText("");
 				quantity_Counter = 0;
 				totalQuantity_txtfield.setText(Integer.toString(0));
 				total_With_Shipping = 0;
@@ -3225,39 +3345,36 @@ public class hairquoter {
 			}
 		});
 		clear_Button.setForeground(new Color(0, 0, 0));
-		clear_Button.setBackground(new Color(128, 0, 0));
-		clear_Button.setFont(new Font("Consolas", Font.BOLD, 18));
-		clear_Button.setBounds(501, 636, 86, 47);
+		clear_Button.setBackground(Color.WHITE);
+		clear_Button.setFont(new Font("Constantia", Font.BOLD, 18));
+		clear_Button.setBounds(586, 636, 73, 47);
 		frmHairProductsCalculator.getContentPane().add(clear_Button);
 
 		// TOTAL TXTFIELD
 		totalWPaypalFee = new JTextField();
-		totalWPaypalFee.setBorder(null);
 		totalWPaypalFee.setHorizontalAlignment(SwingConstants.LEFT);
 		totalWPaypalFee.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		totalWPaypalFee.setBounds(573, 527, 86, 35);
+		totalWPaypalFee.setBounds(577, 465, 86, 35);
 		frmHairProductsCalculator.getContentPane().add(totalWPaypalFee);
 		totalWPaypalFee.setColumns(10);
 
 		totalQuantity_txtfield = new JTextField();
-		totalQuantity_txtfield.setBorder(null);
+		totalQuantity_txtfield.setHorizontalAlignment(SwingConstants.LEFT);
 		totalQuantity_txtfield.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		totalQuantity_txtfield.setBounds(573, 477, 86, 35);
+		totalQuantity_txtfield.setBounds(577, 375, 86, 35);
 		frmHairProductsCalculator.getContentPane().add(totalQuantity_txtfield);
 		totalQuantity_txtfield.setColumns(10);
 
 		totalWOPaypalFee = new JTextField();
-		totalWOPaypalFee.setBorder(null);
 		totalWOPaypalFee.setHorizontalAlignment(SwingConstants.LEFT);
 		totalWOPaypalFee.setFont(new Font("Times New Roman", Font.BOLD, 14));
 		totalWOPaypalFee.setColumns(10);
-		totalWOPaypalFee.setBounds(573, 577, 86, 35);
+		totalWOPaypalFee.setBounds(578, 565, 86, 35);
 		frmHairProductsCalculator.getContentPane().add(totalWOPaypalFee);
 
 		subTotal_txtField = new JTextField();
-		subTotal_txtField.setBorder(null);
 		subTotal_txtField.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		subTotal_txtField.setBounds(505, 91, 99, 33);
+		subTotal_txtField.setBounds(505, 100, 99, 24);
 		frmHairProductsCalculator.getContentPane().add(subTotal_txtField);
 		subTotal_txtField.setColumns(10);
 
@@ -3280,18 +3397,18 @@ public class hairquoter {
 		separator_3.setBounds(428, 135, 231, 2);
 		frmHairProductsCalculator.getContentPane().add(separator_3);
 
-		separator_4 = new JSeparator();
-		separator_4.setForeground(new Color(0, 0, 0));
-		separator_4.setBackground(Color.BLACK);
-		separator_4.setBounds(428, 623, 231, 2);
-		frmHairProductsCalculator.getContentPane().add(separator_4);
-
 		JSeparator separator = new JSeparator();
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setForeground(Color.BLACK);
 		separator.setBackground(Color.BLACK);
 		separator.setBounds(414, 11, 2, 689);
 		frmHairProductsCalculator.getContentPane().add(separator);
+		
+		JLabel lblNewLabel = new JLabel("Selected Product(s):");
+		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
+		lblNewLabel.setFont(new Font("Consolas", Font.BOLD, 11));
+		lblNewLabel.setBounds(428, 353, 125, 22);
+		frmHairProductsCalculator.getContentPane().add(lblNewLabel);
 
 	}
 	
@@ -3332,30 +3449,602 @@ public class hairquoter {
 	public String looseOrder()
 	{
 		if(looseLengths.getSelectedIndex() == 0)
-			straightString = "";
-		if(straightLengths.getSelectedIndex() == 1)
-			straightString += "10\" x " + straightQuantity.getSelectedIndex() + "\n";
-		if(straightLengths.getSelectedIndex() == 2)
-			straightString += "12\" x " + straightQuantity.getSelectedIndex() + "\n";
-		if(straightLengths.getSelectedIndex() == 3)
-			straightString += "14\" x " + straightQuantity.getSelectedIndex() + "\n";
-		if(straightLengths.getSelectedIndex() == 4)
-			straightString += "16\" x " + straightQuantity.getSelectedIndex() + "\n";
-		if(straightLengths.getSelectedIndex() == 5)
-			straightString += "18\" x " + straightQuantity.getSelectedIndex() + "\n";
-		if(straightLengths.getSelectedIndex() == 6)
-			straightString += "20\" x " + straightQuantity.getSelectedIndex() + "\n";
-		if(straightLengths.getSelectedIndex() == 7)
-			straightString += "22\" x " + straightQuantity.getSelectedIndex() + "\n";
-		if(straightLengths.getSelectedIndex() == 8)
-			straightString += "24\" x " + straightQuantity.getSelectedIndex() + "\n";
-		if(straightLengths.getSelectedIndex() == 9)
-			straightString += "26\" x " + straightQuantity.getSelectedIndex() + "\n";
-		if(straightLengths.getSelectedIndex() == 10)
-			straightString += "28\" x " + straightQuantity.getSelectedIndex() + "\n";
-		if(straightLengths.getSelectedIndex() == 11)
-			straightString += "30\" x " + straightQuantity.getSelectedIndex() + "\n";
+			looseString = "";
+		if(looseLengths.getSelectedIndex() == 1)
+			looseString += "12\" x " + looseQuantity.getSelectedIndex() + "\n";
+		if(looseLengths.getSelectedIndex() == 2)
+			looseString += "14\" x " + looseQuantity.getSelectedIndex() + "\n";
+		if(looseLengths.getSelectedIndex() == 3)
+			looseString += "16\" x " + looseQuantity.getSelectedIndex() + "\n";
+		if(looseLengths.getSelectedIndex() == 4)
+			looseString += "18\" x " + looseQuantity.getSelectedIndex() + "\n";
+		if(looseLengths.getSelectedIndex() == 5)
+			looseString += "20\" x " + looseQuantity.getSelectedIndex() + "\n";
+		if(looseLengths.getSelectedIndex() == 6)
+			looseString += "22\" x " + looseQuantity.getSelectedIndex() + "\n";
+		if(looseLengths.getSelectedIndex() == 7)
+			looseString += "24\" x " + looseQuantity.getSelectedIndex() + "\n";
+		if(looseLengths.getSelectedIndex() == 8)
+			looseString += "26\" x " + looseQuantity.getSelectedIndex() + "\n";
+		if(looseLengths.getSelectedIndex() == 9)
+			looseString += "28\" x " + looseQuantity.getSelectedIndex() + "\n";
+		if(looseLengths.getSelectedIndex() == 10)
+			looseString += "30\" x " + looseQuantity.getSelectedIndex() + "\n";
 		
-		return straightString;
+		return looseString;
 	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String bodyOrder()
+	{
+		if(bodyLengths.getSelectedIndex() == 0)
+			bodyString = "";
+		if(bodyLengths.getSelectedIndex() == 1)
+			bodyString += "10\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		if(bodyLengths.getSelectedIndex() == 2)
+			bodyString += "12\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		if(bodyLengths.getSelectedIndex() == 3)
+			bodyString += "14\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		if(bodyLengths.getSelectedIndex() == 4)
+			bodyString += "16\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		if(bodyLengths.getSelectedIndex() == 5)
+			bodyString += "18\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		if(bodyLengths.getSelectedIndex() == 6)
+			bodyString += "20\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		if(bodyLengths.getSelectedIndex() == 7)
+			bodyString += "22\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		if(bodyLengths.getSelectedIndex() == 8)
+			bodyString += "24\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		if(bodyLengths.getSelectedIndex() == 9)
+			bodyString += "26\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		if(bodyLengths.getSelectedIndex() == 10)
+			bodyString += "28\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		if(bodyLengths.getSelectedIndex() == 11)
+			bodyString += "30\" x " + bodyQuantity.getSelectedIndex() + "\n";
+		
+		return bodyString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String deepOrder()
+	{
+		if(deepLengths.getSelectedIndex() == 0)
+			deepString = "";
+		if(deepLengths.getSelectedIndex() == 1)
+			deepString += "12\" x " + deepQuantity.getSelectedIndex() + "\n";
+		if(deepLengths.getSelectedIndex() == 2)
+			deepString += "14\" x " + deepQuantity.getSelectedIndex() + "\n";
+		if(deepLengths.getSelectedIndex() == 3)
+			deepString += "16\" x " + deepQuantity.getSelectedIndex() + "\n";
+		if(deepLengths.getSelectedIndex() == 4)
+			deepString += "18\" x " + deepQuantity.getSelectedIndex() + "\n";
+		if(deepLengths.getSelectedIndex() == 5)
+			deepString += "20\" x " + deepQuantity.getSelectedIndex() + "\n";
+		if(deepLengths.getSelectedIndex() == 6)
+			deepString += "22\" x " + deepQuantity.getSelectedIndex() + "\n";
+		if(deepLengths.getSelectedIndex() == 7)
+			deepString += "24\" x " + deepQuantity.getSelectedIndex() + "\n";
+		if(deepLengths.getSelectedIndex() == 8)
+			deepString += "26\" x " + deepQuantity.getSelectedIndex() + "\n";
+		if(deepLengths.getSelectedIndex() == 9)
+			deepString += "28\" x " + deepQuantity.getSelectedIndex() + "\n";
+		if(deepLengths.getSelectedIndex() == 10)
+			deepString += "30\" x " + deepQuantity.getSelectedIndex() + "\n";
+		
+		return deepString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String rareOrder()
+	{
+		if(rareLengths.getSelectedIndex() == 0)
+			rareString = "";
+		if(rareLengths.getSelectedIndex() == 1)
+			rareString += "10\" x " + rareQuantity.getSelectedIndex() + "\n";
+		if(rareLengths.getSelectedIndex() == 2)
+			rareString += "12\" x " + rareQuantity.getSelectedIndex() + "\n";
+		if(rareLengths.getSelectedIndex() == 3)
+			rareString += "14\" x " + rareQuantity.getSelectedIndex() + "\n";
+		if(rareLengths.getSelectedIndex() == 4)
+			rareString += "16\" x " + rareQuantity.getSelectedIndex() + "\n";
+		if(rareLengths.getSelectedIndex() == 5)
+			rareString += "18\" x " + rareQuantity.getSelectedIndex() + "\n";
+		if(rareLengths.getSelectedIndex() == 6)
+			rareString += "20\" x " + rareQuantity.getSelectedIndex() + "\n";
+		if(rareLengths.getSelectedIndex() == 7)
+			rareString += "22\" x " + rareQuantity.getSelectedIndex() + "\n";
+		if(rareLengths.getSelectedIndex() == 8)
+			rareString += "24\" x " + rareQuantity.getSelectedIndex() + "\n";
+		if(rareLengths.getSelectedIndex() == 9)
+			rareString += "26\" x " + rareQuantity.getSelectedIndex() + "\n";
+		if(rareLengths.getSelectedIndex() == 10)
+			rareString += "28\" x " + rareQuantity.getSelectedIndex() + "\n";
+		
+		return rareString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String steam1Order()
+	{
+		if(steam1Lengths.getSelectedIndex() == 0)
+			steam1String = "";
+		if(steam1Lengths.getSelectedIndex() == 1)
+			steam1String += "12\" x " + steam1Quantity.getSelectedIndex() + "\n";
+		if(steam1Lengths.getSelectedIndex() == 2)
+			steam1String += "14\" x " + steam1Quantity.getSelectedIndex() + "\n";
+		if(steam1Lengths.getSelectedIndex() == 3)
+			steam1String += "16\" x " + steam1Quantity.getSelectedIndex() + "\n";
+		if(steam1Lengths.getSelectedIndex() == 4)
+			steam1String += "18\" x " + steam1Quantity.getSelectedIndex() + "\n";
+		if(steam1Lengths.getSelectedIndex() == 5)
+			steam1String += "20\" x " + steam1Quantity.getSelectedIndex() + "\n";
+		if(steam1Lengths.getSelectedIndex() == 6)
+			steam1String += "22\" x " + steam1Quantity.getSelectedIndex() + "\n";
+		if(steam1Lengths.getSelectedIndex() == 7)
+			steam1String += "24\" x " + steam1Quantity.getSelectedIndex() + "\n";
+		if(steam1Lengths.getSelectedIndex() == 8)
+			steam1String += "26\" x " + steam1Quantity.getSelectedIndex() + "\n";
+		if(steam1Lengths.getSelectedIndex() == 9)
+			steam1String += "28\" x " + steam1Quantity.getSelectedIndex() + "\n";
+		
+		return steam1String;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String steam2Order()
+	{
+		if(steam2Lengths.getSelectedIndex() == 0)
+			steam2String = "";
+		if(steam1Lengths.getSelectedIndex() == 1)
+			steam2String += "12\" x " + steam2Quantity.getSelectedIndex() + "\n";
+		if(steam2Lengths.getSelectedIndex() == 2)
+			steam2String += "14\" x " + steam2Quantity.getSelectedIndex() + "\n";
+		if(steam2Lengths.getSelectedIndex() == 3)
+			steam2String += "16\" x " + steam2Quantity.getSelectedIndex() + "\n";
+		if(steam2Lengths.getSelectedIndex() == 4)
+			steam2String += "18\" x " + steam2Quantity.getSelectedIndex() + "\n";
+		if(steam2Lengths.getSelectedIndex() == 5)
+			steam2String += "20\" x " + steam2Quantity.getSelectedIndex() + "\n";
+		if(steam2Lengths.getSelectedIndex() == 6)
+			steam2String += "22\" x " + steam2Quantity.getSelectedIndex() + "\n";
+		if(steam2Lengths.getSelectedIndex() == 7)
+			steam2String += "24\" x " + steam2Quantity.getSelectedIndex() + "\n";
+		if(steam2Lengths.getSelectedIndex() == 8)
+			steam2String += "26\" x " + steam2Quantity.getSelectedIndex() + "\n";
+		if(steam2Lengths.getSelectedIndex() == 9)
+			steam2String += "28\" x " + steam2Quantity.getSelectedIndex() + "\n";
+		
+		return steam2String;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String blondeOrder()
+	{
+		if(blondeLengths.getSelectedIndex() == 0)
+			blondeString = "";
+		if(blondeLengths.getSelectedIndex() == 1)
+			blondeString += "12\" x " + blondeQuantity.getSelectedIndex() + "\n";
+		if(blondeLengths.getSelectedIndex() == 2)
+			blondeString += "14\" x " + blondeQuantity.getSelectedIndex() + "\n";
+		if(blondeLengths.getSelectedIndex() == 3)
+			blondeString += "16\" x " + blondeQuantity.getSelectedIndex() + "\n";
+		if(blondeLengths.getSelectedIndex() == 4)
+			blondeString += "18\" x " + blondeQuantity.getSelectedIndex() + "\n";
+		if(blondeLengths.getSelectedIndex() == 5)
+			blondeString += "20\" x " + blondeQuantity.getSelectedIndex() + "\n";
+		if(blondeLengths.getSelectedIndex() == 6)
+			blondeString += "22\" x " + blondeQuantity.getSelectedIndex() + "\n";
+		if(blondeLengths.getSelectedIndex() == 7)
+			blondeString += "24\" x " + blondeQuantity.getSelectedIndex() + "\n";
+		if(blondeLengths.getSelectedIndex() == 8)
+			blondeString += "26\" x " + blondeQuantity.getSelectedIndex() + "\n";
+		if(blondeLengths.getSelectedIndex() == 9)
+			blondeString += "28\" x " + blondeQuantity.getSelectedIndex() + "\n";
+		
+		return blondeString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String greyOrder()
+	{
+		if(greyLengths.getSelectedIndex() == 0)
+			greyString = "";
+		if(greyLengths.getSelectedIndex() == 1)
+			greyString += "12\" x " + greyQuantity.getSelectedIndex() + "\n";
+		if(greyLengths.getSelectedIndex() == 2)
+			greyString += "14\" x " + greyQuantity.getSelectedIndex() + "\n";
+		if(greyLengths.getSelectedIndex() == 3)
+			greyString += "16\" x " + greyQuantity.getSelectedIndex() + "\n";
+		if(greyLengths.getSelectedIndex() == 4)
+			greyString += "18\" x " + greyQuantity.getSelectedIndex() + "\n";
+		if(greyLengths.getSelectedIndex() == 5)
+			greyString += "20\" x " + greyQuantity.getSelectedIndex() + "\n";
+		if(greyLengths.getSelectedIndex() == 6)
+			greyString += "22\" x " + greyQuantity.getSelectedIndex() + "\n";
+		if(greyLengths.getSelectedIndex() == 7)
+			greyString += "24\" x " + greyQuantity.getSelectedIndex() + "\n";
+		if(greyLengths.getSelectedIndex() == 8)
+			greyString += "26\" x " + greyQuantity.getSelectedIndex() + "\n";
+		if(greyLengths.getSelectedIndex() == 9)
+			greyString += "28\" x " + greyQuantity.getSelectedIndex() + "\n";
+		if(greyLengths.getSelectedIndex() == 10)
+			greyString += "30\" x " + greyQuantity.getSelectedIndex() + "\n";
+		
+		return greyString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String straightClosureOrder()
+	{
+		if(straightClosureLengths.getSelectedIndex() == 0)
+			straightClosureString = "";
+		if(straightClosureLengths.getSelectedIndex() == 1)
+			straightClosureString += "12\" x " + straightClosureQuantity.getSelectedIndex() + "\n";
+		if(straightClosureLengths.getSelectedIndex() == 2)
+			straightClosureString += "14\" x " + straightClosureQuantity.getSelectedIndex() + "\n";
+		if(straightClosureLengths.getSelectedIndex() == 3)
+			straightClosureString += "16\" x " + straightClosureQuantity.getSelectedIndex() + "\n";
+		if(straightClosureLengths.getSelectedIndex() == 4)
+			straightClosureString += "18\" x " + straightClosureQuantity.getSelectedIndex() + "\n";
+		if(straightClosureLengths.getSelectedIndex() == 5)
+			straightClosureString += "20\" x " + straightClosureQuantity.getSelectedIndex() + "\n";
+		
+		return straightClosureString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String looseClosureOrder()
+	{
+		if(looseClosureLengths.getSelectedIndex() == 0)
+			looseClosureString = "";
+		if(looseClosureLengths.getSelectedIndex() == 1)
+			looseClosureString += "12\" x " + looseClosureQuantity.getSelectedIndex() + "\n";
+		if(looseClosureLengths.getSelectedIndex() == 2)
+			looseClosureString += "14\" x " + looseClosureQuantity.getSelectedIndex() + "\n";
+		if(looseClosureLengths.getSelectedIndex() == 3)
+			looseClosureString += "16\" x " + looseClosureQuantity.getSelectedIndex() + "\n";
+		if(looseClosureLengths.getSelectedIndex() == 4)
+			looseClosureString += "18\" x " + looseClosureQuantity.getSelectedIndex() + "\n";
+		if(looseClosureLengths.getSelectedIndex() == 5)
+			looseClosureString += "20\" x " + looseClosureQuantity.getSelectedIndex() + "\n";
+		
+		return greyString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String bodyClosureOrder()
+	{
+		if(bodyClosureLengths.getSelectedIndex() == 0)
+			bodyClosureString = "";
+		if(bodyClosureLengths.getSelectedIndex() == 1)
+			bodyClosureString += "12\" x " + bodyClosureQuantity.getSelectedIndex() + "\n";
+		if(bodyClosureLengths.getSelectedIndex() == 2)
+			bodyClosureString += "14\" x " + bodyClosureQuantity.getSelectedIndex() + "\n";
+		if(bodyClosureLengths.getSelectedIndex() == 3)
+			bodyClosureString += "16\" x " + bodyClosureQuantity.getSelectedIndex() + "\n";
+		if(bodyClosureLengths.getSelectedIndex() == 4)
+			bodyClosureString += "18\" x " + bodyClosureQuantity.getSelectedIndex() + "\n";
+		if(bodyClosureLengths.getSelectedIndex() == 5)
+			bodyClosureString += "20\" x " + bodyClosureQuantity.getSelectedIndex() + "\n";
+		
+		return bodyClosureString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String deepClosureOrder()
+	{
+		if(deepClosureLengths.getSelectedIndex() == 0)
+			deepClosureString = "";
+		if(deepClosureLengths.getSelectedIndex() == 1)
+			deepClosureString += "12\" x " + deepClosureQuantity.getSelectedIndex() + "\n";
+		if(deepClosureLengths.getSelectedIndex() == 2)
+			deepClosureString += "14\" x " + deepClosureQuantity.getSelectedIndex() + "\n";
+		if(deepClosureLengths.getSelectedIndex() == 3)
+			deepClosureString += "16\" x " + deepClosureQuantity.getSelectedIndex() + "\n";
+		if(deepClosureLengths.getSelectedIndex() == 4)
+			deepClosureString += "18\" x " + deepClosureQuantity.getSelectedIndex() + "\n";
+		if(deepClosureLengths.getSelectedIndex() == 5)
+			deepClosureString += "20\" x " + deepClosureQuantity.getSelectedIndex() + "\n";
+		
+		return deepClosureString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String rareClosureOrder()
+	{
+		if(rareClosureLengths.getSelectedIndex() == 0)
+			rareClosureString = "";
+		if(rareClosureLengths.getSelectedIndex() == 1)
+			rareClosureString += "12\" x " + rareClosureQuantity.getSelectedIndex() + "\n";
+		if(rareClosureLengths.getSelectedIndex() == 2)
+			rareClosureString += "14\" x " + rareClosureQuantity.getSelectedIndex() + "\n";
+		if(rareClosureLengths.getSelectedIndex() == 3)
+			rareClosureString += "16\" x " + rareClosureQuantity.getSelectedIndex() + "\n";
+		if(rareClosureLengths.getSelectedIndex() == 4)
+			rareClosureString += "18\" x " + rareClosureQuantity.getSelectedIndex() + "\n";
+		if(rareClosureLengths.getSelectedIndex() == 5)
+			rareClosureString += "20\" x " + rareClosureQuantity.getSelectedIndex() + "\n";
+		
+		return rareClosureString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String steam1ClosureOrder()
+	{
+		if(steam1ClosureLengths.getSelectedIndex() == 0)
+			steam1ClosureString = "";
+		if(steam1ClosureLengths.getSelectedIndex() == 1)
+			steam1ClosureString += "12\" x " + steam1ClosureQuantity.getSelectedIndex() + "\n";
+		if(steam1ClosureLengths.getSelectedIndex() == 2)
+			steam1ClosureString += "14\" x " + steam1ClosureQuantity.getSelectedIndex() + "\n";
+		if(steam1ClosureLengths.getSelectedIndex() == 3)
+			steam1ClosureString += "16\" x " + steam1ClosureQuantity.getSelectedIndex() + "\n";
+		if(steam1ClosureLengths.getSelectedIndex() == 4)
+			steam1ClosureString += "18\" x " + steam1ClosureQuantity.getSelectedIndex() + "\n";
+		if(steam1ClosureLengths.getSelectedIndex() == 5)
+			steam1ClosureString += "20\" x " + steam1ClosureQuantity.getSelectedIndex() + "\n";
+		
+		return steam1ClosureString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String steam2ClosureOrder()
+	{
+		if(steam2ClosureLengths.getSelectedIndex() == 0)
+			steam2ClosureString = "";
+		if(steam2ClosureLengths.getSelectedIndex() == 1)
+			steam2ClosureString += "12\" x " + steam2ClosureQuantity.getSelectedIndex() + "\n";
+		if(steam2ClosureLengths.getSelectedIndex() == 2)
+			steam2ClosureString += "14\" x " + steam2ClosureQuantity.getSelectedIndex() + "\n";
+		if(steam2ClosureLengths.getSelectedIndex() == 3)
+			steam2ClosureString += "16\" x " + steam2ClosureQuantity.getSelectedIndex() + "\n";
+		if(steam2ClosureLengths.getSelectedIndex() == 4)
+			steam2ClosureString += "18\" x " + steam2ClosureQuantity.getSelectedIndex() + "\n";
+		if(steam2ClosureLengths.getSelectedIndex() == 5)
+			steam2ClosureString += "20\" x " + steam2ClosureQuantity.getSelectedIndex() + "\n";
+		
+		return steam2ClosureString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String blondeClosureOrder()
+	{
+		if(blondeClosureLengths.getSelectedIndex() == 0)
+			blondeClosureString = "";
+		if(blondeClosureLengths.getSelectedIndex() == 1)
+			blondeClosureString += "12\" x " + blondeClosureQuantity.getSelectedIndex() + "\n";
+		if(blondeClosureLengths.getSelectedIndex() == 2)
+			blondeClosureString += "14\" x " + blondeClosureQuantity.getSelectedIndex() + "\n";
+		if(blondeClosureLengths.getSelectedIndex() == 3)
+			blondeClosureString += "16\" x " + blondeClosureQuantity.getSelectedIndex() + "\n";
+		if(blondeClosureLengths.getSelectedIndex() == 4)
+			blondeClosureString += "18\" x " + blondeClosureQuantity.getSelectedIndex() + "\n";
+		if(blondeClosureLengths.getSelectedIndex() == 5)
+			blondeClosureString += "20\" x " + blondeClosureQuantity.getSelectedIndex() + "\n";
+		
+		return blondeClosureString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String greyClosureOrder()
+	{
+		if(greyClosureLengths.getSelectedIndex() == 0)
+			greyClosureString = "";
+		if(greyClosureLengths.getSelectedIndex() == 1)
+			greyClosureString += "12\" x " + greyClosureQuantity.getSelectedIndex() + "\n";
+		if(greyClosureLengths.getSelectedIndex() == 2)
+			greyClosureString += "14\" x " + greyClosureQuantity.getSelectedIndex() + "\n";
+		if(greyClosureLengths.getSelectedIndex() == 3)
+			greyClosureString += "16\" x " + greyClosureQuantity.getSelectedIndex() + "\n";
+		if(greyClosureLengths.getSelectedIndex() == 4)
+			greyClosureString += "18\" x " + greyClosureQuantity.getSelectedIndex() + "\n";
+		if(greyClosureLengths.getSelectedIndex() == 5)
+			greyClosureString += "20\" x " + greyClosureQuantity.getSelectedIndex() + "\n";
+		
+		return greyClosureString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String straightFrontalOrder()
+	{
+		if(straightFrontalLengths.getSelectedIndex() == 0)
+			straightFrontalString = "";
+		if(straightFrontalLengths.getSelectedIndex() == 1)
+			straightFrontalString += "12\" x " + straightFrontalQuantity.getSelectedIndex() + "\n";
+		if(straightFrontalLengths.getSelectedIndex() == 2)
+			straightFrontalString += "14\" x " + straightFrontalQuantity.getSelectedIndex() + "\n";
+		if(straightFrontalLengths.getSelectedIndex() == 3)
+			straightFrontalString += "16\" x " + straightFrontalQuantity.getSelectedIndex() + "\n";
+		if(straightFrontalLengths.getSelectedIndex() == 4)
+			straightFrontalString += "18\" x " + straightFrontalQuantity.getSelectedIndex() + "\n";
+		if(straightFrontalLengths.getSelectedIndex() == 5)
+			straightFrontalString += "20\" x " + straightFrontalQuantity.getSelectedIndex() + "\n";
+		
+		return straightFrontalString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String looseFrontalOrder()
+	{
+		if(looseFrontalLengths.getSelectedIndex() == 0)
+			looseFrontalString = "";
+		if(looseFrontalLengths.getSelectedIndex() == 1)
+			looseFrontalString += "12\" x " + looseFrontalQuantity.getSelectedIndex() + "\n";
+		if(looseFrontalLengths.getSelectedIndex() == 2)
+			looseFrontalString += "14\" x " + looseFrontalQuantity.getSelectedIndex() + "\n";
+		if(looseFrontalLengths.getSelectedIndex() == 3)
+			looseFrontalString += "16\" x " + looseFrontalQuantity.getSelectedIndex() + "\n";
+		if(looseFrontalLengths.getSelectedIndex() == 4)
+			looseFrontalString += "18\" x " + looseFrontalQuantity.getSelectedIndex() + "\n";
+		if(looseFrontalLengths.getSelectedIndex() == 5)
+			looseFrontalString += "20\" x " + looseFrontalQuantity.getSelectedIndex() + "\n";
+		
+		return looseFrontalString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String bodyFrontalOrder()
+	{
+		if(bodyFrontalLengths.getSelectedIndex() == 0)
+			bodyFrontalString = "";
+		if(bodyFrontalLengths.getSelectedIndex() == 1)
+			bodyFrontalString += "12\" x " + bodyFrontalQuantity.getSelectedIndex() + "\n";
+		if(bodyFrontalLengths.getSelectedIndex() == 2)
+			bodyFrontalString += "14\" x " + bodyFrontalQuantity.getSelectedIndex() + "\n";
+		if(bodyFrontalLengths.getSelectedIndex() == 3)
+			bodyFrontalString += "16\" x " + bodyFrontalQuantity.getSelectedIndex() + "\n";
+		if(bodyFrontalLengths.getSelectedIndex() == 4)
+			bodyFrontalString += "18\" x " + bodyFrontalQuantity.getSelectedIndex() + "\n";
+		if(bodyFrontalLengths.getSelectedIndex() == 5)
+			bodyFrontalString += "20\" x " + bodyFrontalQuantity.getSelectedIndex() + "\n";
+		
+		return bodyFrontalString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String deepFrontalOrder()
+	{
+		if(deepFrontalLengths.getSelectedIndex() == 0)
+			deepFrontalString = "";
+		if(deepFrontalLengths.getSelectedIndex() == 1)
+			deepFrontalString += "12\" x " + deepFrontalQuantity.getSelectedIndex() + "\n";
+		if(deepFrontalLengths.getSelectedIndex() == 2)
+			deepFrontalString += "14\" x " + deepFrontalQuantity.getSelectedIndex() + "\n";
+		if(deepFrontalLengths.getSelectedIndex() == 3)
+			deepFrontalString += "16\" x " + deepFrontalQuantity.getSelectedIndex() + "\n";
+		if(deepFrontalLengths.getSelectedIndex() == 4)
+			deepFrontalString += "18\" x " + deepFrontalQuantity.getSelectedIndex() + "\n";
+		if(deepFrontalLengths.getSelectedIndex() == 5)
+			deepFrontalString += "20\" x " + deepFrontalQuantity.getSelectedIndex() + "\n";
+		
+		return deepFrontalString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String rareFrontalOrder()
+	{
+		if(rareFrontalLengths.getSelectedIndex() == 0)
+			rareFrontalString = "";
+		if(rareFrontalLengths.getSelectedIndex() == 1)
+			rareFrontalString += "12\" x " + rareFrontalQuantity.getSelectedIndex() + "\n";
+		if(rareFrontalLengths.getSelectedIndex() == 2)
+			rareFrontalString += "14\" x " + rareFrontalQuantity.getSelectedIndex() + "\n";
+		if(rareFrontalLengths.getSelectedIndex() == 3)
+			rareFrontalString += "16\" x " + rareFrontalQuantity.getSelectedIndex() + "\n";
+		if(rareFrontalLengths.getSelectedIndex() == 4)
+			rareFrontalString += "18\" x " + rareFrontalQuantity.getSelectedIndex() + "\n";
+		if(rareFrontalLengths.getSelectedIndex() == 5)
+			rareFrontalString += "20\" x " + rareFrontalQuantity.getSelectedIndex() + "\n";
+		
+		return rareFrontalString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String steam1FrontalOrder()
+	{
+		if(steam1FrontalLengths.getSelectedIndex() == 0)
+			steam1FrontalString = "";
+		if(steam1FrontalLengths.getSelectedIndex() == 1)
+			steam1FrontalString += "12\" x " + steam1FrontalQuantity.getSelectedIndex() + "\n";
+		if(steam1FrontalLengths.getSelectedIndex() == 2)
+			steam1FrontalString += "14\" x " + steam1FrontalQuantity.getSelectedIndex() + "\n";
+		if(steam1FrontalLengths.getSelectedIndex() == 3)
+			steam1FrontalString += "16\" x " + steam1FrontalQuantity.getSelectedIndex() + "\n";
+		if(steam1FrontalLengths.getSelectedIndex() == 4)
+			steam1FrontalString += "18\" x " + steam1FrontalQuantity.getSelectedIndex() + "\n";
+		if(steam1FrontalLengths.getSelectedIndex() == 5)
+			steam1FrontalString += "20\" x " + steam1FrontalQuantity.getSelectedIndex() + "\n";
+		
+		return steam1FrontalString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String steam2FrontalOrder()
+	{
+		if(steam2FrontalLengths.getSelectedIndex() == 0)
+			steam2FrontalString = "";
+		if(steam2FrontalLengths.getSelectedIndex() == 1)
+			steam2FrontalString += "12\" x " + steam2FrontalQuantity.getSelectedIndex() + "\n";
+		if(steam2FrontalLengths.getSelectedIndex() == 2)
+			steam2FrontalString += "14\" x " + steam2FrontalQuantity.getSelectedIndex() + "\n";
+		if(steam2FrontalLengths.getSelectedIndex() == 3)
+			steam2FrontalString += "16\" x " + steam2FrontalQuantity.getSelectedIndex() + "\n";
+		if(steam2FrontalLengths.getSelectedIndex() == 4)
+			steam2FrontalString += "18\" x " + steam2FrontalQuantity.getSelectedIndex() + "\n";
+		if(steam2FrontalLengths.getSelectedIndex() == 5)
+			steam2FrontalString += "20\" x " + steam2FrontalQuantity.getSelectedIndex() + "\n";
+		
+		return steam2FrontalString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String blondeFrontalOrder()
+	{
+		if(blondeFrontalLengths.getSelectedIndex() == 0)
+			blondeFrontalString = "";
+		if(blondeFrontalLengths.getSelectedIndex() == 1)
+			blondeFrontalString += "12\" x " + blondeFrontalQuantity.getSelectedIndex() + "\n";
+		if(blondeFrontalLengths.getSelectedIndex() == 2)
+			blondeFrontalString += "14\" x " + blondeFrontalQuantity.getSelectedIndex() + "\n";
+		if(blondeFrontalLengths.getSelectedIndex() == 3)
+			blondeFrontalString += "16\" x " + blondeFrontalQuantity.getSelectedIndex() + "\n";
+		if(blondeFrontalLengths.getSelectedIndex() == 4)
+			blondeFrontalString += "18\" x " + blondeFrontalQuantity.getSelectedIndex() + "\n";
+		if(blondeFrontalLengths.getSelectedIndex() == 5)
+			blondeFrontalString += "20\" x " + blondeFrontalQuantity.getSelectedIndex() + "\n";
+		
+		return blondeFrontalString;
+	}
+	
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
+	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	public String greyFrontalOrder()
+	{
+		if(greyFrontalLengths.getSelectedIndex() == 0)
+			greyFrontalString = "";
+		if(greyFrontalLengths.getSelectedIndex() == 1)
+			greyFrontalString += "12\" x " + greyFrontalQuantity.getSelectedIndex() + "\n";
+		if(greyFrontalLengths.getSelectedIndex() == 2)
+			greyFrontalString += "14\" x " + greyFrontalQuantity.getSelectedIndex() + "\n";
+		if(greyFrontalLengths.getSelectedIndex() == 3)
+			greyFrontalString += "16\" x " + greyFrontalQuantity.getSelectedIndex() + "\n";
+		if(greyFrontalLengths.getSelectedIndex() == 4)
+			greyFrontalString += "18\" x " + greyFrontalQuantity.getSelectedIndex() + "\n";
+		if(greyFrontalLengths.getSelectedIndex() == 5)
+			greyFrontalString += "20\" x " + greyFrontalQuantity.getSelectedIndex() + "\n";
+		
+		return greyFrontalString;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
