@@ -84,6 +84,7 @@ public class hairquoter {
 	private JComboBox<String>blondeFrontalQuantity;
 	private JComboBox<String>greyFrontalLengths;
 	private JComboBox<String>greyFrontalQuantity;
+	private JTextField UPStxtfield;
 	ImageIcon icon;
 
 	// VARIABLES
@@ -92,6 +93,8 @@ public class hairquoter {
 	double total_With_Shipping, totalWithPaypalFee, totalWithOutPaypalFee, subtotal;
 	final double POINT_THREE = 0.30;
 	final double PAYPAL_FEE = 1.03;
+	double UPS_Amount;
+	String UPS_String;
 
 	// Variables that store users' parsed inputs (e.g., string -> integer)
 	int  quantity_Of_Straight, quantity_Of_Loose, quantity_Of_Body, quantity_Of_Deep, quantity_Of_Rare, quantity_Of_Steam1, quantity_Of_Steam2, quantity_Of_Blonde, quantity_Of_Grey,
@@ -110,6 +113,7 @@ public class hairquoter {
 	steam2ClosureString = "Steam #2 Closure\n", blondeClosureString = "Straight Blonde Closure\n", greyClosureString = "Grey Closure\n", straightFrontalString = "Straight Frontal\n", 
 	looseFrontalString = "Loose Wave Frontal\n", bodyFrontalString = "Body Wave Frontal\n", deepFrontalString = "Deep Wave Frontal\n", rareFrontalString = "Rare Curly Frontal\n", 
 	steam1FrontalString = "Steam #1 Frontal\n", steam2FrontalString = "Steam #2 Frontal\n", blondeFrontalString = "Straight Blonde Frontal\n", greyFrontalString = "Grey Frontal\n";
+	private JCheckBox UPS_checkbox;
 	
 	/**
 	 * Launch the application.
@@ -305,15 +309,47 @@ public class hairquoter {
 		JTextArea show_Addition_txtArea = new JTextArea();
 		show_Addition_txtArea.setWrapStyleWord(true);
 		show_Addition_txtArea.setText("Selected Products Are Shown Here");
-		show_Addition_txtArea.setFont(new Font("Consolas", Font.BOLD | Font.ITALIC, 11));
+		show_Addition_txtArea.setFont(new Font("Consolas", Font.BOLD, 11));
 		show_Addition_txtArea.setColumns(20);
 		show_Addition_txtArea.setLineWrap(true);
 		show_Addition_txtArea.setBounds(428, 386, 139, 316);
 		frmHairProductsCalculator.getContentPane().add(show_Addition_txtArea);
 		
 		JTextArea totals_textArea = new JTextArea();
+		totals_textArea.setWrapStyleWord(true);
+		totals_textArea.setText("Total Are Shown Here");
+		totals_textArea.setFont(new Font("Consolas", Font.BOLD | Font.ITALIC, 11));
+		totals_textArea.setColumns(20);
+		totals_textArea.setLineWrap(true);
 		totals_textArea.setBounds(577, 386, 132, 284);
 		frmHairProductsCalculator.getContentPane().add(totals_textArea);
+		
+		
+		
+		subTotal_txtField = new JTextField();
+		subTotal_txtField.setFont(new Font("Times New Roman", Font.BOLD, 14));
+		subTotal_txtField.setBounds(505, 100, 99, 24);
+		frmHairProductsCalculator.getContentPane().add(subTotal_txtField);
+		subTotal_txtField.setColumns(10);
+
+		// SEPARATORS
+		separator_1 = new JSeparator();
+		separator_1.setForeground(new Color(0, 0, 0));
+		separator_1.setBackground(Color.BLACK);
+		separator_1.setBounds(428, 348, 231, 2);
+		frmHairProductsCalculator.getContentPane().add(separator_1);
+
+		separator_2 = new JSeparator();
+		separator_2.setForeground(new Color(0, 0, 0));
+		separator_2.setBackground(Color.BLACK);
+		separator_2.setBounds(428, 235, 231, 2);
+		frmHairProductsCalculator.getContentPane().add(separator_2);
+
+		separator_3 = new JSeparator();
+		separator_3.setForeground(new Color(0, 0, 0));
+		separator_3.setBackground(new Color(0, 0, 0));
+		separator_3.setBounds(428, 135, 231, 2);
+		frmHairProductsCalculator.getContentPane().add(separator_3);
 
 		// THE COMBO BOX FOR STRAIGHT'S LENGTHS
 		straightLengths = new JComboBox<>();
@@ -3225,7 +3261,7 @@ public class hairquoter {
 
 				} catch (java.lang.NumberFormatException notChosen) {
 					JOptionPane.showMessageDialog(null,
-							"Please enter numbers, not characters (in length or quantity fields)");
+							"USPS Shippings Were Not Chosen");
 				}
 			}
 		});
@@ -3244,13 +3280,40 @@ public class hairquoter {
 
 				} catch (java.lang.NumberFormatException notChosen) {
 					JOptionPane.showMessageDialog(null,
-							"Please enter numbers, not characters (in length or quantity fields)");
+							"USPS Shippings Were Not Chosen");
 				}
 			}
 		});
 		expressshipping_checkbox.setBounds(428, 183, 270, 23);
 		frmHairProductsCalculator.getContentPane().add(expressshipping_checkbox);
-
+			
+		UPStxtfield = new JTextField("UPS Shipping Amount");
+		UPStxtfield.setSelectionColor(SystemColor.activeCaptionBorder);
+		UPStxtfield.setBackground(SystemColor.control);
+		UPStxtfield.setHorizontalAlignment(SwingConstants.CENTER);
+		UPStxtfield.setFont(new Font("Consolas", Font.PLAIN, 11));
+		UPStxtfield.setEditable(true);
+		UPStxtfield.setBounds(437, 209, 167, 20);
+		frmHairProductsCalculator.getContentPane().add(UPStxtfield);
+		
+		UPS_checkbox = new JCheckBox("UPS");
+		UPS_checkbox.setBackground(SystemColor.control);
+		UPS_checkbox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try
+				{
+					UPS_Amount = Double.parseDouble(UPStxtfield.getText());	
+					total_With_Shipping = subtotal + UPS_Amount + quantity_Counter;
+				}
+				catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+			}
+		});
+		UPS_checkbox.setBounds(606, 206, 71, 23);
+		frmHairProductsCalculator.getContentPane().add(UPS_checkbox);
+		
 		// CALCULATE BUTTON - CALCULATING THE GRAND TOTAL WITH AND WITHOUT PAYPAL FEE
 		JButton calculate_button = new JButton("Calculate");
 		calculate_button.setFont(new Font("Constantia", Font.BOLD, 24));
@@ -3277,11 +3340,11 @@ public class hairquoter {
 
 					// Displaying total quantity, total with and without PayPal fee to appropriate
 					// text fields
-					totals_textArea.setText("Total Quantity: " + Integer.toString(quantity_Counter) + "\n" + "Total With PayPal Fee: " + totalOut + "\n" + "Total Without PayPal Fee: " + totalWithOutPaypalFee);
+					totals_textArea.setText("Total Quantity: " + Integer.toString(quantity_Counter) + "\n" + "Total W/ PayPal Fee: $" + totalOut + "\n" + "Total W/O PayPal Fee: $" + totalWithOutPaypalFee);
 					
 
-				} catch (Exception incorrectInput) {
-					JOptionPane.showMessageDialog(null, "Please check if number(s) are entered");
+				} catch (Exception ex) {
+					ex.printStackTrace();
 				}
 			}
 		});
@@ -3291,6 +3354,7 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(calculate_button);
 		
 		JButton clearButton = new JButton("Clear");
+		clearButton.setBackground(new Color(102, 0, 0));
 		clearButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				straightLengths.setSelectedItem("0\"");straightQuantity.setSelectedItem("0");
@@ -3328,6 +3392,10 @@ public class hairquoter {
 				steam2ClosureString = "Steam #2 Closure\n"; blondeClosureString = "Straight Blonde Closure\n"; greyClosureString = "Grey Closure\n"; straightFrontalString = "Straight Frontal\n"; 
 				looseFrontalString = "Loose Wave Frontal\n"; bodyFrontalString = "Body Wave Frontal\n"; deepFrontalString = "Deep Wave Frontal\n"; rareFrontalString = "Rare Curly Frontal\n"; 
 				steam1FrontalString = "Steam #1 Frontal\n"; steam2FrontalString = "Steam #2 Frontal\n"; blondeFrontalString = "Straight Blonde Frontal\n"; greyFrontalString = "Grey Frontal\n";
+				
+				UPS_Amount = 0; //Setting the UPS shipping fee to default(0)
+				UPStxtfield.setText("Enter Shipping Amount");
+				UPS_checkbox.setSelected(false); //Unchecking the UPS checkbox
 				//Clearing text in the text area
 				show_Addition_txtArea.setText("");
 				totals_textArea.setText("");
@@ -3342,36 +3410,11 @@ public class hairquoter {
 			}
 		});
 		clearButton.setBounds(602, 681, 89, 23);
+		clearButton.setFont(new Font("Constantia", Font.BOLD, 11));
 		frmHairProductsCalculator.getContentPane().add(clearButton);
-
-		subTotal_txtField = new JTextField();
-		subTotal_txtField.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		subTotal_txtField.setBounds(505, 100, 99, 24);
-		frmHairProductsCalculator.getContentPane().add(subTotal_txtField);
-		subTotal_txtField.setColumns(10);
-
-		// SEPARATORS
-		separator_1 = new JSeparator();
-		separator_1.setForeground(new Color(0, 0, 0));
-		separator_1.setBackground(Color.BLACK);
-		separator_1.setBounds(428, 348, 231, 2);
-		frmHairProductsCalculator.getContentPane().add(separator_1);
-
-		separator_2 = new JSeparator();
-		separator_2.setForeground(new Color(0, 0, 0));
-		separator_2.setBackground(Color.BLACK);
-		separator_2.setBounds(428, 235, 231, 2);
-		frmHairProductsCalculator.getContentPane().add(separator_2);
-
-		separator_3 = new JSeparator();
-		separator_3.setForeground(new Color(0, 0, 0));
-		separator_3.setBackground(new Color(0, 0, 0));
-		separator_3.setBounds(428, 135, 231, 2);
-		frmHairProductsCalculator.getContentPane().add(separator_3);
 		
 		
-		
-		
+	
 	}
 		
 	public String straightOrder()
@@ -4026,4 +4069,5 @@ public class hairquoter {
 		
 		return greyFrontalString;
 	}
+	
 }
