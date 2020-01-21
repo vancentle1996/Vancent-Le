@@ -25,12 +25,6 @@ public class hairquoter {
 	private JFrame frmHairProductsCalculator;
 	private JCheckBox standardshipping_checkbox;
 	private JCheckBox expressshipping_checkbox;
-	private JTextField totalWPaypalFee;
-	private JTextField totalQuantity_txtfield;
-	private JTextField totalWOPaypalFee;
-	private JLabel total_With_Paypal_Label;
-	private JLabel total_Without_Paypal_Label;
-	private JButton clear_Button;
 	private JButton add_Button;
 	private JTextField subTotal_txtField;
 	private JSeparator separator_1;
@@ -303,31 +297,18 @@ public class hairquoter {
 		shippingMethod_Label.setBounds(428, 144, 152, 14);
 		frmHairProductsCalculator.getContentPane().add(shippingMethod_Label);
 
-		JLabel totalQuantity_Label = new JLabel("Total Quantity:");
-		totalQuantity_Label.setFont(new Font("Consolas", Font.BOLD, 11));
-		totalQuantity_Label.setBounds(577, 361, 101, 14);
-		frmHairProductsCalculator.getContentPane().add(totalQuantity_Label);
-
 		JLabel subTotal_Label = new JLabel("Subtotal:");
 		subTotal_Label.setFont(new Font("Consolas", Font.BOLD, 14));
 		subTotal_Label.setBounds(428, 106, 73, 14);
 		frmHairProductsCalculator.getContentPane().add(subTotal_Label);
-		
-		total_With_Paypal_Label = new JLabel("Total w/ Paypal Fee:");
-		total_With_Paypal_Label.setFont(new Font("Consolas", Font.BOLD, 11));
-		total_With_Paypal_Label.setBounds(577, 450, 121, 14);
-		frmHairProductsCalculator.getContentPane().add(total_With_Paypal_Label);
-
-		total_Without_Paypal_Label = new JLabel("Total w/o Paypal Fee:");
-		total_Without_Paypal_Label.setFont(new Font("Consolas", Font.BOLD, 11));
-		total_Without_Paypal_Label.setBounds(579, 550, 130, 14);
-		frmHairProductsCalculator.getContentPane().add(total_Without_Paypal_Label);
 
 		JTextArea show_Addition_txtArea = new JTextArea();
-		show_Addition_txtArea.setFont(new Font("Cambria", Font.PLAIN, 13));
+		show_Addition_txtArea.setWrapStyleWord(true);
+		show_Addition_txtArea.setText("Selected Products Are Shown Here");
+		show_Addition_txtArea.setFont(new Font("Consolas", Font.BOLD | Font.ITALIC, 11));
 		show_Addition_txtArea.setColumns(20);
 		show_Addition_txtArea.setLineWrap(true);
-		show_Addition_txtArea.setBounds(428, 383, 139, 316);
+		show_Addition_txtArea.setBounds(428, 386, 139, 316);
 		frmHairProductsCalculator.getContentPane().add(show_Addition_txtArea);
 
 		// THE COMBO BOX FOR STRAIGHT'S LENGTHS
@@ -3244,7 +3225,7 @@ public class hairquoter {
 				}
 			}
 		});
-		standardshipping_checkbox.setBounds(428, 160, 200, 23);
+		standardshipping_checkbox.setBounds(428, 160, 270, 23);
 		frmHairProductsCalculator.getContentPane().add(standardshipping_checkbox);
 
 		// EXPRESS SHIPPING CHECKBOX
@@ -3263,7 +3244,7 @@ public class hairquoter {
 				}
 			}
 		});
-		expressshipping_checkbox.setBounds(428, 181, 201, 23);
+		expressshipping_checkbox.setBounds(428, 183, 270, 23);
 		frmHairProductsCalculator.getContentPane().add(expressshipping_checkbox);
 
 		// CALCULATE BUTTON - CALCULATING THE GRAND TOTAL WITH AND WITHOUT PAYPAL FEE
@@ -3291,10 +3272,8 @@ public class hairquoter {
 					totalOut = myFormatter.format(totalWithPaypalFee);
 
 					// Displaying total quantity, total with and without PayPal fee to appropriate
-					// text fields		
-					totalQuantity_txtfield.setText(Integer.toString(quantity_Counter));
-					totalWPaypalFee.setText("$" + (totalOut));
-					totalWOPaypalFee.setText("$" + Double.toString(totalWithOutPaypalFee));
+					// text fields
+					
 
 				} catch (Exception incorrectInput) {
 					JOptionPane.showMessageDialog(null, "Please check if number(s) are entered");
@@ -3305,84 +3284,6 @@ public class hairquoter {
 		calculate_button.setForeground(Color.BLACK);
 		calculate_button.setBounds(469, 256, 152, 74);
 		frmHairProductsCalculator.getContentPane().add(calculate_button);
-
-		// CLEAR BUTTON - SETTING EVERYTHING TO ZERO OR EMPTY 
-		clear_Button = new JButton("Clear");
-		clear_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				// SETTING APPROPRIATE VALUES TO ZERO OR NULL WHEN USERS HIT CLEAR
-				straightLengths.setSelectedItem("0\"");straightQuantity.setSelectedItem("0");
-				looseLengths.setSelectedItem("0\"");looseQuantity.setSelectedItem("0");
-				bodyLengths.setSelectedItem("0\"");bodyQuantity.setSelectedItem("0");
-				deepLengths.setSelectedItem("0\"");deepQuantity.setSelectedItem("0");
-				rareLengths.setSelectedItem("0\"");rareQuantity.setSelectedItem("0");
-				steam1Lengths.setSelectedItem("0\"");steam1Quantity.setSelectedItem("0");
-				steam2Lengths.setSelectedItem("0\"");steam2Quantity.setSelectedItem("0");
-				blondeLengths.setSelectedItem("0\"");blondeQuantity.setSelectedItem("0");
-				greyLengths.setSelectedItem("0\"");greyQuantity.setSelectedItem("0");
-				straightClosureLengths.setSelectedItem("0\"");straightClosureQuantity.setSelectedItem("0");
-				looseClosureLengths.setSelectedItem("0\"");looseClosureQuantity.setSelectedItem("0");
-				bodyClosureLengths.setSelectedItem("0\"");bodyClosureQuantity.setSelectedItem("0");
-				deepClosureLengths.setSelectedItem("0\"");deepClosureQuantity.setSelectedItem("0");
-				rareClosureLengths.setSelectedItem("0\"");rareClosureQuantity.setSelectedItem("0");
-				steam1ClosureLengths.setSelectedItem("0\"");steam1ClosureQuantity.setSelectedItem("0");
-				steam2ClosureLengths.setSelectedItem("0\"");steam2ClosureQuantity.setSelectedItem("0");
-				blondeClosureLengths.setSelectedItem("0\"");blondeClosureQuantity.setSelectedItem("0");
-				greyClosureLengths.setSelectedItem("0\"");greyClosureQuantity.setSelectedItem("0");
-				straightFrontalLengths.setSelectedItem("0\"");straightFrontalQuantity.setSelectedItem("0");
-				looseFrontalLengths.setSelectedItem("0\"");looseFrontalQuantity.setSelectedItem("0");
-				bodyFrontalLengths.setSelectedItem("0\"");bodyFrontalQuantity.setSelectedItem("0");
-				deepFrontalLengths.setSelectedItem("0\"");deepFrontalQuantity.setSelectedItem("0");
-				rareFrontalLengths.setSelectedItem("0\"");rareFrontalQuantity.setSelectedItem("0");
-				steam1FrontalLengths.setSelectedItem("0\"");steam1FrontalQuantity.setSelectedItem("0");
-				steam2FrontalLengths.setSelectedItem("0\"");steam2FrontalQuantity.setSelectedItem("0");
-				blondeFrontalLengths.setSelectedItem("0\"");blondeFrontalQuantity.setSelectedItem("0");
-				greyFrontalLengths.setSelectedItem("0\"");greyFrontalQuantity.setSelectedItem("0");
-				straightString = ""; looseString = ""; bodyString = ""; deepString = ""; rareString = ""; steam1String = ""; steam2String = ""; blondeString = ""; greyString = "";
-				straightClosureString = ""; looseClosureString = ""; bodyClosureString = ""; deepClosureString = ""; rareClosureString = ""; steam1ClosureString = ""; steam2ClosureString = ""; blondeClosureString = ""; greyClosureString = "";
-				straightFrontalString = ""; looseFrontalString = ""; bodyFrontalString = ""; deepFrontalString = ""; rareFrontalString = ""; steam1FrontalString = ""; steam2FrontalString = ""; blondeFrontalString = ""; greyFrontalString = "";
-				show_Addition_txtArea.setText(null);
-				subtotal = 0;
-				subTotal_txtField.setText(Double.toString(0.0));
-				standardshipping_checkbox.setSelected(false);
-				expressshipping_checkbox.setSelected(false);
-				quantity_Counter = 0;
-				totalQuantity_txtfield.setText(Integer.toString(0));
-				total_With_Shipping = 0;
-				totalWithPaypalFee = 0;
-				totalWPaypalFee.setText(Double.toString(totalWithPaypalFee));
-				totalWithOutPaypalFee = 0;
-				totalWOPaypalFee.setText(Double.toString(totalWithOutPaypalFee));
-			}
-		});
-		clear_Button.setForeground(new Color(0, 0, 0));
-		clear_Button.setBackground(new Color(128, 0, 0));
-		clear_Button.setFont(new Font("Constantia", Font.BOLD, 18));
-		clear_Button.setBounds(586, 636, 73, 47);
-		frmHairProductsCalculator.getContentPane().add(clear_Button);
-
-		// TOTAL TXTFIELD
-		totalWPaypalFee = new JTextField();
-		totalWPaypalFee.setHorizontalAlignment(SwingConstants.LEFT);
-		totalWPaypalFee.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		totalWPaypalFee.setBounds(577, 465, 86, 35);
-		frmHairProductsCalculator.getContentPane().add(totalWPaypalFee);
-		totalWPaypalFee.setColumns(10);
-
-		totalQuantity_txtfield = new JTextField();
-		totalQuantity_txtfield.setHorizontalAlignment(SwingConstants.LEFT);
-		totalQuantity_txtfield.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		totalQuantity_txtfield.setBounds(577, 375, 86, 35);
-		frmHairProductsCalculator.getContentPane().add(totalQuantity_txtfield);
-		totalQuantity_txtfield.setColumns(10);
-
-		totalWOPaypalFee = new JTextField();
-		totalWOPaypalFee.setHorizontalAlignment(SwingConstants.LEFT);
-		totalWOPaypalFee.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		totalWOPaypalFee.setColumns(10);
-		totalWOPaypalFee.setBounds(578, 565, 86, 35);
-		frmHairProductsCalculator.getContentPane().add(totalWOPaypalFee);
 
 		subTotal_txtField = new JTextField();
 		subTotal_txtField.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -3409,27 +3310,16 @@ public class hairquoter {
 		separator_3.setBounds(428, 135, 231, 2);
 		frmHairProductsCalculator.getContentPane().add(separator_3);
 
-		JSeparator separator = new JSeparator();
-		separator.setOrientation(SwingConstants.VERTICAL);
-		separator.setForeground(Color.BLACK);
-		separator.setBackground(Color.BLACK);
-		separator.setBounds(414, 11, 2, 689);
-		frmHairProductsCalculator.getContentPane().add(separator);
 		
-		JLabel lblNewLabel = new JLabel("Selected Product(s):");
-		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
-		lblNewLabel.setFont(new Font("Consolas", Font.BOLD, 11));
-		lblNewLabel.setBounds(428, 353, 125, 22);
-		frmHairProductsCalculator.getContentPane().add(lblNewLabel);
 
 	}
 	
-	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
-	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM577, 381OX111, 229IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String straightOrder()
 	{
+		String straightstring = "Straight\n";
 		int numOfStraight = straightQuantity.getSelectedIndex();
-		if(straightLengths.getSelectedIndex() == 0)
+		if((straightLengths.getSelectedIndex() == 0) && (straightQuantity.getSelectedIndex() == 0))
 			straightString = "";
 		if(straightLengths.getSelectedIndex() == 1)
 			straightString += "10\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
@@ -3454,7 +3344,7 @@ public class hairquoter {
 		if(straightLengths.getSelectedIndex() == 11)
 			straightString += "30\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		
-		return straightString;
+		return straightstring + straightString;
 	}
 	
 	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
@@ -4078,5 +3968,4 @@ public class hairquoter {
 		
 		return greyFrontalString;
 	}
-
 }
