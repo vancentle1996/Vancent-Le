@@ -8,6 +8,7 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.UIManager;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JCheckBox;
@@ -15,7 +16,7 @@ import java.text.DecimalFormat;
 import javax.swing.JComboBox;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
-import javax.swing.border.BevelBorder;
+import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.SystemColor;
 
@@ -89,7 +90,7 @@ public class hairquoter {
 	private JComboBox<String>blondeFrontalQuantity;
 	private JComboBox<String>greyFrontalLengths;
 	private JComboBox<String>greyFrontalQuantity;
-	
+	ImageIcon icon;
 
 	// VARIABLES
 	final double STANDARD_SHIPPING = 8.0;
@@ -120,6 +121,18 @@ public class hairquoter {
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
+		try
+		{
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
+			
+		}
+		catch(Exception e)
+		{
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -137,6 +150,7 @@ public class hairquoter {
 	 */
 	public hairquoter() {
 		initialize();
+		
 	}
 
 	/**
@@ -156,7 +170,8 @@ public class hairquoter {
 		frmHairProductsCalculator.setBounds(350, 350, 725, 775);
 		frmHairProductsCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHairProductsCalculator.getContentPane().setLayout(null);
-
+		frmHairProductsCalculator.setIconImage(new ImageIcon(getClass().getResource("/myimages/calculator.png")).getImage());
+		
 		// LABELS
 		JLabel pattern_Label = new JLabel("PATTERN");
 		pattern_Label.setHorizontalTextPosition(SwingConstants.CENTER);
@@ -3176,8 +3191,7 @@ public class hairquoter {
 		add_Button = new JButton("Add For \r\nCalculation");
 		add_Button.setForeground(Color.BLACK);
 		add_Button.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		add_Button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		add_Button.setBackground(Color.WHITE);
+		add_Button.setBackground(new Color(0, 128, 128));
 		add_Button.setFont(new Font("Constantia", Font.BOLD, 15));
 		add_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -3254,7 +3268,6 @@ public class hairquoter {
 
 		// CALCULATE BUTTON - CALCULATING THE GRAND TOTAL WITH AND WITHOUT PAYPAL FEE
 		JButton calculate_button = new JButton("Calculate");
-		calculate_button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		calculate_button.setFont(new Font("Constantia", Font.BOLD, 24));
 		calculate_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -3278,7 +3291,7 @@ public class hairquoter {
 					totalOut = myFormatter.format(totalWithPaypalFee);
 
 					// Displaying total quantity, total with and without PayPal fee to appropriate
-					// text fields
+					// text fields		
 					totalQuantity_txtfield.setText(Integer.toString(quantity_Counter));
 					totalWPaypalFee.setText("$" + (totalOut));
 					totalWOPaypalFee.setText("$" + Double.toString(totalWithOutPaypalFee));
@@ -3288,14 +3301,13 @@ public class hairquoter {
 				}
 			}
 		});
-		calculate_button.setBackground(Color.WHITE);
+		calculate_button.setBackground(new Color(0, 0, 128));
 		calculate_button.setForeground(Color.BLACK);
 		calculate_button.setBounds(469, 256, 152, 74);
 		frmHairProductsCalculator.getContentPane().add(calculate_button);
 
 		// CLEAR BUTTON - SETTING EVERYTHING TO ZERO OR EMPTY 
 		clear_Button = new JButton("Clear");
-		clear_Button.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		clear_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -3345,7 +3357,7 @@ public class hairquoter {
 			}
 		});
 		clear_Button.setForeground(new Color(0, 0, 0));
-		clear_Button.setBackground(Color.WHITE);
+		clear_Button.setBackground(new Color(128, 0, 0));
 		clear_Button.setFont(new Font("Constantia", Font.BOLD, 18));
 		clear_Button.setBounds(586, 636, 73, 47);
 		frmHairProductsCalculator.getContentPane().add(clear_Button);
@@ -3449,28 +3461,29 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String looseOrder()
 	{
+		int numOfLoose = looseQuantity.getSelectedIndex();
 		if(looseLengths.getSelectedIndex() == 0)
 			looseString = "";
 		if(looseLengths.getSelectedIndex() == 1)
-			looseString += "12\" x " + looseQuantity.getSelectedIndex() + "\n";
+			looseString += "12\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 2)
-			looseString += "14\" x " + looseQuantity.getSelectedIndex() + "\n";
+			looseString += "14\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 3)
-			looseString += "16\" x " + looseQuantity.getSelectedIndex() + "\n";
+			looseString += "16\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 4)
-			looseString += "18\" x " + looseQuantity.getSelectedIndex() + "\n";
+			looseString += "18\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 5)
-			looseString += "20\" x " + looseQuantity.getSelectedIndex() + "\n";
+			looseString += "20\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 6)
-			looseString += "22\" x " + looseQuantity.getSelectedIndex() + "\n";
+			looseString += "22\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 7)
-			looseString += "24\" x " + looseQuantity.getSelectedIndex() + "\n";
+			looseString += "24\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 8)
-			looseString += "26\" x " + looseQuantity.getSelectedIndex() + "\n";
+			looseString += "26\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 9)
-			looseString += "28\" x " + looseQuantity.getSelectedIndex() + "\n";
+			looseString += "28\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 10)
-			looseString += "30\" x " + looseQuantity.getSelectedIndex() + "\n";
+			looseString += "30\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		
 		return looseString;
 	}
@@ -3479,30 +3492,31 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String bodyOrder()
 	{
+		int numOfBody = bodyQuantity.getSelectedIndex();
 		if(bodyLengths.getSelectedIndex() == 0)
 			bodyString = "";
 		if(bodyLengths.getSelectedIndex() == 1)
-			bodyString += "10\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "10\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		if(bodyLengths.getSelectedIndex() == 2)
-			bodyString += "12\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "12\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		if(bodyLengths.getSelectedIndex() == 3)
-			bodyString += "14\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "14\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		if(bodyLengths.getSelectedIndex() == 4)
-			bodyString += "16\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "16\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		if(bodyLengths.getSelectedIndex() == 5)
-			bodyString += "18\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "18\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		if(bodyLengths.getSelectedIndex() == 6)
-			bodyString += "20\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "20\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		if(bodyLengths.getSelectedIndex() == 7)
-			bodyString += "22\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "22\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		if(bodyLengths.getSelectedIndex() == 8)
-			bodyString += "24\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "24\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		if(bodyLengths.getSelectedIndex() == 9)
-			bodyString += "26\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "26\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		if(bodyLengths.getSelectedIndex() == 10)
-			bodyString += "28\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "28\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		if(bodyLengths.getSelectedIndex() == 11)
-			bodyString += "30\" x " + bodyQuantity.getSelectedIndex() + "\n";
+			bodyString += "30\" x " + numOfBody + " - " + body + "*" + numOfBody + "\n";
 		
 		return bodyString;
 	}
@@ -3510,29 +3524,30 @@ public class hairquoter {
 	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String deepOrder()
-	{
+	{	
+		int numOfDeep = deepQuantity.getSelectedIndex();
 		if(deepLengths.getSelectedIndex() == 0)
 			deepString = "";
 		if(deepLengths.getSelectedIndex() == 1)
-			deepString += "12\" x " + deepQuantity.getSelectedIndex() + "\n";
+			deepString += "12\" x " + numOfDeep + " - " + deep + "*" + numOfDeep + "\n";
 		if(deepLengths.getSelectedIndex() == 2)
-			deepString += "14\" x " + deepQuantity.getSelectedIndex() + "\n";
+			deepString += "14\" x " + numOfDeep + " - " + deep + "*" + numOfDeep + "\n";
 		if(deepLengths.getSelectedIndex() == 3)
-			deepString += "16\" x " + deepQuantity.getSelectedIndex() + "\n";
+			deepString += "16\" x " + numOfDeep + " - " + deep + "*" + numOfDeep + "\n";
 		if(deepLengths.getSelectedIndex() == 4)
-			deepString += "18\" x " + deepQuantity.getSelectedIndex() + "\n";
+			deepString += "18\" x " + numOfDeep + " - " + deep + "*" + numOfDeep + "\n";
 		if(deepLengths.getSelectedIndex() == 5)
-			deepString += "20\" x " + deepQuantity.getSelectedIndex() + "\n";
+			deepString += "20\" x " + numOfDeep + " - " + deep + "*" + numOfDeep + "\n";
 		if(deepLengths.getSelectedIndex() == 6)
-			deepString += "22\" x " + deepQuantity.getSelectedIndex() + "\n";
+			deepString += "22\" x " + numOfDeep + " - " + deep + "*" + numOfDeep + "\n";
 		if(deepLengths.getSelectedIndex() == 7)
-			deepString += "24\" x " + deepQuantity.getSelectedIndex() + "\n";
+			deepString += "24\" x " + numOfDeep + " - " + deep + "*" + numOfDeep + "\n";
 		if(deepLengths.getSelectedIndex() == 8)
-			deepString += "26\" x " + deepQuantity.getSelectedIndex() + "\n";
+			deepString += "26\" x " + numOfDeep + " - " + deep + "*" + numOfDeep + "\n";
 		if(deepLengths.getSelectedIndex() == 9)
-			deepString += "28\" x " + deepQuantity.getSelectedIndex() + "\n";
+			deepString += "28\" x " + numOfDeep + " - " + deep + "*" + numOfDeep + "\n";
 		if(deepLengths.getSelectedIndex() == 10)
-			deepString += "30\" x " + deepQuantity.getSelectedIndex() + "\n";
+			deepString += "30\" x " + numOfDeep + " - " + deep + "*" + numOfDeep + "\n";
 		
 		return deepString;
 	}
@@ -3541,28 +3556,29 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String rareOrder()
 	{
+		int numOfRare = rareQuantity.getSelectedIndex();
 		if(rareLengths.getSelectedIndex() == 0)
 			rareString = "";
 		if(rareLengths.getSelectedIndex() == 1)
-			rareString += "10\" x " + rareQuantity.getSelectedIndex() + "\n";
+			rareString += "10\" x " +  numOfRare + " - " + rare + "*" + numOfRare + "\n";
 		if(rareLengths.getSelectedIndex() == 2)
-			rareString += "12\" x " + rareQuantity.getSelectedIndex() + "\n";
+			rareString += "12\" x " + numOfRare + " - " + rare + "*" + numOfRare + "\n";
 		if(rareLengths.getSelectedIndex() == 3)
-			rareString += "14\" x " + rareQuantity.getSelectedIndex() + "\n";
+			rareString += "14\" x " + numOfRare + " - " + rare + "*" + numOfRare + "\n";
 		if(rareLengths.getSelectedIndex() == 4)
-			rareString += "16\" x " + rareQuantity.getSelectedIndex() + "\n";
+			rareString += "16\" x " + numOfRare + " - " + rare + "*" + numOfRare + "\n";
 		if(rareLengths.getSelectedIndex() == 5)
-			rareString += "18\" x " + rareQuantity.getSelectedIndex() + "\n";
+			rareString += "18\" x " + numOfRare + " - " + rare + "*" + numOfRare + "\n";
 		if(rareLengths.getSelectedIndex() == 6)
-			rareString += "20\" x " + rareQuantity.getSelectedIndex() + "\n";
+			rareString += "20\" x " + numOfRare + " - " + rare + "*" + numOfRare + "\n";
 		if(rareLengths.getSelectedIndex() == 7)
-			rareString += "22\" x " + rareQuantity.getSelectedIndex() + "\n";
+			rareString += "22\" x " + numOfRare + " - " + rare + "*" + numOfRare + "\n";
 		if(rareLengths.getSelectedIndex() == 8)
-			rareString += "24\" x " + rareQuantity.getSelectedIndex() + "\n";
+			rareString += "24\" x " + numOfRare + " - " + rare + "*" + numOfRare + "\n";
 		if(rareLengths.getSelectedIndex() == 9)
-			rareString += "26\" x " + rareQuantity.getSelectedIndex() + "\n";
+			rareString += "26\" x " + numOfRare + " - " + rare + "*" + numOfRare + "\n";
 		if(rareLengths.getSelectedIndex() == 10)
-			rareString += "28\" x " + rareQuantity.getSelectedIndex() + "\n";
+			rareString += "28\" x " + numOfRare + " - " + rare + "*" + numOfRare + "\n";
 		
 		return rareString;
 	}
@@ -3571,26 +3587,27 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String steam1Order()
 	{
+		int numOfSteam1 = steam1Quantity.getSelectedIndex();
 		if(steam1Lengths.getSelectedIndex() == 0)
 			steam1String = "";
 		if(steam1Lengths.getSelectedIndex() == 1)
-			steam1String += "12\" x " + steam1Quantity.getSelectedIndex() + "\n";
+			steam1String += "12\" x " + numOfSteam1 + " - " + steam1 + "*" + numOfSteam1 + "\n";
 		if(steam1Lengths.getSelectedIndex() == 2)
-			steam1String += "14\" x " + steam1Quantity.getSelectedIndex() + "\n";
+			steam1String += "14\" x " + numOfSteam1 + " - " + steam1 + "*" + numOfSteam1 + "\n";
 		if(steam1Lengths.getSelectedIndex() == 3)
-			steam1String += "16\" x " + steam1Quantity.getSelectedIndex() + "\n";
+			steam1String += "16\" x " + numOfSteam1 + " - " + steam1 + "*" + numOfSteam1 + "\n";
 		if(steam1Lengths.getSelectedIndex() == 4)
-			steam1String += "18\" x " + steam1Quantity.getSelectedIndex() + "\n";
+			steam1String += "18\" x " + numOfSteam1 + " - " + steam1 + "*" + numOfSteam1 + "\n";
 		if(steam1Lengths.getSelectedIndex() == 5)
-			steam1String += "20\" x " + steam1Quantity.getSelectedIndex() + "\n";
+			steam1String += "20\" x " + numOfSteam1 + " - " + steam1 + "*" + numOfSteam1 + "\n";
 		if(steam1Lengths.getSelectedIndex() == 6)
-			steam1String += "22\" x " + steam1Quantity.getSelectedIndex() + "\n";
+			steam1String += "22\" x " + numOfSteam1 + " - " + steam1 + "*" + numOfSteam1 + "\n";
 		if(steam1Lengths.getSelectedIndex() == 7)
-			steam1String += "24\" x " + steam1Quantity.getSelectedIndex() + "\n";
+			steam1String += "24\" x " + numOfSteam1 + " - " + steam1 + "*" + numOfSteam1 + "\n";
 		if(steam1Lengths.getSelectedIndex() == 8)
-			steam1String += "26\" x " + steam1Quantity.getSelectedIndex() + "\n";
+			steam1String += "26\" x " + numOfSteam1 + " - " + steam1 + "*" + numOfSteam1 + "\n";
 		if(steam1Lengths.getSelectedIndex() == 9)
-			steam1String += "28\" x " + steam1Quantity.getSelectedIndex() + "\n";
+			steam1String += "28\" x " + numOfSteam1 + " - " + steam1 + "*" + numOfSteam1 + "\n";
 		
 		return steam1String;
 	}
@@ -3599,26 +3616,27 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String steam2Order()
 	{
+		int numOfSteam2 = steam2Quantity.getSelectedIndex();
 		if(steam2Lengths.getSelectedIndex() == 0)
 			steam2String = "";
 		if(steam1Lengths.getSelectedIndex() == 1)
-			steam2String += "12\" x " + steam2Quantity.getSelectedIndex() + "\n";
+			steam2String += "12\" x " + numOfSteam2 + " - " + steam2 + "*" + numOfSteam2 + "\n";
 		if(steam2Lengths.getSelectedIndex() == 2)
-			steam2String += "14\" x " + steam2Quantity.getSelectedIndex() + "\n";
+			steam2String += "14\" x " + numOfSteam2 + " - " + steam2 + "*" + numOfSteam2 + "\n";
 		if(steam2Lengths.getSelectedIndex() == 3)
-			steam2String += "16\" x " + steam2Quantity.getSelectedIndex() + "\n";
+			steam2String += "16\" x " + numOfSteam2 + " - " + steam2 + "*" + numOfSteam2 + "\n";
 		if(steam2Lengths.getSelectedIndex() == 4)
-			steam2String += "18\" x " + steam2Quantity.getSelectedIndex() + "\n";
+			steam2String += "18\" x " + numOfSteam2 + " - " + steam2 + "*" + numOfSteam2 + "\n";
 		if(steam2Lengths.getSelectedIndex() == 5)
-			steam2String += "20\" x " + steam2Quantity.getSelectedIndex() + "\n";
+			steam2String += "20\" x " + numOfSteam2 + " - " + steam2 + "*" + numOfSteam2 + "\n";
 		if(steam2Lengths.getSelectedIndex() == 6)
-			steam2String += "22\" x " + steam2Quantity.getSelectedIndex() + "\n";
+			steam2String += "22\" x " + numOfSteam2 + " - " + steam2 + "*" + numOfSteam2 + "\n";
 		if(steam2Lengths.getSelectedIndex() == 7)
-			steam2String += "24\" x " + steam2Quantity.getSelectedIndex() + "\n";
+			steam2String += "24\" x " + numOfSteam2 + " - " + steam2 + "*" + numOfSteam2 + "\n";
 		if(steam2Lengths.getSelectedIndex() == 8)
-			steam2String += "26\" x " + steam2Quantity.getSelectedIndex() + "\n";
+			steam2String += "26\" x " + numOfSteam2 + " - " + steam2 + "*" + numOfSteam2 + "\n";
 		if(steam2Lengths.getSelectedIndex() == 9)
-			steam2String += "28\" x " + steam2Quantity.getSelectedIndex() + "\n";
+			steam2String += "28\" x " + numOfSteam2 + " - " + steam2 + "*" + numOfSteam2 + "\n";
 		
 		return steam2String;
 	}
@@ -3627,26 +3645,27 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String blondeOrder()
 	{
+		int numOfBlonde = blondeQuantity.getSelectedIndex();
 		if(blondeLengths.getSelectedIndex() == 0)
 			blondeString = "";
 		if(blondeLengths.getSelectedIndex() == 1)
-			blondeString += "12\" x " + blondeQuantity.getSelectedIndex() + "\n";
+			blondeString += "12\" x " + numOfBlonde + " - " + blonde + "*" + numOfBlonde + "\n";
 		if(blondeLengths.getSelectedIndex() == 2)
-			blondeString += "14\" x " + blondeQuantity.getSelectedIndex() + "\n";
+			blondeString += "14\" x " + numOfBlonde + " - " + blonde + "*" + numOfBlonde + "\n";
 		if(blondeLengths.getSelectedIndex() == 3)
-			blondeString += "16\" x " + blondeQuantity.getSelectedIndex() + "\n";
+			blondeString += "16\" x " + numOfBlonde + " - " + blonde + "*" + numOfBlonde + "\n";
 		if(blondeLengths.getSelectedIndex() == 4)
-			blondeString += "18\" x " + blondeQuantity.getSelectedIndex() + "\n";
+			blondeString += "18\" x " + numOfBlonde + " - " + blonde + "*" + numOfBlonde + "\n";
 		if(blondeLengths.getSelectedIndex() == 5)
-			blondeString += "20\" x " + blondeQuantity.getSelectedIndex() + "\n";
+			blondeString += "20\" x " + numOfBlonde + " - " + blonde + "*" + numOfBlonde + "\n";
 		if(blondeLengths.getSelectedIndex() == 6)
-			blondeString += "22\" x " + blondeQuantity.getSelectedIndex() + "\n";
+			blondeString += "22\" x " + numOfBlonde + " - " + blonde + "*" + numOfBlonde + "\n";
 		if(blondeLengths.getSelectedIndex() == 7)
-			blondeString += "24\" x " + blondeQuantity.getSelectedIndex() + "\n";
+			blondeString += "24\" x " + numOfBlonde + " - " + blonde + "*" + numOfBlonde + "\n";
 		if(blondeLengths.getSelectedIndex() == 8)
-			blondeString += "26\" x " + blondeQuantity.getSelectedIndex() + "\n";
+			blondeString += "26\" x " + numOfBlonde + " - " + blonde + "*" + numOfBlonde + "\n";
 		if(blondeLengths.getSelectedIndex() == 9)
-			blondeString += "28\" x " + blondeQuantity.getSelectedIndex() + "\n";
+			blondeString += "28\" x " + numOfBlonde + " - " + blonde + "*" + numOfBlonde + "\n";
 		
 		return blondeString;
 	}
@@ -3655,28 +3674,29 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String greyOrder()
 	{
+		int numOfGrey = greyQuantity.getSelectedIndex();
 		if(greyLengths.getSelectedIndex() == 0)
 			greyString = "";
 		if(greyLengths.getSelectedIndex() == 1)
-			greyString += "12\" x " + greyQuantity.getSelectedIndex() + "\n";
+			greyString += "12\" x " + numOfGrey + " - " + grey + "*" + numOfGrey + "\n";
 		if(greyLengths.getSelectedIndex() == 2)
-			greyString += "14\" x " + greyQuantity.getSelectedIndex() + "\n";
+			greyString += "14\" x " + numOfGrey + " - " + grey + "*" + numOfGrey + "\n";
 		if(greyLengths.getSelectedIndex() == 3)
-			greyString += "16\" x " + greyQuantity.getSelectedIndex() + "\n";
+			greyString += "16\" x " + numOfGrey + " - " + grey + "*" + numOfGrey + "\n";
 		if(greyLengths.getSelectedIndex() == 4)
-			greyString += "18\" x " + greyQuantity.getSelectedIndex() + "\n";
+			greyString += "18\" x " + numOfGrey + " - " + grey + "*" + numOfGrey + "\n";
 		if(greyLengths.getSelectedIndex() == 5)
-			greyString += "20\" x " + greyQuantity.getSelectedIndex() + "\n";
+			greyString += "20\" x " + numOfGrey + " - " + grey + "*" + numOfGrey + "\n";
 		if(greyLengths.getSelectedIndex() == 6)
-			greyString += "22\" x " + greyQuantity.getSelectedIndex() + "\n";
+			greyString += "22\" x " + numOfGrey + " - " + grey + "*" + numOfGrey + "\n";
 		if(greyLengths.getSelectedIndex() == 7)
-			greyString += "24\" x " + greyQuantity.getSelectedIndex() + "\n";
+			greyString += "24\" x " + numOfGrey + " - " + grey + "*" + numOfGrey + "\n";
 		if(greyLengths.getSelectedIndex() == 8)
-			greyString += "26\" x " + greyQuantity.getSelectedIndex() + "\n";
+			greyString += "26\" x " + numOfGrey + " - " + grey + "*" + numOfGrey + "\n";
 		if(greyLengths.getSelectedIndex() == 9)
-			greyString += "28\" x " + greyQuantity.getSelectedIndex() + "\n";
+			greyString += "28\" x " + numOfGrey + " - " + grey + "*" + numOfGrey + "\n";
 		if(greyLengths.getSelectedIndex() == 10)
-			greyString += "30\" x " + greyQuantity.getSelectedIndex() + "\n";
+			greyString += "30\" x " + numOfGrey + " - " + grey + "*" + numOfGrey + "\n";
 		
 		return greyString;
 	}
@@ -3685,18 +3705,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String straightClosureOrder()
 	{
+		int numOfStraightClosure = straightClosureQuantity.getSelectedIndex();
 		if(straightClosureLengths.getSelectedIndex() == 0)
 			straightClosureString = "";
 		if(straightClosureLengths.getSelectedIndex() == 1)
-			straightClosureString += "12\" x " + straightClosureQuantity.getSelectedIndex() + "\n";
+			straightClosureString += "12\" x " + numOfStraightClosure + " - " + straightClosure + "*" + numOfStraightClosure + "\n";
 		if(straightClosureLengths.getSelectedIndex() == 2)
-			straightClosureString += "14\" x " + straightClosureQuantity.getSelectedIndex() + "\n";
+			straightClosureString += "14\" x " + numOfStraightClosure + " - " + straightClosure + "*" + numOfStraightClosure + "\n";
 		if(straightClosureLengths.getSelectedIndex() == 3)
-			straightClosureString += "16\" x " + straightClosureQuantity.getSelectedIndex() + "\n";
+			straightClosureString += "16\" x " + numOfStraightClosure + " - " + straightClosure + "*" + numOfStraightClosure + "\n";
 		if(straightClosureLengths.getSelectedIndex() == 4)
-			straightClosureString += "18\" x " + straightClosureQuantity.getSelectedIndex() + "\n";
+			straightClosureString += "18\" x " + numOfStraightClosure + " - " + straightClosure + "*" + numOfStraightClosure + "\n";
 		if(straightClosureLengths.getSelectedIndex() == 5)
-			straightClosureString += "20\" x " + straightClosureQuantity.getSelectedIndex() + "\n";
+			straightClosureString += "20\" x " + numOfStraightClosure + " - " + straightClosure + "*" + numOfStraightClosure + "\n";
 		
 		return straightClosureString;
 	}
@@ -3705,18 +3726,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String looseClosureOrder()
 	{
+		int numOfLooseClosure = looseClosureQuantity.getSelectedIndex();
 		if(looseClosureLengths.getSelectedIndex() == 0)
 			looseClosureString = "";
 		if(looseClosureLengths.getSelectedIndex() == 1)
-			looseClosureString += "12\" x " + looseClosureQuantity.getSelectedIndex() + "\n";
+			looseClosureString += "12\" x " + numOfLooseClosure + " - " + looseClosure + "*" + numOfLooseClosure + "\n";
 		if(looseClosureLengths.getSelectedIndex() == 2)
-			looseClosureString += "14\" x " + looseClosureQuantity.getSelectedIndex() + "\n";
+			looseClosureString += "14\" x " + numOfLooseClosure + " - " + looseClosure + "*" + numOfLooseClosure + "\n";
 		if(looseClosureLengths.getSelectedIndex() == 3)
-			looseClosureString += "16\" x " + looseClosureQuantity.getSelectedIndex() + "\n";
+			looseClosureString += "16\" x " + numOfLooseClosure + " - " + looseClosure + "*" + numOfLooseClosure + "\n";
 		if(looseClosureLengths.getSelectedIndex() == 4)
-			looseClosureString += "18\" x " + looseClosureQuantity.getSelectedIndex() + "\n";
+			looseClosureString += "18\" x " + numOfLooseClosure + " - " + looseClosure + "*" + numOfLooseClosure + "\n";
 		if(looseClosureLengths.getSelectedIndex() == 5)
-			looseClosureString += "20\" x " + looseClosureQuantity.getSelectedIndex() + "\n";
+			looseClosureString += "20\" x " + numOfLooseClosure + " - " + looseClosure + "*" + numOfLooseClosure + "\n";
 		
 		return greyString;
 	}
@@ -3725,18 +3747,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String bodyClosureOrder()
 	{
+		int numOfBodyClosure = bodyClosureQuantity.getSelectedIndex();
 		if(bodyClosureLengths.getSelectedIndex() == 0)
 			bodyClosureString = "";
 		if(bodyClosureLengths.getSelectedIndex() == 1)
-			bodyClosureString += "12\" x " + bodyClosureQuantity.getSelectedIndex() + "\n";
+			bodyClosureString += "12\" x " + numOfBodyClosure + " - " + bodyClosure + "*" + numOfBodyClosure + "\n";
 		if(bodyClosureLengths.getSelectedIndex() == 2)
-			bodyClosureString += "14\" x " + bodyClosureQuantity.getSelectedIndex() + "\n";
+			bodyClosureString += "14\" x " + numOfBodyClosure + " - " + bodyClosure + "*" + numOfBodyClosure + "\n";
 		if(bodyClosureLengths.getSelectedIndex() == 3)
-			bodyClosureString += "16\" x " + bodyClosureQuantity.getSelectedIndex() + "\n";
+			bodyClosureString += "16\" x " + numOfBodyClosure + " - " + bodyClosure + "*" + numOfBodyClosure + "\n";
 		if(bodyClosureLengths.getSelectedIndex() == 4)
-			bodyClosureString += "18\" x " + bodyClosureQuantity.getSelectedIndex() + "\n";
+			bodyClosureString += "18\" x " + numOfBodyClosure + " - " + bodyClosure + "*" + numOfBodyClosure + "\n";
 		if(bodyClosureLengths.getSelectedIndex() == 5)
-			bodyClosureString += "20\" x " + bodyClosureQuantity.getSelectedIndex() + "\n";
+			bodyClosureString += "20\" x " + numOfBodyClosure + " - " + bodyClosure + "*" + numOfBodyClosure + "\n";
 		
 		return bodyClosureString;
 	}
@@ -3745,18 +3768,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String deepClosureOrder()
 	{
+		int numOfDeepClosure = deepClosureQuantity.getSelectedIndex();
 		if(deepClosureLengths.getSelectedIndex() == 0)
 			deepClosureString = "";
 		if(deepClosureLengths.getSelectedIndex() == 1)
-			deepClosureString += "12\" x " + deepClosureQuantity.getSelectedIndex() + "\n";
+			deepClosureString += "12\" x " + numOfDeepClosure + " - " + deepClosure + "*" + numOfDeepClosure + "\n";
 		if(deepClosureLengths.getSelectedIndex() == 2)
-			deepClosureString += "14\" x " + deepClosureQuantity.getSelectedIndex() + "\n";
+			deepClosureString += "14\" x " + numOfDeepClosure + " - " + deepClosure + "*" + numOfDeepClosure + "\n";
 		if(deepClosureLengths.getSelectedIndex() == 3)
-			deepClosureString += "16\" x " + deepClosureQuantity.getSelectedIndex() + "\n";
+			deepClosureString += "16\" x " + numOfDeepClosure + " - " + deepClosure + "*" + numOfDeepClosure + "\n";
 		if(deepClosureLengths.getSelectedIndex() == 4)
-			deepClosureString += "18\" x " + deepClosureQuantity.getSelectedIndex() + "\n";
+			deepClosureString += "18\" x " + numOfDeepClosure + " - " + deepClosure + "*" + numOfDeepClosure + "\n";
 		if(deepClosureLengths.getSelectedIndex() == 5)
-			deepClosureString += "20\" x " + deepClosureQuantity.getSelectedIndex() + "\n";
+			deepClosureString += "20\" x " + numOfDeepClosure + " - " + deepClosure + "*" + numOfDeepClosure + "\n";
 		
 		return deepClosureString;
 	}
@@ -3765,18 +3789,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String rareClosureOrder()
 	{
+		int numOfRareClosure = rareClosureQuantity.getSelectedIndex();
 		if(rareClosureLengths.getSelectedIndex() == 0)
 			rareClosureString = "";
 		if(rareClosureLengths.getSelectedIndex() == 1)
-			rareClosureString += "12\" x " + rareClosureQuantity.getSelectedIndex() + "\n";
+			rareClosureString += "12\" x " + numOfRareClosure + " - " + rareClosure + "*" + numOfRareClosure + "\n";
 		if(rareClosureLengths.getSelectedIndex() == 2)
-			rareClosureString += "14\" x " + rareClosureQuantity.getSelectedIndex() + "\n";
+			rareClosureString += "14\" x " + numOfRareClosure + " - " + rareClosure + "*" + numOfRareClosure + "\n";
 		if(rareClosureLengths.getSelectedIndex() == 3)
-			rareClosureString += "16\" x " + rareClosureQuantity.getSelectedIndex() + "\n";
+			rareClosureString += "16\" x " + numOfRareClosure + " - " + rareClosure + "*" + numOfRareClosure + "\n";
 		if(rareClosureLengths.getSelectedIndex() == 4)
-			rareClosureString += "18\" x " + rareClosureQuantity.getSelectedIndex() + "\n";
+			rareClosureString += "18\" x " + numOfRareClosure + " - " + rareClosure + "*" + numOfRareClosure + "\n";
 		if(rareClosureLengths.getSelectedIndex() == 5)
-			rareClosureString += "20\" x " + rareClosureQuantity.getSelectedIndex() + "\n";
+			rareClosureString += "20\" x " + numOfRareClosure + " - " + rareClosure + "*" + numOfRareClosure + "\n";
 		
 		return rareClosureString;
 	}
@@ -3785,18 +3810,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String steam1ClosureOrder()
 	{
+		int numOfSteam1Closure = steam1ClosureQuantity.getSelectedIndex();
 		if(steam1ClosureLengths.getSelectedIndex() == 0)
 			steam1ClosureString = "";
 		if(steam1ClosureLengths.getSelectedIndex() == 1)
-			steam1ClosureString += "12\" x " + steam1ClosureQuantity.getSelectedIndex() + "\n";
+			steam1ClosureString += "12\" x " + numOfSteam1Closure + " - " + steam1Closure + "*" + numOfSteam1Closure + "\n";
 		if(steam1ClosureLengths.getSelectedIndex() == 2)
-			steam1ClosureString += "14\" x " + steam1ClosureQuantity.getSelectedIndex() + "\n";
+			steam1ClosureString += "14\" x " + numOfSteam1Closure + " - " + steam1Closure + "*" + numOfSteam1Closure + "\n";
 		if(steam1ClosureLengths.getSelectedIndex() == 3)
-			steam1ClosureString += "16\" x " + steam1ClosureQuantity.getSelectedIndex() + "\n";
+			steam1ClosureString += "16\" x " + numOfSteam1Closure + " - " + steam1Closure + "*" + numOfSteam1Closure + "\n";
 		if(steam1ClosureLengths.getSelectedIndex() == 4)
-			steam1ClosureString += "18\" x " + steam1ClosureQuantity.getSelectedIndex() + "\n";
+			steam1ClosureString += "18\" x " + numOfSteam1Closure + " - " + steam1Closure + "*" + numOfSteam1Closure + "\n";
 		if(steam1ClosureLengths.getSelectedIndex() == 5)
-			steam1ClosureString += "20\" x " + steam1ClosureQuantity.getSelectedIndex() + "\n";
+			steam1ClosureString += "20\" x " + numOfSteam1Closure + " - " + steam1Closure + "*" + numOfSteam1Closure + "\n";
 		
 		return steam1ClosureString;
 	}
@@ -3805,18 +3831,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String steam2ClosureOrder()
 	{
+		int numOfSteam2Closure = steam2ClosureQuantity.getSelectedIndex();
 		if(steam2ClosureLengths.getSelectedIndex() == 0)
 			steam2ClosureString = "";
 		if(steam2ClosureLengths.getSelectedIndex() == 1)
-			steam2ClosureString += "12\" x " + steam2ClosureQuantity.getSelectedIndex() + "\n";
+			steam2ClosureString += "12\" x " + numOfSteam2Closure + " - " + steam2Closure + "*" + numOfSteam2Closure + "\n";
 		if(steam2ClosureLengths.getSelectedIndex() == 2)
-			steam2ClosureString += "14\" x " + steam2ClosureQuantity.getSelectedIndex() + "\n";
+			steam2ClosureString += "14\" x " + numOfSteam2Closure + " - " + steam2Closure + "*" + numOfSteam2Closure + "\n";
 		if(steam2ClosureLengths.getSelectedIndex() == 3)
-			steam2ClosureString += "16\" x " + steam2ClosureQuantity.getSelectedIndex() + "\n";
+			steam2ClosureString += "16\" x " + numOfSteam2Closure + " - " + steam2Closure + "*" + numOfSteam2Closure + "\n";
 		if(steam2ClosureLengths.getSelectedIndex() == 4)
-			steam2ClosureString += "18\" x " + steam2ClosureQuantity.getSelectedIndex() + "\n";
+			steam2ClosureString += "18\" x " + numOfSteam2Closure + " - " + steam2Closure + "*" + numOfSteam2Closure + "\n";
 		if(steam2ClosureLengths.getSelectedIndex() == 5)
-			steam2ClosureString += "20\" x " + steam2ClosureQuantity.getSelectedIndex() + "\n";
+			steam2ClosureString += "20\" x " + numOfSteam2Closure + " - " + steam2Closure + "*" + numOfSteam2Closure + "\n";
 		
 		return steam2ClosureString;
 	}
@@ -3825,18 +3852,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String blondeClosureOrder()
 	{
+		int numOfBlondeClosure = blondeClosureQuantity.getSelectedIndex();
 		if(blondeClosureLengths.getSelectedIndex() == 0)
 			blondeClosureString = "";
 		if(blondeClosureLengths.getSelectedIndex() == 1)
-			blondeClosureString += "12\" x " + blondeClosureQuantity.getSelectedIndex() + "\n";
+			blondeClosureString += "12\" x " + numOfBlondeClosure + " - " + blondeClosure + "*" + numOfBlondeClosure + "\n";
 		if(blondeClosureLengths.getSelectedIndex() == 2)
-			blondeClosureString += "14\" x " + blondeClosureQuantity.getSelectedIndex() + "\n";
+			blondeClosureString += "14\" x " + numOfBlondeClosure + " - " + blondeClosure + "*" + numOfBlondeClosure + "\n";
 		if(blondeClosureLengths.getSelectedIndex() == 3)
-			blondeClosureString += "16\" x " + blondeClosureQuantity.getSelectedIndex() + "\n";
+			blondeClosureString += "16\" x " + numOfBlondeClosure + " - " + blondeClosure + "*" + numOfBlondeClosure + "\n";
 		if(blondeClosureLengths.getSelectedIndex() == 4)
-			blondeClosureString += "18\" x " + blondeClosureQuantity.getSelectedIndex() + "\n";
+			blondeClosureString += "18\" x " + numOfBlondeClosure + " - " + blondeClosure + "*" + numOfBlondeClosure + "\n";
 		if(blondeClosureLengths.getSelectedIndex() == 5)
-			blondeClosureString += "20\" x " + blondeClosureQuantity.getSelectedIndex() + "\n";
+			blondeClosureString += "20\" x " + numOfBlondeClosure + " - " + blondeClosure + "*" + numOfBlondeClosure + "\n";
 		
 		return blondeClosureString;
 	}
@@ -3845,18 +3873,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String greyClosureOrder()
 	{
+		int numOfGreyClosure = greyClosureQuantity.getSelectedIndex();
 		if(greyClosureLengths.getSelectedIndex() == 0)
 			greyClosureString = "";
 		if(greyClosureLengths.getSelectedIndex() == 1)
-			greyClosureString += "12\" x " + greyClosureQuantity.getSelectedIndex() + "\n";
+			greyClosureString += "12\" x " + numOfGreyClosure + " - " + greyClosure + "*" + numOfGreyClosure + "\n";
 		if(greyClosureLengths.getSelectedIndex() == 2)
-			greyClosureString += "14\" x " + greyClosureQuantity.getSelectedIndex() + "\n";
+			greyClosureString += "14\" x " + numOfGreyClosure + " - " + greyClosure + "*" + numOfGreyClosure + "\n";
 		if(greyClosureLengths.getSelectedIndex() == 3)
-			greyClosureString += "16\" x " + greyClosureQuantity.getSelectedIndex() + "\n";
+			greyClosureString += "16\" x " + numOfGreyClosure + " - " + greyClosure + "*" + numOfGreyClosure + "\n";
 		if(greyClosureLengths.getSelectedIndex() == 4)
-			greyClosureString += "18\" x " + greyClosureQuantity.getSelectedIndex() + "\n";
+			greyClosureString += "18\" x " + numOfGreyClosure + " - " + greyClosure + "*" + numOfGreyClosure + "\n";
 		if(greyClosureLengths.getSelectedIndex() == 5)
-			greyClosureString += "20\" x " + greyClosureQuantity.getSelectedIndex() + "\n";
+			greyClosureString += "20\" x " + numOfGreyClosure + " - " + greyClosure + "*" + numOfGreyClosure + "\n";
 		
 		return greyClosureString;
 	}
@@ -3865,18 +3894,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String straightFrontalOrder()
 	{
+		int numOfStraightFrontal = straightFrontalQuantity.getSelectedIndex();
 		if(straightFrontalLengths.getSelectedIndex() == 0)
 			straightFrontalString = "";
 		if(straightFrontalLengths.getSelectedIndex() == 1)
-			straightFrontalString += "12\" x " + straightFrontalQuantity.getSelectedIndex() + "\n";
+			straightFrontalString += "12\" x " + numOfStraightFrontal + " - " + straightFrontal + "*" + numOfStraightFrontal + "\n";
 		if(straightFrontalLengths.getSelectedIndex() == 2)
-			straightFrontalString += "14\" x " + straightFrontalQuantity.getSelectedIndex() + "\n";
+			straightFrontalString += "14\" x " + numOfStraightFrontal + " - " + straightFrontal + "*" + numOfStraightFrontal + "\n";
 		if(straightFrontalLengths.getSelectedIndex() == 3)
-			straightFrontalString += "16\" x " + straightFrontalQuantity.getSelectedIndex() + "\n";
+			straightFrontalString += "16\" x " + numOfStraightFrontal + " - " + straightFrontal + "*" + numOfStraightFrontal + "\n";
 		if(straightFrontalLengths.getSelectedIndex() == 4)
-			straightFrontalString += "18\" x " + straightFrontalQuantity.getSelectedIndex() + "\n";
+			straightFrontalString += "18\" x " + numOfStraightFrontal + " - " + straightFrontal + "*" + numOfStraightFrontal + "\n";
 		if(straightFrontalLengths.getSelectedIndex() == 5)
-			straightFrontalString += "20\" x " + straightFrontalQuantity.getSelectedIndex() + "\n";
+			straightFrontalString += "20\" x " + numOfStraightFrontal + " - " + straightFrontal + "*" + numOfStraightFrontal + "\n";
 		
 		return straightFrontalString;
 	}
@@ -3885,18 +3915,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String looseFrontalOrder()
 	{
+		int numOfLooseFrontal = looseFrontalQuantity.getSelectedIndex();
 		if(looseFrontalLengths.getSelectedIndex() == 0)
 			looseFrontalString = "";
 		if(looseFrontalLengths.getSelectedIndex() == 1)
-			looseFrontalString += "12\" x " + looseFrontalQuantity.getSelectedIndex() + "\n";
+			looseFrontalString += "12\" x " + numOfLooseFrontal + " - " + looseFrontal + "*" + numOfLooseFrontal + "\n";
 		if(looseFrontalLengths.getSelectedIndex() == 2)
-			looseFrontalString += "14\" x " + looseFrontalQuantity.getSelectedIndex() + "\n";
+			looseFrontalString += "14\" x " + numOfLooseFrontal + " - " + looseFrontal + "*" + numOfLooseFrontal + "\n";
 		if(looseFrontalLengths.getSelectedIndex() == 3)
-			looseFrontalString += "16\" x " + looseFrontalQuantity.getSelectedIndex() + "\n";
+			looseFrontalString += "16\" x " + numOfLooseFrontal + " - " + looseFrontal + "*" + numOfLooseFrontal + "\n";
 		if(looseFrontalLengths.getSelectedIndex() == 4)
-			looseFrontalString += "18\" x " + looseFrontalQuantity.getSelectedIndex() + "\n";
+			looseFrontalString += "18\" x " + numOfLooseFrontal + " - " + looseFrontal + "*" + numOfLooseFrontal + "\n";
 		if(looseFrontalLengths.getSelectedIndex() == 5)
-			looseFrontalString += "20\" x " + looseFrontalQuantity.getSelectedIndex() + "\n";
+			looseFrontalString += "20\" x " + numOfLooseFrontal + " - " + looseFrontal + "*" + numOfLooseFrontal + "\n";
 		
 		return looseFrontalString;
 	}
@@ -3905,18 +3936,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String bodyFrontalOrder()
 	{
+		int numOfBodyFrontal = bodyFrontalQuantity.getSelectedIndex();
 		if(bodyFrontalLengths.getSelectedIndex() == 0)
 			bodyFrontalString = "";
 		if(bodyFrontalLengths.getSelectedIndex() == 1)
-			bodyFrontalString += "12\" x " + bodyFrontalQuantity.getSelectedIndex() + "\n";
+			bodyFrontalString += "12\" x " + numOfBodyFrontal + " - " + bodyFrontal + "*" + numOfBodyFrontal + "\n";
 		if(bodyFrontalLengths.getSelectedIndex() == 2)
-			bodyFrontalString += "14\" x " + bodyFrontalQuantity.getSelectedIndex() + "\n";
+			bodyFrontalString += "14\" x " + numOfBodyFrontal + " - " + bodyFrontal + "*" + numOfBodyFrontal + "\n";
 		if(bodyFrontalLengths.getSelectedIndex() == 3)
-			bodyFrontalString += "16\" x " + bodyFrontalQuantity.getSelectedIndex() + "\n";
+			bodyFrontalString += "16\" x " + numOfBodyFrontal + " - " + bodyFrontal + "*" + numOfBodyFrontal + "\n";
 		if(bodyFrontalLengths.getSelectedIndex() == 4)
-			bodyFrontalString += "18\" x " + bodyFrontalQuantity.getSelectedIndex() + "\n";
+			bodyFrontalString += "18\" x " + numOfBodyFrontal + " - " + bodyFrontal + "*" + numOfBodyFrontal + "\n";
 		if(bodyFrontalLengths.getSelectedIndex() == 5)
-			bodyFrontalString += "20\" x " + bodyFrontalQuantity.getSelectedIndex() + "\n";
+			bodyFrontalString += "20\" x " + numOfBodyFrontal + " - " + bodyFrontal + "*" + numOfBodyFrontal + "\n";
 		
 		return bodyFrontalString;
 	}
@@ -3925,18 +3957,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String deepFrontalOrder()
 	{
+		int numOfDeepFrontal = deepFrontalQuantity.getSelectedIndex();
 		if(deepFrontalLengths.getSelectedIndex() == 0)
-			deepFrontalString = "";
+			deepFrontalString = ""; 
 		if(deepFrontalLengths.getSelectedIndex() == 1)
-			deepFrontalString += "12\" x " + deepFrontalQuantity.getSelectedIndex() + "\n";
+			deepFrontalString += "12\" x " + numOfDeepFrontal + " - " + deepFrontal + "*" + numOfDeepFrontal + "\n";
 		if(deepFrontalLengths.getSelectedIndex() == 2)
-			deepFrontalString += "14\" x " + deepFrontalQuantity.getSelectedIndex() + "\n";
+			deepFrontalString += "14\" x " + numOfDeepFrontal + " - " + deepFrontal + "*" + numOfDeepFrontal + "\n";
 		if(deepFrontalLengths.getSelectedIndex() == 3)
-			deepFrontalString += "16\" x " + deepFrontalQuantity.getSelectedIndex() + "\n";
+			deepFrontalString += "16\" x " + numOfDeepFrontal + " - " + deepFrontal + "*" + numOfDeepFrontal + "\n";
 		if(deepFrontalLengths.getSelectedIndex() == 4)
-			deepFrontalString += "18\" x " + deepFrontalQuantity.getSelectedIndex() + "\n";
+			deepFrontalString += "18\" x " + numOfDeepFrontal + " - " + deepFrontal + "*" + numOfDeepFrontal + "\n";
 		if(deepFrontalLengths.getSelectedIndex() == 5)
-			deepFrontalString += "20\" x " + deepFrontalQuantity.getSelectedIndex() + "\n";
+			deepFrontalString += "20\" x " + numOfDeepFrontal + " - " + deepFrontal + "*" + numOfDeepFrontal + "\n";
 		
 		return deepFrontalString;
 	}
@@ -3945,18 +3978,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String rareFrontalOrder()
 	{
+		int numOfRareFrontal = rareFrontalQuantity.getSelectedIndex();
 		if(rareFrontalLengths.getSelectedIndex() == 0)
 			rareFrontalString = "";
 		if(rareFrontalLengths.getSelectedIndex() == 1)
-			rareFrontalString += "12\" x " + rareFrontalQuantity.getSelectedIndex() + "\n";
+			rareFrontalString += "12\" x " + numOfRareFrontal + " - " + rareFrontal + "*" + numOfRareFrontal + "\n";
 		if(rareFrontalLengths.getSelectedIndex() == 2)
-			rareFrontalString += "14\" x " + rareFrontalQuantity.getSelectedIndex() + "\n";
+			rareFrontalString += "14\" x " + numOfRareFrontal + " - " + rareFrontal + "*" + numOfRareFrontal + "\n";
 		if(rareFrontalLengths.getSelectedIndex() == 3)
-			rareFrontalString += "16\" x " + rareFrontalQuantity.getSelectedIndex() + "\n";
+			rareFrontalString += "16\" x " + numOfRareFrontal + " - " + rareFrontal + "*" + numOfRareFrontal + "\n";
 		if(rareFrontalLengths.getSelectedIndex() == 4)
-			rareFrontalString += "18\" x " + rareFrontalQuantity.getSelectedIndex() + "\n";
+			rareFrontalString += "18\" x " + numOfRareFrontal + " - " + rareFrontal + "*" + numOfRareFrontal + "\n";
 		if(rareFrontalLengths.getSelectedIndex() == 5)
-			rareFrontalString += "20\" x " + rareFrontalQuantity.getSelectedIndex() + "\n";
+			rareFrontalString += "20\" x " + numOfRareFrontal + " - " + rareFrontal + "*" + numOfRareFrontal + "\n";
 		
 		return rareFrontalString;
 	}
@@ -3965,18 +3999,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String steam1FrontalOrder()
 	{
+		int numOfSteam1Frontal = steam1FrontalQuantity.getSelectedIndex();
 		if(steam1FrontalLengths.getSelectedIndex() == 0)
 			steam1FrontalString = "";
 		if(steam1FrontalLengths.getSelectedIndex() == 1)
-			steam1FrontalString += "12\" x " + steam1FrontalQuantity.getSelectedIndex() + "\n";
+			steam1FrontalString += "12\" x " + numOfSteam1Frontal + " - " + steam1Frontal + "*" + numOfSteam1Frontal + "\n";
 		if(steam1FrontalLengths.getSelectedIndex() == 2)
-			steam1FrontalString += "14\" x " + steam1FrontalQuantity.getSelectedIndex() + "\n";
+			steam1FrontalString += "14\" x " + numOfSteam1Frontal + " - " + steam1Frontal + "*" + numOfSteam1Frontal + "\n";
 		if(steam1FrontalLengths.getSelectedIndex() == 3)
-			steam1FrontalString += "16\" x " + steam1FrontalQuantity.getSelectedIndex() + "\n";
+			steam1FrontalString += "16\" x " + numOfSteam1Frontal + " - " + steam1Frontal + "*" + numOfSteam1Frontal + "\n";
 		if(steam1FrontalLengths.getSelectedIndex() == 4)
-			steam1FrontalString += "18\" x " + steam1FrontalQuantity.getSelectedIndex() + "\n";
+			steam1FrontalString += "18\" x " + numOfSteam1Frontal + " - " + steam1Frontal + "*" + numOfSteam1Frontal + "\n";
 		if(steam1FrontalLengths.getSelectedIndex() == 5)
-			steam1FrontalString += "20\" x " + steam1FrontalQuantity.getSelectedIndex() + "\n";
+			steam1FrontalString += "20\" x " + numOfSteam1Frontal + " - " + steam1Frontal + "*" + numOfSteam1Frontal + "\n";
 		
 		return steam1FrontalString;
 	}
@@ -3985,18 +4020,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String steam2FrontalOrder()
 	{
+		int numOfSteam2Frontal = steam2FrontalQuantity.getSelectedIndex();
 		if(steam2FrontalLengths.getSelectedIndex() == 0)
 			steam2FrontalString = "";
 		if(steam2FrontalLengths.getSelectedIndex() == 1)
-			steam2FrontalString += "12\" x " + steam2FrontalQuantity.getSelectedIndex() + "\n";
+			steam2FrontalString += "12\" x " + numOfSteam2Frontal + " - " + steam2Frontal + "*" + numOfSteam2Frontal + "\n";
 		if(steam2FrontalLengths.getSelectedIndex() == 2)
-			steam2FrontalString += "14\" x " + steam2FrontalQuantity.getSelectedIndex() + "\n";
+			steam2FrontalString += "14\" x " + numOfSteam2Frontal + " - " + steam2Frontal + "*" + numOfSteam2Frontal + "\n";
 		if(steam2FrontalLengths.getSelectedIndex() == 3)
-			steam2FrontalString += "16\" x " + steam2FrontalQuantity.getSelectedIndex() + "\n";
+			steam2FrontalString += "16\" x " + numOfSteam2Frontal + " - " + steam2Frontal + "*" + numOfSteam2Frontal + "\n";
 		if(steam2FrontalLengths.getSelectedIndex() == 4)
-			steam2FrontalString += "18\" x " + steam2FrontalQuantity.getSelectedIndex() + "\n";
+			steam2FrontalString += "18\" x " + numOfSteam2Frontal + " - " + steam2Frontal + "*" + numOfSteam2Frontal + "\n";
 		if(steam2FrontalLengths.getSelectedIndex() == 5)
-			steam2FrontalString += "20\" x " + steam2FrontalQuantity.getSelectedIndex() + "\n";
+			steam2FrontalString += "20\" x " + numOfSteam2Frontal + " - " + steam2Frontal + "*" + numOfSteam2Frontal + "\n";
 		
 		return steam2FrontalString;
 	}
@@ -4005,18 +4041,19 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String blondeFrontalOrder()
 	{
+		int numOfBlondeFrontal = blondeFrontalQuantity.getSelectedIndex();
 		if(blondeFrontalLengths.getSelectedIndex() == 0)
 			blondeFrontalString = "";
 		if(blondeFrontalLengths.getSelectedIndex() == 1)
-			blondeFrontalString += "12\" x " + blondeFrontalQuantity.getSelectedIndex() + "\n";
+			blondeFrontalString += "12\" x " + numOfBlondeFrontal + " - " + blondeFrontal + "*" + numOfBlondeFrontal + "\n";
 		if(blondeFrontalLengths.getSelectedIndex() == 2)
-			blondeFrontalString += "14\" x " + blondeFrontalQuantity.getSelectedIndex() + "\n";
+			blondeFrontalString += "14\" x " + numOfBlondeFrontal + " - " + blondeFrontal + "*" + numOfBlondeFrontal + "\n";
 		if(blondeFrontalLengths.getSelectedIndex() == 3)
-			blondeFrontalString += "16\" x " + blondeFrontalQuantity.getSelectedIndex() + "\n";
+			blondeFrontalString += "16\" x " + numOfBlondeFrontal + " - " + blondeFrontal + "*" + numOfBlondeFrontal + "\n";
 		if(blondeFrontalLengths.getSelectedIndex() == 4)
-			blondeFrontalString += "18\" x " + blondeFrontalQuantity.getSelectedIndex() + "\n";
+			blondeFrontalString += "18\" x " + numOfBlondeFrontal + " - " + blondeFrontal + "*" + numOfBlondeFrontal + "\n";
 		if(blondeFrontalLengths.getSelectedIndex() == 5)
-			blondeFrontalString += "20\" x " + blondeFrontalQuantity.getSelectedIndex() + "\n";
+			blondeFrontalString += "20\" x " + numOfBlondeFrontal + " - " + blondeFrontal + "*" + numOfBlondeFrontal + "\n";
 		
 		return blondeFrontalString;
 	}
@@ -4025,27 +4062,21 @@ public class hairquoter {
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
 	public String greyFrontalOrder()
 	{
+		int numOfGreyFrontal = greyFrontalQuantity.getSelectedIndex();
 		if(greyFrontalLengths.getSelectedIndex() == 0)
 			greyFrontalString = "";
 		if(greyFrontalLengths.getSelectedIndex() == 1)
-			greyFrontalString += "12\" x " + greyFrontalQuantity.getSelectedIndex() + "\n";
+			greyFrontalString += "12\" x " + numOfGreyFrontal + " - " + greyFrontal + "*" + numOfGreyFrontal + "\n";
 		if(greyFrontalLengths.getSelectedIndex() == 2)
-			greyFrontalString += "14\" x " + greyFrontalQuantity.getSelectedIndex() + "\n";
+			greyFrontalString += "14\" x " + numOfGreyFrontal + " - " + greyFrontal + "*" + numOfGreyFrontal + "\n";
 		if(greyFrontalLengths.getSelectedIndex() == 3)
-			greyFrontalString += "16\" x " + greyFrontalQuantity.getSelectedIndex() + "\n";
+			greyFrontalString += "16\" x " + numOfGreyFrontal + " - " + greyFrontal + "*" + numOfGreyFrontal + "\n";
 		if(greyFrontalLengths.getSelectedIndex() == 4)
-			greyFrontalString += "18\" x " + greyFrontalQuantity.getSelectedIndex() + "\n";
+			greyFrontalString += "18\" x " + numOfGreyFrontal + " - " + greyFrontal + "*" + numOfGreyFrontal + "\n";
 		if(greyFrontalLengths.getSelectedIndex() == 5)
-			greyFrontalString += "20\" x " + greyFrontalQuantity.getSelectedIndex() + "\n";
+			greyFrontalString += "20\" x " + numOfGreyFrontal + " - " + greyFrontal + "*" + numOfGreyFrontal + "\n";
 		
 		return greyFrontalString;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
