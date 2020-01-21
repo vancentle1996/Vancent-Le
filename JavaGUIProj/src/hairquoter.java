@@ -310,6 +310,10 @@ public class hairquoter {
 		show_Addition_txtArea.setLineWrap(true);
 		show_Addition_txtArea.setBounds(428, 386, 139, 316);
 		frmHairProductsCalculator.getContentPane().add(show_Addition_txtArea);
+		
+		JTextArea totals_textArea = new JTextArea();
+		totals_textArea.setBounds(577, 386, 132, 284);
+		frmHairProductsCalculator.getContentPane().add(totals_textArea);
 
 		// THE COMBO BOX FOR STRAIGHT'S LENGTHS
 		straightLengths = new JComboBox<>();
@@ -3273,6 +3277,7 @@ public class hairquoter {
 
 					// Displaying total quantity, total with and without PayPal fee to appropriate
 					// text fields
+					totals_textArea.setText("Total Quantity: " + Integer.toString(quantity_Counter) + "\n" + "Total With PayPal Fee: " + totalOut + "\n" + "Total Without PayPal Fee: " + totalWithOutPaypalFee);
 					
 
 				} catch (Exception incorrectInput) {
@@ -3284,6 +3289,60 @@ public class hairquoter {
 		calculate_button.setForeground(Color.BLACK);
 		calculate_button.setBounds(469, 256, 152, 74);
 		frmHairProductsCalculator.getContentPane().add(calculate_button);
+		
+		JButton clearButton = new JButton("Clear");
+		clearButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				straightLengths.setSelectedItem("0\"");straightQuantity.setSelectedItem("0");
+				looseLengths.setSelectedItem("0\"");looseQuantity.setSelectedItem("0");
+				bodyLengths.setSelectedItem("0\"");bodyQuantity.setSelectedItem("0");
+				deepLengths.setSelectedItem("0\"");deepQuantity.setSelectedItem("0");
+				rareLengths.setSelectedItem("0\"");rareQuantity.setSelectedItem("0");
+				steam1Lengths.setSelectedItem("0\"");steam1Quantity.setSelectedItem("0");
+				steam2Lengths.setSelectedItem("0\"");steam2Quantity.setSelectedItem("0");
+				blondeLengths.setSelectedItem("0\"");blondeQuantity.setSelectedItem("0");
+				greyLengths.setSelectedItem("0\"");greyQuantity.setSelectedItem("0");
+				straightClosureLengths.setSelectedItem("0\"");straightClosureQuantity.setSelectedItem("0");
+				looseClosureLengths.setSelectedItem("0\"");looseClosureQuantity.setSelectedItem("0");
+				bodyClosureLengths.setSelectedItem("0\"");bodyClosureQuantity.setSelectedItem("0");
+				deepClosureLengths.setSelectedItem("0\"");deepClosureQuantity.setSelectedItem("0");
+				rareClosureLengths.setSelectedItem("0\"");rareClosureQuantity.setSelectedItem("0");
+				steam1ClosureLengths.setSelectedItem("0\"");steam1ClosureQuantity.setSelectedItem("0");
+				steam2ClosureLengths.setSelectedItem("0\"");steam2ClosureQuantity.setSelectedItem("0");
+				blondeClosureLengths.setSelectedItem("0\"");blondeClosureQuantity.setSelectedItem("0");
+				greyClosureLengths.setSelectedItem("0\"");greyClosureQuantity.setSelectedItem("0");
+				straightFrontalLengths.setSelectedItem("0\"");straightFrontalQuantity.setSelectedItem("0");
+				looseFrontalLengths.setSelectedItem("0\"");looseFrontalQuantity.setSelectedItem("0");
+				bodyFrontalLengths.setSelectedItem("0\"");bodyFrontalQuantity.setSelectedItem("0");
+				deepFrontalLengths.setSelectedItem("0\"");deepFrontalQuantity.setSelectedItem("0");
+				rareFrontalLengths.setSelectedItem("0\"");rareFrontalQuantity.setSelectedItem("0");
+				steam1FrontalLengths.setSelectedItem("0\"");steam1FrontalQuantity.setSelectedItem("0");
+				steam2FrontalLengths.setSelectedItem("0\"");steam2FrontalQuantity.setSelectedItem("0");
+				blondeFrontalLengths.setSelectedItem("0\"");blondeFrontalQuantity.setSelectedItem("0");
+				greyFrontalLengths.setSelectedItem("0\"");greyFrontalQuantity.setSelectedItem("0");
+				
+				//Setting variable below to their default values
+				straightString = "Straight\n"; looseString = "Loose Wave\n"; bodyString = "Body Wave\n"; deepString = "Deep Wave\n"; rareString = "Rare Curly\n"; steam1String = "Steam #1\n";
+				steam2String = "Steam #2\n"; blondeString = "Straight Blonde\n"; greyString = "Grey\n"; straightClosureString = "Straight Closure\n"; looseClosureString = "Loose Wave Closure\n"; 
+				bodyClosureString = "Body Wave Closure\n"; deepClosureString = "Deep Wave Closure\n"; rareClosureString = "Rare Curly Closure\n"; steam1ClosureString = "Steam #1 Closure\n"; 
+				steam2ClosureString = "Steam #2 Closure\n"; blondeClosureString = "Straight Blonde Closure\n"; greyClosureString = "Grey Closure\n"; straightFrontalString = "Straight Frontal\n"; 
+				looseFrontalString = "Loose Wave Frontal\n"; bodyFrontalString = "Body Wave Frontal\n"; deepFrontalString = "Deep Wave Frontal\n"; rareFrontalString = "Rare Curly Frontal\n"; 
+				steam1FrontalString = "Steam #1 Frontal\n"; steam2FrontalString = "Steam #2 Frontal\n"; blondeFrontalString = "Straight Blonde Frontal\n"; greyFrontalString = "Grey Frontal\n";
+				//Clearing text in the text area
+				show_Addition_txtArea.setText("");
+				totals_textArea.setText("");
+				subtotal = 0; //Setting sub total to zero
+				subTotal_txtField.setText(Double.toString(0.0)); //Setting the sub total text field's value to zero
+				standardshipping_checkbox.setSelected(false); // Unchecking the standard shipping checkbox
+				expressshipping_checkbox.setSelected(false); // Unchecking the express shipping checkbox
+				quantity_Counter = 0; // Setting quantity counter to zer
+				total_With_Shipping = 0;
+				totalWithPaypalFee = 0;
+				totalWithOutPaypalFee = 0;
+			}
+		});
+		clearButton.setBounds(602, 681, 89, 23);
+		frmHairProductsCalculator.getContentPane().add(clearButton);
 
 		subTotal_txtField = new JTextField();
 		subTotal_txtField.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -3309,17 +3368,16 @@ public class hairquoter {
 		separator_3.setBackground(new Color(0, 0, 0));
 		separator_3.setBounds(428, 135, 231, 2);
 		frmHairProductsCalculator.getContentPane().add(separator_3);
-
 		
-
+		
+		
+		
 	}
-	
-	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM577, 381OX111, 229IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
+		
 	public String straightOrder()
 	{
-		String straightstring = "Straight\n";
 		int numOfStraight = straightQuantity.getSelectedIndex();
-		if((straightLengths.getSelectedIndex() == 0) && (straightQuantity.getSelectedIndex() == 0))
+		if(straightLengths.getSelectedIndex() == 0)
 			straightString = "";
 		if(straightLengths.getSelectedIndex() == 1)
 			straightString += "10\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
@@ -3344,7 +3402,7 @@ public class hairquoter {
 		if(straightLengths.getSelectedIndex() == 11)
 			straightString += "30\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		
-		return straightstring + straightString;
+		return straightString;
 	}
 	
 	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
