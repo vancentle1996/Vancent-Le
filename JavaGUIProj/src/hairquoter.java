@@ -147,6 +147,7 @@ public class hairquoter {
 	 * Create the application.
 	 */
 	public hairquoter() {
+		instructions();
 		initialize();
 		
 	}
@@ -4068,6 +4069,19 @@ public class hairquoter {
 			greyFrontalString += "20\" x " + numOfGreyFrontal + " - " + greyFrontal + "*" + numOfGreyFrontal + "\n";
 		
 		return greyFrontalString;
+	}
+	
+	//Instructions on how to use the calculator
+	public void instructions()
+	{
+		String intruction = "INSTRUCTIONS\n"
+						+ "1. Choose desired lengths and quantity for each pattern.\n"
+						+ "2. Click \"Add For Calculation\" after each time of choosing the length and quantity.\n"
+						+ "3. Choose a shipping method. Enter the shipping amount first if UPS carrier is chosen.\n"
+						+ "4. Click \"Calculate\" for the total.\n"
+						+ "5. Click \"Clear\" to calculate a new order.\n"
+						+ "                                                Thank you for using!";
+		JOptionPane.showMessageDialog(null, intruction);
 	}
 	
 }
