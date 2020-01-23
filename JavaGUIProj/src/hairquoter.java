@@ -8,7 +8,6 @@ import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-import javax.swing.UIManager;
 import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.JCheckBox;
@@ -120,17 +119,6 @@ public class hairquoter {
 	 */
 	public static void main(String[] args) {
 		
-		try
-		{
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-			UIManager.setLookAndFeel("com.jtattoo.plaf.aluminium.AluminiumLookAndFeel");
-			
-		}
-		catch(Exception e)
-		{
-			JOptionPane.showMessageDialog(null, e.getMessage());
-		}
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -157,7 +145,7 @@ public class hairquoter {
 	 */
 	private void initialize() {
 		frmHairProductsCalculator = new JFrame();
-		frmHairProductsCalculator.getContentPane().setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		frmHairProductsCalculator.getContentPane().setFont(new Font("Cambria", Font.ITALIC, 13));
 		frmHairProductsCalculator.setResizable(false);
 		frmHairProductsCalculator.setFont(new Font("Arial Black", Font.BOLD, 13));
 		frmHairProductsCalculator.setForeground(Color.BLACK);
@@ -166,7 +154,7 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().setEnabled(false);
 		frmHairProductsCalculator.getContentPane().setSize(new Dimension(5, 5));
 		frmHairProductsCalculator.setBackground(new Color(255, 255, 255));
-		frmHairProductsCalculator.setBounds(350, 350, 725, 775);
+		frmHairProductsCalculator.setBounds(350, 350, 750, 800);
 		frmHairProductsCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHairProductsCalculator.getContentPane().setLayout(null);
 		frmHairProductsCalculator.setIconImage(new ImageIcon(getClass().getResource("/myimages/calculator.png")).getImage());
@@ -190,110 +178,137 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(quantity_Label);
 
 		JLabel straight_Label = new JLabel("Straight");
-		straight_Label.setBounds(28, 35, 48, 14);
+		straight_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
+		straight_Label.setBounds(28, 36, 48, 14);
 		frmHairProductsCalculator.getContentPane().add(straight_Label);
 
 		JLabel loose_Label = new JLabel("Loose Wave");
-		loose_Label.setBounds(28, 60, 86, 14);
+		loose_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
+		loose_Label.setBounds(28, 61, 86, 14);
 		frmHairProductsCalculator.getContentPane().add(loose_Label);
 
 		JLabel body_Label = new JLabel("Body Wave");
-		body_Label.setBounds(28, 85, 86, 14);
+		body_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
+		body_Label.setBounds(28, 86, 86, 14);
 		frmHairProductsCalculator.getContentPane().add(body_Label);
 
 		JLabel deep_Label = new JLabel("Deep Wave");
-		deep_Label.setBounds(28, 110, 86, 14);
+		deep_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
+		deep_Label.setBounds(28, 111, 86, 14);
 		frmHairProductsCalculator.getContentPane().add(deep_Label);
 
 		JLabel rare_Label = new JLabel("Rare Curly");
-		rare_Label.setBounds(28, 135, 86, 14);
+		rare_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
+		rare_Label.setBounds(28, 136, 86, 14);
 		frmHairProductsCalculator.getContentPane().add(rare_Label);
 
 		JLabel steam1_Label = new JLabel("Steam #1");
-		steam1_Label.setBounds(28, 160, 86, 14);
+		steam1_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
+		steam1_Label.setBounds(28, 161, 86, 14);
 		frmHairProductsCalculator.getContentPane().add(steam1_Label);
 
 		JLabel steam2_Label = new JLabel("Steam #2");
+		steam2_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		steam2_Label.setBounds(28, 185, 86, 14);
 		frmHairProductsCalculator.getContentPane().add(steam2_Label);
 
 		JLabel blonde_Label = new JLabel("Straight Blonde");
+		blonde_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		blonde_Label.setBounds(28, 210, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(blonde_Label);
 
 		JLabel grey_Label = new JLabel("Grey");
+		grey_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		grey_Label.setBounds(28, 235, 86, 14);
 		frmHairProductsCalculator.getContentPane().add(grey_Label);
 
 		JLabel looseClosure_Label = new JLabel("Loose Wave Closure");
+		looseClosure_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		looseClosure_Label.setBounds(28, 286, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(looseClosure_Label);
 
 		JLabel bodyClosure_Label = new JLabel("Body Wave Closure");
+		bodyClosure_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		bodyClosure_Label.setBounds(28, 311, 143, 14);
 		frmHairProductsCalculator.getContentPane().add(bodyClosure_Label);
 
 		JLabel deepClosure_Label = new JLabel("Deep Wave Closure");
+		deepClosure_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		deepClosure_Label.setBounds(28, 336, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(deepClosure_Label);
 
 		JLabel rareClosure_Label = new JLabel("Rare Curly Closure");
+		rareClosure_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		rareClosure_Label.setBounds(28, 361, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(rareClosure_Label);
 
 		JLabel steam1Closure_Label = new JLabel("Steam #1 Closure");
+		steam1Closure_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		steam1Closure_Label.setBounds(28, 386, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(steam1Closure_Label);
 
 		JLabel steam2Closure_Label = new JLabel("Steam #2 Closure");
+		steam2Closure_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		steam2Closure_Label.setBounds(28, 411, 111, 14);
 		frmHairProductsCalculator.getContentPane().add(steam2Closure_Label);
 
 		JLabel blondeClosure_Label = new JLabel("Straight Blonde Closure");
+		blondeClosure_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		blondeClosure_Label.setBounds(28, 436, 172, 14);
 		frmHairProductsCalculator.getContentPane().add(blondeClosure_Label);
 
 		JLabel greyClosure_Label = new JLabel("Grey Closure");
+		greyClosure_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		greyClosure_Label.setBounds(28, 461, 86, 14);
 		frmHairProductsCalculator.getContentPane().add(greyClosure_Label);
 
 		JLabel straightFrontal_Label = new JLabel("Straight Frontal");
+		straightFrontal_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		straightFrontal_Label.setBounds(28, 486, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(straightFrontal_Label);
 
 		JLabel looseFrontal_Label = new JLabel("Loose Wave Frontal");
+		looseFrontal_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		looseFrontal_Label.setBounds(28, 511, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(looseFrontal_Label);
 
 		JLabel bodyFrontal_Label = new JLabel("Body Wave Frontal");
+		bodyFrontal_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		bodyFrontal_Label.setBounds(28, 536, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(bodyFrontal_Label);
 
 		JLabel deepFrontal_Label = new JLabel("Deep Wave Frontal");
+		deepFrontal_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		deepFrontal_Label.setBounds(28, 561, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(deepFrontal_Label);
 
 		JLabel rareFrontal_Label = new JLabel("Rare Curly Frontal ");
+		rareFrontal_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		rareFrontal_Label.setBounds(28, 586, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(rareFrontal_Label);
 
 		JLabel steam1Frontal_Label = new JLabel("Steam #1 Frontal ");
+		steam1Frontal_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		steam1Frontal_Label.setBounds(28, 611, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(steam1Frontal_Label);
 
 		JLabel steam2Frontal_Label = new JLabel("Steam #2 Frontal ");
+		steam2Frontal_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		steam2Frontal_Label.setBounds(28, 636, 125, 14);
 		frmHairProductsCalculator.getContentPane().add(steam2Frontal_Label);
 
 		JLabel straightClosure_Label = new JLabel("Straight Closure");
+		straightClosure_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		straightClosure_Label.setBounds(28, 260, 111, 14);
 		frmHairProductsCalculator.getContentPane().add(straightClosure_Label);
 
 		JLabel blondeFrontal_Label = new JLabel("Straight Blonde Frontal ");
+		blondeFrontal_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		blondeFrontal_Label.setBounds(28, 660, 143, 14);
 		frmHairProductsCalculator.getContentPane().add(blondeFrontal_Label);
 
 		JLabel greyFrontal_Label = new JLabel("Grey Frontal ");
+		greyFrontal_Label.setFont(new Font("Cambria", Font.ITALIC, 13));
 		greyFrontal_Label.setBounds(28, 685, 86, 14);
 		frmHairProductsCalculator.getContentPane().add(greyFrontal_Label);
 
@@ -309,7 +324,7 @@ public class hairquoter {
 
 		JTextArea show_Addition_txtArea = new JTextArea();
 		show_Addition_txtArea.setWrapStyleWord(true);
-		show_Addition_txtArea.setText("Selected Products Are Shown Here");
+		show_Addition_txtArea.setText("");
 		show_Addition_txtArea.setFont(new Font("Consolas", Font.BOLD, 11));
 		show_Addition_txtArea.setColumns(20);
 		show_Addition_txtArea.setLineWrap(true);
@@ -318,11 +333,11 @@ public class hairquoter {
 		
 		JTextArea totals_textArea = new JTextArea();
 		totals_textArea.setWrapStyleWord(true);
-		totals_textArea.setText("Total Are Shown Here");
-		totals_textArea.setFont(new Font("Consolas", Font.BOLD | Font.ITALIC, 11));
+		totals_textArea.setText("");
+		totals_textArea.setFont(new Font("Consolas", Font.BOLD, 13));
 		totals_textArea.setColumns(20);
 		totals_textArea.setLineWrap(true);
-		totals_textArea.setBounds(577, 386, 132, 284);
+		totals_textArea.setBounds(577, 386, 132, 239);
 		frmHairProductsCalculator.getContentPane().add(totals_textArea);
 		
 		
@@ -3218,9 +3233,10 @@ public class hairquoter {
 		add_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				straightOrder(); looseOrder(); bodyOrder(); deepOrder(); rareOrder(); steam1Order(); steam2Order(); blondeOrder(); greyOrder();
-				straightClosureOrder(); looseClosureOrder(); bodyClosureOrder(); deepClosureOrder(); rareClosureOrder(); steam1ClosureOrder(); steam2ClosureOrder(); blondeClosureOrder(); greyClosureOrder();
-				straightFrontalOrder(); looseFrontalOrder(); bodyFrontalOrder(); deepFrontalOrder(); rareFrontalOrder(); steam1FrontalOrder(); steam2FrontalOrder(); blondeFrontalOrder(); greyFrontalOrder();
+				//Displaying the pattern along with its length that the user selects
+				show_Addition_txtArea.setText(straightOrder() + looseOrder() + bodyOrder() + deepOrder() + rareOrder() + steam1Order() + steam2Order() + blondeOrder() + greyOrder() +
+				straightClosureOrder() + looseClosureOrder() + bodyClosureOrder() + deepClosureOrder() + rareClosureOrder() + steam1ClosureOrder() + steam2ClosureOrder() + blondeClosureOrder() + greyClosureOrder() + 
+				straightFrontalOrder() + looseFrontalOrder() + bodyFrontalOrder() + deepFrontalOrder() + rareFrontalOrder() + steam1FrontalOrder() + steam2FrontalOrder() + blondeFrontalOrder() + greyFrontalOrder());
 				
 				
 				// Add the number of pieces/products
@@ -3323,9 +3339,9 @@ public class hairquoter {
 				try {
 					String totalOut;
 					
-					show_Addition_txtArea.setText(straightString + looseString + bodyString + deepString + rareString + steam1String + steam2String + blondeString + greyString + 
-							straightClosureString + looseClosureString + bodyClosureString + deepClosureString + rareClosureString + steam1ClosureString + steam2ClosureString + blondeClosureString + greyClosureString +
-							straightFrontalString + looseFrontalString + bodyFrontalString + deepFrontalString + rareFrontalString + steam1FrontalString + steam2FrontalString + blondeFrontalString + greyFrontalString);
+					//straightString + looseString + bodyString + deepString + rareString + steam1String + steam2String + blondeString + greyString + 
+							//straightClosureString + looseClosureString + bodyClosureString + deepClosureString + rareClosureString + steam1ClosureString + steam2ClosureString + blondeClosureString + greyClosureString +
+							//straightFrontalString + looseFrontalString + bodyFrontalString + deepFrontalString + rareFrontalString + steam1FrontalString + steam2FrontalString + blondeFrontalString + greyFrontalString;
 					
 					// Formatting the total WITH PayPal fee
 					DecimalFormat myFormatter = new DecimalFormat();
@@ -3349,12 +3365,13 @@ public class hairquoter {
 				}
 			}
 		});
-		calculate_button.setBackground(new Color(0, 0, 128));
+		calculate_button.setBackground(new Color(0, 128, 128));
 		calculate_button.setForeground(Color.BLACK);
 		calculate_button.setBounds(469, 256, 152, 74);
 		frmHairProductsCalculator.getContentPane().add(calculate_button);
 		
 		JButton clearButton = new JButton("Clear");
+		clearButton.setForeground(SystemColor.control);
 		clearButton.setBackground(new Color(102, 0, 0));
 		clearButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -3410,9 +3427,19 @@ public class hairquoter {
 				totalWithOutPaypalFee = 0;
 			}
 		});
-		clearButton.setBounds(602, 681, 89, 23);
-		clearButton.setFont(new Font("Constantia", Font.BOLD, 11));
+		clearButton.setBounds(577, 635, 132, 64);
+		clearButton.setFont(new Font("Consolas", Font.BOLD, 23));
 		frmHairProductsCalculator.getContentPane().add(clearButton);
+		
+		JLabel selectedProductLabel = new JLabel("Selected products: ");
+		selectedProductLabel.setFont(new Font("Consolas", Font.BOLD, 13));
+		selectedProductLabel.setBounds(428, 363, 139, 14);
+		frmHairProductsCalculator.getContentPane().add(selectedProductLabel);
+		
+		JLabel totalLabel = new JLabel("Total:");
+		totalLabel.setFont(new Font("Consolas", Font.BOLD, 13));
+		totalLabel.setBounds(577, 363, 132, 14);
+		frmHairProductsCalculator.getContentPane().add(totalLabel);
 		
 		
 	
@@ -4083,5 +4110,4 @@ public class hairquoter {
 						+ "                                                Thank you for using!";
 		JOptionPane.showMessageDialog(null, intruction);
 	}
-	
 }
