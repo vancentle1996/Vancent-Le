@@ -18,6 +18,7 @@ import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import java.awt.Cursor;
 import java.awt.SystemColor;
+import javax.swing.JScrollBar;
 
 public class hairquoter {
 
@@ -3306,7 +3307,7 @@ public class hairquoter {
 			
 		UPStxtfield = new JTextField("UPS Shipping Amount");
 		UPStxtfield.setSelectionColor(SystemColor.activeCaptionBorder);
-		UPStxtfield.setBackground(SystemColor.control);
+		UPStxtfield.setBackground(Color.DARK_GRAY);
 		UPStxtfield.setHorizontalAlignment(SwingConstants.CENTER);
 		UPStxtfield.setFont(new Font("Consolas", Font.PLAIN, 11));
 		UPStxtfield.setEditable(true);
@@ -3338,7 +3339,7 @@ public class hairquoter {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					String totalOut;
-					
+
 					//straightString + looseString + bodyString + deepString + rareString + steam1String + steam2String + blondeString + greyString + 
 							//straightClosureString + looseClosureString + bodyClosureString + deepClosureString + rareClosureString + steam1ClosureString + steam2ClosureString + blondeClosureString + greyClosureString +
 							//straightFrontalString + looseFrontalString + bodyFrontalString + deepFrontalString + rareFrontalString + steam1FrontalString + steam2FrontalString + blondeFrontalString + greyFrontalString;
@@ -3357,8 +3358,15 @@ public class hairquoter {
 
 					// Displaying total quantity, total with and without PayPal fee to appropriate
 					// text fields
-					totals_textArea.setText("Total Quantity: " + Integer.toString(quantity_Counter) + "\n" + "Total W/ PayPal Fee: $" + totalOut + "\n" + "Total W/O PayPal Fee: $" + totalWithOutPaypalFee);
-					
+					if(standardshipping_checkbox.isSelected())
+						totals_textArea.setText("Total Quantity: " + Integer.toString(quantity_Counter) + "\n" 
+						+ "Shipping fee: " + STANDARD_SHIPPING + "\n" + "Total W/ PayPal Fee: $" + totalOut + "\n" + "Total W/O PayPal Fee: $" + totalWithOutPaypalFee);
+					if(expressshipping_checkbox.isSelected())
+						totals_textArea.setText("Total Quantity: " + Integer.toString(quantity_Counter) + "\n" 
+								+ "Shipping fee: " + EXPRESS_SHIPPING + "\n" + "Total W/ PayPal Fee: $" + totalOut + "\n" + "Total W/O PayPal Fee: $" + totalWithOutPaypalFee);
+					if(UPS_checkbox.isSelected())
+						totals_textArea.setText("Total Quantity: " + Integer.toString(quantity_Counter) + "\n" 
+								+ "Shipping fee: " + UPS_Amount + "\n" + "Total W/ PayPal Fee: $" + totalOut + "\n" + "Total W/O PayPal Fee: $" + totalWithOutPaypalFee);
 
 				} catch (Exception ex) {
 					ex.printStackTrace();
@@ -3440,6 +3448,10 @@ public class hairquoter {
 		totalLabel.setFont(new Font("Consolas", Font.BOLD, 13));
 		totalLabel.setBounds(577, 363, 132, 14);
 		frmHairProductsCalculator.getContentPane().add(totalLabel);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(551, 386, 17, 48);
+		frmHairProductsCalculator.getContentPane().add(scrollBar);
 		
 		
 	
