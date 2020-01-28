@@ -16,7 +16,6 @@ import javax.swing.JComboBox;
 import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
-import java.awt.Cursor;
 import java.awt.SystemColor;
 import javax.swing.JScrollPane;	
 
@@ -25,7 +24,6 @@ public class hairquoter {
 	private JFrame frmHairProductsCalculator;
 	private JCheckBox standardshipping_checkbox;
 	private JCheckBox expressshipping_checkbox;
-	private JButton add_Button;
 	private JTextField subTotal_txtField;
 	private JSeparator separator_1;
 	private JSeparator separator_2;
@@ -86,6 +84,7 @@ public class hairquoter {
 	private JComboBox<String>greyFrontalQuantity;
 	private JTextField UPStxtfield;
 	ImageIcon icon;
+	private double sub = 0;
 
 	// VARIABLES
 	final double STANDARD_SHIPPING = 8.0;
@@ -108,13 +107,16 @@ public class hairquoter {
 	greyClosure, straightFrontal, looseFrontal, bodyFrontal, deepFrontal, rareFrontal, steam1Frontal, steam2Frontal, blondeFrontal,greyFrontal;
 	
 	// Creating variables to store the values of chosen patterns 
-	String straightString = "Straight\n", looseString = "Loose Wave\n", bodyString = "Body Wave\n", deepString = "Deep Wave\n", rareString = "Rare Curly\n", steam1String = "Steam #1\n",
+	String straightString = "", looseString = "", bodyString = "Body Wave\n", deepString = "Deep Wave\n", rareString = "Rare Curly\n", steam1String = "Steam #1\n",
 	steam2String = "Steam #2\n", blondeString = "Straight Blonde\n", greyString = "Grey\n", straightClosureString = "Straight Closure\n", looseClosureString = "Loose Wave Closure\n", 
 	bodyClosureString = "Body Wave Closure\n", deepClosureString = "Deep Wave Closure\n", rareClosureString = "Rare Curly Closure\n", steam1ClosureString = "Steam #1 Closure\n", 
 	steam2ClosureString = "Steam #2 Closure\n", blondeClosureString = "Straight Blonde Closure\n", greyClosureString = "Grey Closure\n", straightFrontalString = "Straight Frontal\n", 
 	looseFrontalString = "Loose Wave Frontal\n", bodyFrontalString = "Body Wave Frontal\n", deepFrontalString = "Deep Wave Frontal\n", rareFrontalString = "Rare Curly Frontal\n", 
 	steam1FrontalString = "Steam #1 Frontal\n", steam2FrontalString = "Steam #2 Frontal\n", blondeFrontalString = "Straight Blonde Frontal\n", greyFrontalString = "Grey Frontal\n";
 	private JCheckBox UPS_checkbox;
+	private JButton addButtonForStraight;
+	private JButton addButtonForLoose;
+	
 	
 	/**
 	 * Launch the application.
@@ -155,7 +157,7 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().setEnabled(false);
 		frmHairProductsCalculator.getContentPane().setSize(new Dimension(5, 5));
 		frmHairProductsCalculator.setBackground(new Color(255, 255, 255));
-		frmHairProductsCalculator.setBounds(350, 350, 750, 800);
+		frmHairProductsCalculator.setBounds(350, 350, 866, 758);
 		frmHairProductsCalculator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmHairProductsCalculator.getContentPane().setLayout(null);
 		frmHairProductsCalculator.setIconImage(new ImageIcon(getClass().getResource("/myimages/calculator.png")).getImage());
@@ -315,12 +317,12 @@ public class hairquoter {
 
 		JLabel shippingMethod_Label = new JLabel("Shipping Methods: ");
 		shippingMethod_Label.setFont(new Font("Consolas", Font.BOLD, 13));
-		shippingMethod_Label.setBounds(428, 144, 152, 14);
+		shippingMethod_Label.setBounds(577, 145, 152, 14);
 		frmHairProductsCalculator.getContentPane().add(shippingMethod_Label);
 
 		JLabel subTotal_Label = new JLabel("Subtotal:");
 		subTotal_Label.setFont(new Font("Consolas", Font.BOLD, 14));
-		subTotal_Label.setBounds(428, 106, 73, 14);
+		subTotal_Label.setBounds(577, 107, 73, 14);
 		frmHairProductsCalculator.getContentPane().add(subTotal_Label);
 
 		JTextArea totals_textArea = new JTextArea();
@@ -329,17 +331,17 @@ public class hairquoter {
 		totals_textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		totals_textArea.setColumns(20);
 		totals_textArea.setLineWrap(true);
-		totals_textArea.setBounds(577, 382, 132, 243);
+		totals_textArea.setBounds(700, 382, 132, 243);
 		frmHairProductsCalculator.getContentPane().add(totals_textArea);
 		
 		JLabel selectedProductLabel = new JLabel("Selected products: ");
 		selectedProductLabel.setFont(new Font("Consolas", Font.BOLD, 13));
-		selectedProductLabel.setBounds(428, 363, 139, 14);
+		selectedProductLabel.setBounds(551, 361, 139, 14);
 		frmHairProductsCalculator.getContentPane().add(selectedProductLabel);
 		
 		JLabel totalLabel = new JLabel("Total:");
 		totalLabel.setFont(new Font("Consolas", Font.BOLD, 13));
-		totalLabel.setBounds(577, 363, 132, 14);
+		totalLabel.setBounds(700, 361, 132, 14);
 		frmHairProductsCalculator.getContentPane().add(totalLabel);
 		
 		JTextArea textArea = new JTextArea();
@@ -349,13 +351,13 @@ public class hairquoter {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(428, 382, 139, 284);
+		scrollPane.setBounds(551, 381, 139, 284);
 		scrollPane.setViewportView(textArea);
 		frmHairProductsCalculator.getContentPane().add(scrollPane);
 	
 		subTotal_txtField = new JTextField();
 		subTotal_txtField.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		subTotal_txtField.setBounds(505, 100, 99, 24);
+		subTotal_txtField.setBounds(654, 101, 99, 24);
 		frmHairProductsCalculator.getContentPane().add(subTotal_txtField);
 		subTotal_txtField.setColumns(10);
 
@@ -363,19 +365,19 @@ public class hairquoter {
 		separator_1 = new JSeparator();
 		separator_1.setForeground(new Color(0, 0, 0));
 		separator_1.setBackground(Color.BLACK);
-		separator_1.setBounds(428, 348, 231, 2);
+		separator_1.setBounds(577, 348, 231, 2);
 		frmHairProductsCalculator.getContentPane().add(separator_1);
 
 		separator_2 = new JSeparator();
 		separator_2.setForeground(new Color(0, 0, 0));
 		separator_2.setBackground(Color.BLACK);
-		separator_2.setBounds(428, 235, 231, 2);
+		separator_2.setBounds(577, 236, 231, 2);
 		frmHairProductsCalculator.getContentPane().add(separator_2);
 
 		separator_3 = new JSeparator();
 		separator_3.setForeground(new Color(0, 0, 0));
 		separator_3.setBackground(new Color(0, 0, 0));
-		separator_3.setBounds(428, 135, 231, 2);
+		separator_3.setBounds(577, 136, 231, 2);
 		frmHairProductsCalculator.getContentPane().add(separator_3);
 
 		// THE COMBO BOX FOR STRAIGHT'S LENGTHS
@@ -3179,73 +3181,25 @@ public class hairquoter {
 		});
 		greyFrontalQuantity.setBounds(315, 681, 63, 22);
 		frmHairProductsCalculator.getContentPane().add(greyFrontalQuantity);
-
-		// ADD BUTTON - ADDING ALL THE PRICES OF CHOSEN PRODUCTS/PATTERNS ALONG WITH THEIR QUANTITY
-		add_Button = new JButton("Add For \r\nCalculation");
-		add_Button.setForeground(Color.BLACK);
-		add_Button.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		add_Button.setBackground(new Color(0, 128, 128));
-		add_Button.setFont(new Font("Constantia", Font.BOLD, 15));
-		add_Button.addActionListener(new ActionListener() {
+		
+		
+		
+		addButtonForStraight = new JButton("Add");
+		addButtonForStraight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try
-				{
-					textArea.setText(straightOrder()+looseOrder()+bodyOrder()+
-					deepOrder() + rareOrder() + steam1Order() + steam2Order() + blondeOrder() + greyOrder() +
-					straightClosureOrder() + looseClosureOrder() + bodyClosureOrder() + deepClosureOrder() + 
-					rareClosureOrder() + steam1ClosureOrder() + steam2ClosureOrder() + blondeClosureOrder() + greyClosureOrder() + 
-					straightFrontalOrder() + looseFrontalOrder() + bodyFrontalOrder() + deepFrontalOrder() + rareFrontalOrder() + 
-					steam1FrontalOrder() + steam2FrontalOrder() + blondeFrontalOrder() + greyFrontalOrder());
-					
-					
-					// Add the number of pieces/products
-					quantity_Counter += straightQuantity.getSelectedIndex() + looseQuantity.getSelectedIndex() + bodyQuantity.getSelectedIndex() + deepQuantity.getSelectedIndex() +
-					rareQuantity.getSelectedIndex() + steam1Quantity.getSelectedIndex() + steam2Quantity.getSelectedIndex() + blondeQuantity.getSelectedIndex() +
-					greyQuantity.getSelectedIndex() + straightClosureQuantity.getSelectedIndex() + looseClosureQuantity.getSelectedIndex() + bodyClosureQuantity.getSelectedIndex() +
-					deepClosureQuantity.getSelectedIndex() + rareClosureQuantity.getSelectedIndex() + steam1ClosureQuantity.getSelectedIndex() + steam2ClosureQuantity.getSelectedIndex() +
-					straightFrontalQuantity.getSelectedIndex() + looseFrontalQuantity.getSelectedIndex() + bodyFrontalQuantity.getSelectedIndex() + deepFrontalQuantity.getSelectedIndex() +
-					rareFrontalQuantity.getSelectedIndex() + steam1FrontalQuantity.getSelectedIndex() + steam2FrontalQuantity.getSelectedIndex() + blondeFrontalQuantity.getSelectedIndex() + 
-					greyFrontalQuantity.getSelectedIndex();
-					
-					// Calculating the total of products selected - shipping + PayPal fee are not included
-					subtotal += (straight * quantity_Of_Straight) + (loose * quantity_Of_Loose) + (body * quantity_Of_Body) + (deep * quantity_Of_Deep) + (rare * quantity_Of_Rare) + 
-					(steam1 * quantity_Of_Steam1) + (steam2 * quantity_Of_Steam2) + (blonde * quantity_Of_Blonde) + (grey * quantity_Of_Grey) +
-					(straightClosure * quantity_Of_StraightClosure) + (looseClosure * quantity_Of_LooseClosure) + (bodyClosure * quantity_Of_BodyClosure) + (deepClosure * quantity_Of_DeepClosure) + 
-					(rareClosure * quantity_Of_RareClosure) + (steam1Closure * quantity_Of_Steam1Closure) + (steam2Closure * quantity_Of_Steam2Closure) + (blondeClosure * quantity_Of_BlondeClosure) + 
-					(grey * quantity_Of_GreyClosure) + (straightFrontal * quantity_Of_StraightFrontal) + (looseFrontal * quantity_Of_LooseFrontal) + (bodyFrontal * quantity_Of_BodyFrontal) + 
-					(deepFrontal * quantity_Of_DeepFrontal) + (rareFrontal * quantity_Of_RareFrontal) + (steam1Frontal * quantity_Of_Steam1Frontal) + (steam2Frontal * quantity_Of_Steam2Frontal) + 
-					(blondeFrontal * quantity_Of_BlondeFrontal) + (greyFrontal * quantity_Of_GreyFrontal);
-					
-					// Display the total to the subtotal's text field
-					subTotal_txtField.setText("$" + Double.toString(subtotal));
-					
-					straightLengths.setSelectedItem("0\"");straightQuantity.setSelectedItem("0");
-					looseLengths.setSelectedItem("0\"");looseQuantity.setSelectedItem("0");
-					bodyLengths.setSelectedItem("0\"");bodyQuantity.setSelectedItem("0");
-					deepLengths.setSelectedItem("0\"");deepQuantity.setSelectedItem("0");
-					rareLengths.setSelectedItem("0\"");rareQuantity.setSelectedItem("0");
-					steam1Lengths.setSelectedItem("0\"");steam1Quantity.setSelectedItem("0");
-					steam2Lengths.setSelectedItem("0\"");steam2Quantity.setSelectedItem("0");
-					blondeLengths.setSelectedItem("0\"");blondeQuantity.setSelectedItem("0");
-					greyLengths.setSelectedItem("0\"");greyQuantity.setSelectedItem("0");
-					straightClosureLengths.setSelectedItem("0\"");straightClosureQuantity.setSelectedItem("0");
-					looseClosureLengths.setSelectedItem("0\"");looseClosureQuantity.setSelectedItem("0");
-					bodyClosureLengths.setSelectedItem("0\"");bodyClosureQuantity.setSelectedItem("0");
-					deepClosureLengths.setSelectedItem("0\"");deepClosureQuantity.setSelectedItem("0");
-					rareClosureLengths.setSelectedItem("0\"");rareClosureQuantity.setSelectedItem("0");
-					steam1ClosureLengths.setSelectedItem("0\"");steam1ClosureQuantity.setSelectedItem("0");
-					steam2ClosureLengths.setSelectedItem("0\"");steam2ClosureQuantity.setSelectedItem("0");
-					blondeClosureLengths.setSelectedItem("0\"");blondeClosureQuantity.setSelectedItem("0");
-					greyClosureLengths.setSelectedItem("0\"");greyClosureQuantity.setSelectedItem("0");
-					straightFrontalLengths.setSelectedItem("0\"");straightFrontalQuantity.setSelectedItem("0");
-					looseFrontalLengths.setSelectedItem("0\"");looseFrontalQuantity.setSelectedItem("0");
-					bodyFrontalLengths.setSelectedItem("0\"");bodyFrontalQuantity.setSelectedItem("0");
-					deepFrontalLengths.setSelectedItem("0\"");deepFrontalQuantity.setSelectedItem("0");
-					rareFrontalLengths.setSelectedItem("0\"");rareFrontalQuantity.setSelectedItem("0");
-					steam1FrontalLengths.setSelectedItem("0\"");steam1FrontalQuantity.setSelectedItem("0");
-					steam2FrontalLengths.setSelectedItem("0\"");steam2FrontalQuantity.setSelectedItem("0");
-					blondeFrontalLengths.setSelectedItem("0\"");blondeFrontalQuantity.setSelectedItem("0");
-					greyFrontalLengths.setSelectedItem("0\"");greyFrontalQuantity.setSelectedItem("0");
+				{	
+					straightString = "Straight\n";
+					if((straightLengths.getSelectedIndex() > 0) && (straightQuantity.getSelectedIndex() > 0))
+					{	
+						straightOrder();
+						sub += straight * quantity_Of_Straight;
+						quantity_Counter += straightQuantity.getSelectedIndex();
+						subTotal_txtField.setText("$" + Double.toString(sub));
+					}
+					else {
+						straightString = "";
+					}
 				}
 				catch(Exception ex)
 				{
@@ -3254,8 +3208,41 @@ public class hairquoter {
 				
 			}
 		});
-		add_Button.setBounds(453, 35, 185, 50);
-		frmHairProductsCalculator.getContentPane().add(add_Button);
+		addButtonForStraight.setBackground(new Color(0, 0, 51));
+		addButtonForStraight.setForeground(new Color(255, 255, 255));
+		addButtonForStraight.setBounds(397, 31, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(addButtonForStraight);
+		
+		
+		
+		addButtonForLoose = new JButton("Add");
+		addButtonForLoose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try
+				{
+					looseString = "Loose Wave\n";
+					if((looseLengths.getSelectedIndex() > 0) && (looseQuantity.getSelectedIndex() > 0))
+					{	
+						looseOrder();
+						sub += loose * quantity_Of_Loose;
+						quantity_Counter += looseQuantity.getSelectedIndex();
+						subTotal_txtField.setText("$" + Double.toString(sub));
+					}
+					else {
+						looseString = "";
+					}
+				}
+				catch(Exception ex)
+				{
+					ex.printStackTrace();
+				}
+				
+			}
+		});
+		addButtonForLoose.setForeground(Color.WHITE);
+		addButtonForLoose.setBackground(new Color(51, 0, 102));
+		addButtonForLoose.setBounds(397, 56, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(addButtonForLoose);
 
 		// STANDARD SHIPPING CHECKBOX
 		standardshipping_checkbox = new JCheckBox("USPS Standard Shipping ($8)");
@@ -3266,7 +3253,7 @@ public class hairquoter {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					// Calculates total with standard shipping + $1 a piece
-					total_With_Shipping = subtotal + STANDARD_SHIPPING + quantity_Counter;
+					total_With_Shipping = sub + STANDARD_SHIPPING + quantity_Counter;
 
 				} catch (java.lang.NumberFormatException notChosen) {
 					JOptionPane.showMessageDialog(null,
@@ -3274,7 +3261,7 @@ public class hairquoter {
 				}
 			}
 		});
-		standardshipping_checkbox.setBounds(428, 160, 270, 23);
+		standardshipping_checkbox.setBounds(577, 161, 270, 23);
 		frmHairProductsCalculator.getContentPane().add(standardshipping_checkbox);
 
 		// EXPRESS SHIPPING CHECKBOX
@@ -3285,7 +3272,7 @@ public class hairquoter {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					// Calculates total with express shipping + $1 a piece
-					total_With_Shipping = subtotal + EXPRESS_SHIPPING + quantity_Counter;
+					total_With_Shipping = sub + EXPRESS_SHIPPING + quantity_Counter;
 
 				} catch (java.lang.NumberFormatException notChosen) {
 					JOptionPane.showMessageDialog(null,
@@ -3293,7 +3280,7 @@ public class hairquoter {
 				}
 			}
 		});
-		expressshipping_checkbox.setBounds(428, 183, 270, 23);
+		expressshipping_checkbox.setBounds(577, 184, 270, 23);
 		frmHairProductsCalculator.getContentPane().add(expressshipping_checkbox);
 			
 		UPStxtfield = new JTextField("UPS Shipping Amount");
@@ -3303,7 +3290,7 @@ public class hairquoter {
 		UPStxtfield.setHorizontalAlignment(SwingConstants.CENTER);
 		UPStxtfield.setFont(new Font("Consolas", Font.PLAIN, 11));
 		UPStxtfield.setEditable(true);
-		UPStxtfield.setBounds(437, 209, 167, 20);
+		UPStxtfield.setBounds(586, 210, 167, 20);
 		frmHairProductsCalculator.getContentPane().add(UPStxtfield);
 		
 		UPS_checkbox = new JCheckBox("UPS");
@@ -3313,7 +3300,7 @@ public class hairquoter {
 				try
 				{
 					UPS_Amount = Double.parseDouble(UPStxtfield.getText());	
-					total_With_Shipping = subtotal + UPS_Amount + quantity_Counter;
+					total_With_Shipping = sub + UPS_Amount + quantity_Counter;
 				}
 				catch(Exception ex)
 				{
@@ -3321,7 +3308,7 @@ public class hairquoter {
 				}
 			}
 		});
-		UPS_checkbox.setBounds(606, 206, 71, 23);
+		UPS_checkbox.setBounds(755, 207, 71, 23);
 		frmHairProductsCalculator.getContentPane().add(UPS_checkbox);
 		
 		// CALCULATE BUTTON - CALCULATING THE GRAND TOTAL WITH AND WITHOUT PAYPAL FEE
@@ -3343,6 +3330,8 @@ public class hairquoter {
 
 					// Formatting operation
 					totalOut = myFormatter.format(totalWithPaypalFee);
+					
+					textArea.setText(straightString + looseString);
 
 					// Displaying total quantity, total with and without PayPal fee to appropriate
 					// text fields
@@ -3363,7 +3352,7 @@ public class hairquoter {
 		});
 		calculate_button.setBackground(new Color(0, 128, 128));
 		calculate_button.setForeground(Color.BLACK);
-		calculate_button.setBounds(469, 256, 152, 74);
+		calculate_button.setBounds(618, 256, 152, 74);
 		frmHairProductsCalculator.getContentPane().add(calculate_button);
 		
 		JButton clearButton = new JButton("Clear");
@@ -3413,6 +3402,7 @@ public class hairquoter {
 				//Clearing text in the text area
 				textArea.setText("");
 				totals_textArea.setText("");
+				sub = 0;
 				subtotal = 0; //Setting sub total to zero
 				subTotal_txtField.setText(Double.toString(0.0)); //Setting the sub total text field's value to zero
 				standardshipping_checkbox.setSelected(false); // Unchecking the standard shipping checkbox
@@ -3423,7 +3413,7 @@ public class hairquoter {
 				totalWithOutPaypalFee = 0;
 			}
 		});
-		clearButton.setBounds(577, 635, 132, 64);
+		clearButton.setBounds(715, 636, 132, 64);
 		clearButton.setFont(new Font("Consolas", Font.BOLD, 23));
 		frmHairProductsCalculator.getContentPane().add(clearButton);
 		
@@ -3442,11 +3432,15 @@ public class hairquoter {
 				}
 			}
 		});
-		intructions_Button.setBounds(428, 677, 139, 23);
+		intructions_Button.setBounds(551, 676, 139, 23);
 		frmHairProductsCalculator.getContentPane().add(intructions_Button);
+		
+		
+		
+		
 	}
 		
-	public String straightOrder()
+	public void straightOrder()
 	{
 		int numOfStraight = straightQuantity.getSelectedIndex();
 		if((straightLengths.getSelectedIndex() == 0) && (straightQuantity.getSelectedIndex() == 0))
@@ -3473,12 +3467,11 @@ public class hairquoter {
 			straightString += "28\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 11)
 			straightString += "30\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
-		return straightString;
 	}
 	
 	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
 	THEN IT PRINTS OUT THE PATTERN ALONG WITH THE LENGTH AND QUANTITY*/
-	public String looseOrder()
+	public void looseOrder()
 	{
 		int numOfLoose = looseQuantity.getSelectedIndex();
 		if((looseLengths.getSelectedIndex() == 0) && (looseQuantity.getSelectedIndex() == 0))
@@ -3503,7 +3496,6 @@ public class hairquoter {
 			looseString += "28\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 10)
 			looseString += "30\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
-		return looseString;
 	}
 	
 	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
