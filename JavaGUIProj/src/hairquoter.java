@@ -17,7 +17,9 @@ import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.ImageIcon;
 import java.awt.SystemColor;
-import javax.swing.JScrollPane;	
+import javax.swing.JScrollPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;	
 
 public class hairquoter {
 
@@ -107,7 +109,7 @@ public class hairquoter {
 	greyClosure, straightFrontal, looseFrontal, bodyFrontal, deepFrontal, rareFrontal, steam1Frontal, steam2Frontal, blondeFrontal,greyFrontal;
 	
 	// Creating variables to store the values of chosen patterns 
-	String straightString = "", looseString = "", bodyString = "Body Wave\n", deepString = "Deep Wave\n", rareString = "Rare Curly\n", steam1String = "Steam #1\n",
+	String straightString = "Straight\n", looseString = "Loose Wave\n", bodyString = "Body Wave\n", deepString = "Deep Wave\n", rareString = "Rare Curly\n", steam1String = "Steam #1\n",
 	steam2String = "Steam #2\n", blondeString = "Straight Blonde\n", greyString = "Grey\n", straightClosureString = "Straight Closure\n", looseClosureString = "Loose Wave Closure\n", 
 	bodyClosureString = "Body Wave Closure\n", deepClosureString = "Deep Wave Closure\n", rareClosureString = "Rare Curly Closure\n", steam1ClosureString = "Steam #1 Closure\n", 
 	steam2ClosureString = "Steam #2 Closure\n", blondeClosureString = "Straight Blonde Closure\n", greyClosureString = "Grey Closure\n", straightFrontalString = "Straight Frontal\n", 
@@ -116,6 +118,48 @@ public class hairquoter {
 	private JCheckBox UPS_checkbox;
 	private JButton addButtonForStraight;
 	private JButton addButtonForLoose;
+	private JCheckBox steam2CheckBox;
+	private JButton button_4;
+	private JCheckBox blondeCheckBox;
+	private JButton button_5;
+	private JCheckBox greyCheckBox;
+	private JButton button_6;
+	private JCheckBox strCloCheckBox;
+	private JButton button_7;
+	private JCheckBox looseCloCheckBox;
+	private JButton button_8;
+	private JCheckBox bodyCloCheckBox;
+	private JButton button_9;
+	private JCheckBox deepCloCheckBox;
+	private JButton button_10;
+	private JCheckBox rareCloCheckBox;
+	private JButton button_11;
+	private JCheckBox steam1CloCheckBox;
+	private JButton button_12;
+	private JCheckBox steam2CloCheckBox;
+	private JButton button_13;
+	private JCheckBox blondeCloCheckBox;
+	private JButton button_14;
+	private JCheckBox greyCloCheckBox;
+	private JButton button_15;
+	private JCheckBox strFrontalCheckBox;
+	private JButton button_16;
+	private JCheckBox looseFrontalCheckBox;
+	private JButton button_17;
+	private JCheckBox bodyFrontalCheckBox;
+	private JButton button_18;
+	private JCheckBox deepFrontalCheckBox;
+	private JButton button_19;
+	private JCheckBox rareFrontalCheckBox;
+	private JButton button_20;
+	private JCheckBox steam1FrontalCheckBox;
+	private JButton button_21;
+	private JCheckBox steam2FrontalCheckBox;
+	private JButton button_22;
+	private JCheckBox blondeFrontalCheckBox;
+	private JButton button_23;
+	private JCheckBox greyFrontalCheckBox;
+	private JButton button_24;
 	
 	
 	/**
@@ -148,12 +192,13 @@ public class hairquoter {
 	 */
 	private void initialize() {
 		frmHairProductsCalculator = new JFrame();
+		frmHairProductsCalculator.getContentPane().setForeground(Color.RED);
 		frmHairProductsCalculator.getContentPane().setFont(new Font("Cambria", Font.ITALIC, 13));
 		frmHairProductsCalculator.setResizable(false);
 		frmHairProductsCalculator.setFont(new Font("Arial Black", Font.BOLD, 13));
 		frmHairProductsCalculator.setForeground(Color.BLACK);
 		frmHairProductsCalculator.setTitle("Hair Extensions Calculator");
-		frmHairProductsCalculator.getContentPane().setBackground(SystemColor.control);
+		frmHairProductsCalculator.getContentPane().setBackground(Color.WHITE);
 		frmHairProductsCalculator.getContentPane().setEnabled(false);
 		frmHairProductsCalculator.getContentPane().setSize(new Dimension(5, 5));
 		frmHairProductsCalculator.setBackground(new Color(255, 255, 255));
@@ -354,6 +399,459 @@ public class hairquoter {
 		scrollPane.setBounds(551, 381, 139, 284);
 		scrollPane.setViewportView(textArea);
 		frmHairProductsCalculator.getContentPane().add(scrollPane);
+		
+		JCheckBox bodyCheckBox = new JCheckBox("");
+		bodyCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(bodyString);
+			}
+		});
+		bodyCheckBox.setForeground(Color.RED);
+		bodyCheckBox.setBackground(Color.WHITE);
+		bodyCheckBox.setBounds(403, 81, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(bodyCheckBox);
+		
+		JButton button = new JButton("Add");
+		button.setForeground(Color.WHITE);
+		button.setBackground(new Color(0, 0, 51));
+		button.setBounds(448, 82, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button);
+		
+		JCheckBox deepCheckBox = new JCheckBox("");
+		deepCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(deepString);
+			}
+		});
+		deepCheckBox.setForeground(Color.RED);
+		deepCheckBox.setBackground(Color.WHITE);
+		deepCheckBox.setBounds(403, 107, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(deepCheckBox);
+		
+		JButton button_1 = new JButton("Add");
+		button_1.setForeground(Color.WHITE);
+		button_1.setBackground(new Color(51, 0, 102));
+		button_1.setBounds(448, 107, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_1);
+		
+		JCheckBox rareCheckBox = new JCheckBox("");
+		rareCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(rareString);
+			}
+		});
+		rareCheckBox.setForeground(Color.RED);
+		rareCheckBox.setBackground(Color.WHITE);
+		rareCheckBox.setBounds(403, 131, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(rareCheckBox);
+		
+		JButton button_2 = new JButton("Add");
+		button_2.setForeground(Color.WHITE);
+		button_2.setBackground(new Color(0, 0, 51));
+		button_2.setBounds(448, 132, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_2);
+		
+		JCheckBox steam1CheckBox = new JCheckBox("");
+		steam1CheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(steam1String);
+			}
+		});
+		steam1CheckBox.setForeground(Color.RED);
+		steam1CheckBox.setBackground(Color.WHITE);
+		steam1CheckBox.setBounds(403, 157, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(steam1CheckBox);
+		
+		JButton button_3 = new JButton("Add");
+		button_3.setForeground(Color.WHITE);
+		button_3.setBackground(new Color(51, 0, 102));
+		button_3.setBounds(448, 157, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_3);
+		
+		steam2CheckBox = new JCheckBox("");
+		steam2CheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(steam2String);
+			}
+		});
+		steam2CheckBox.setForeground(Color.RED);
+		steam2CheckBox.setBackground(Color.WHITE);
+		steam2CheckBox.setBounds(403, 181, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(steam2CheckBox);
+		
+		button_4 = new JButton("Add");
+		button_4.setForeground(Color.WHITE);
+		button_4.setBackground(new Color(0, 0, 51));
+		button_4.setBounds(448, 182, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_4);
+		
+		blondeCheckBox = new JCheckBox("");
+		blondeCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(blondeString);
+			}
+		});
+		blondeCheckBox.setForeground(Color.RED);
+		blondeCheckBox.setBackground(Color.WHITE);
+		blondeCheckBox.setBounds(403, 207, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(blondeCheckBox);
+		
+		button_5 = new JButton("Add");
+		button_5.setForeground(Color.WHITE);
+		button_5.setBackground(new Color(51, 0, 102));
+		button_5.setBounds(448, 207, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_5);
+		
+		greyCheckBox = new JCheckBox("");
+		greyCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(greyString);
+			}
+		});
+		greyCheckBox.setForeground(Color.RED);
+		greyCheckBox.setBackground(Color.WHITE);
+		greyCheckBox.setBounds(403, 231, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(greyCheckBox);
+		
+		button_6 = new JButton("Add");
+		button_6.setForeground(Color.WHITE);
+		button_6.setBackground(new Color(0, 0, 51));
+		button_6.setBounds(448, 232, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_6);
+		
+		strCloCheckBox = new JCheckBox("");
+		strCloCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(straightClosureString);
+			}
+		});
+		strCloCheckBox.setForeground(Color.RED);
+		strCloCheckBox.setBackground(Color.WHITE);
+		strCloCheckBox.setBounds(403, 256, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(strCloCheckBox);
+		
+		button_7 = new JButton("Add");
+		button_7.setForeground(Color.WHITE);
+		button_7.setBackground(new Color(51, 0, 102));
+		button_7.setBounds(448, 257, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_7);
+		
+		looseCloCheckBox = new JCheckBox("");
+		looseCloCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(looseClosureString);
+			}
+		});
+		looseCloCheckBox.setForeground(Color.RED);
+		looseCloCheckBox.setBackground(Color.WHITE);
+		looseCloCheckBox.setBounds(403, 281, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(looseCloCheckBox);
+		
+		button_8 = new JButton("Add");
+		button_8.setForeground(Color.WHITE);
+		button_8.setBackground(new Color(0, 0, 51));
+		button_8.setBounds(448, 282, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_8);
+		
+		bodyCloCheckBox = new JCheckBox("");
+		bodyCloCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(bodyClosureString);
+			}
+		});
+		bodyCloCheckBox.setForeground(Color.RED);
+		bodyCloCheckBox.setBackground(Color.WHITE);
+		bodyCloCheckBox.setBounds(403, 307, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(bodyCloCheckBox);
+		
+		button_9 = new JButton("Add");
+		button_9.setForeground(Color.WHITE);
+		button_9.setBackground(new Color(51, 0, 102));
+		button_9.setBounds(448, 307, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_9);
+		
+		deepCloCheckBox = new JCheckBox("");
+		deepCloCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(deepClosureString);
+			}
+		});
+		deepCloCheckBox.setForeground(Color.RED);
+		deepCloCheckBox.setBackground(Color.WHITE);
+		deepCloCheckBox.setBounds(403, 332, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(deepCloCheckBox);
+		
+		button_10 = new JButton("Add");
+		button_10.setForeground(Color.WHITE);
+		button_10.setBackground(new Color(0, 0, 51));
+		button_10.setBounds(448, 333, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_10);
+		
+		rareCloCheckBox = new JCheckBox("");
+		rareCloCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(rareClosureString);
+			}
+		});
+		rareCloCheckBox.setForeground(Color.RED);
+		rareCloCheckBox.setBackground(Color.WHITE);
+		rareCloCheckBox.setBounds(403, 358, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(rareCloCheckBox);
+		
+		button_11 = new JButton("Add");
+		button_11.setForeground(Color.WHITE);
+		button_11.setBackground(new Color(51, 0, 102));
+		button_11.setBounds(448, 358, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_11);
+		
+		steam1CloCheckBox = new JCheckBox("");
+		steam1CloCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(steam1ClosureString);
+			}
+		});
+		steam1CloCheckBox.setForeground(Color.RED);
+		steam1CloCheckBox.setBackground(Color.WHITE);
+		steam1CloCheckBox.setBounds(403, 381, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(steam1CloCheckBox);
+		
+		button_12 = new JButton("Add");
+		button_12.setForeground(Color.WHITE);
+		button_12.setBackground(new Color(0, 0, 51));
+		button_12.setBounds(448, 382, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_12);
+		
+		steam2CloCheckBox = new JCheckBox("");
+		steam2CloCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(steam2ClosureString);
+			}
+		});
+		steam2CloCheckBox.setForeground(Color.RED);
+		steam2CloCheckBox.setBackground(Color.WHITE);
+		steam2CloCheckBox.setBounds(403, 407, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(steam2CloCheckBox);
+		
+		button_13 = new JButton("Add");
+		button_13.setForeground(Color.WHITE);
+		button_13.setBackground(new Color(51, 0, 102));
+		button_13.setBounds(448, 407, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_13);
+		
+		blondeCloCheckBox = new JCheckBox("");
+		blondeCloCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(blondeClosureString);
+			}
+		});
+		blondeCloCheckBox.setForeground(Color.RED);
+		blondeCloCheckBox.setBackground(Color.WHITE);
+		blondeCloCheckBox.setBounds(403, 432, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(blondeCloCheckBox);
+		
+		button_14 = new JButton("Add");
+		button_14.setForeground(Color.WHITE);
+		button_14.setBackground(new Color(0, 0, 51));
+		button_14.setBounds(448, 433, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_14);
+		
+		greyCloCheckBox = new JCheckBox("");
+		greyCloCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(greyClosureString);
+			}
+		});
+		greyCloCheckBox.setForeground(Color.RED);
+		greyCloCheckBox.setBackground(Color.WHITE);
+		greyCloCheckBox.setBounds(403, 458, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(greyCloCheckBox);
+		
+		button_15 = new JButton("Add");
+		button_15.setForeground(Color.WHITE);
+		button_15.setBackground(new Color(51, 0, 102));
+		button_15.setBounds(448, 458, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_15);
+		
+		strFrontalCheckBox = new JCheckBox("");
+		strFrontalCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(straightFrontalString);
+			}
+		});
+		strFrontalCheckBox.setForeground(Color.RED);
+		strFrontalCheckBox.setBackground(Color.WHITE);
+		strFrontalCheckBox.setBounds(403, 482, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(strFrontalCheckBox);
+		
+		button_16 = new JButton("Add");
+		button_16.setForeground(Color.WHITE);
+		button_16.setBackground(new Color(0, 0, 51));
+		button_16.setBounds(448, 483, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_16);
+		
+		looseFrontalCheckBox = new JCheckBox("");
+		looseFrontalCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(looseFrontalString);
+			}
+		});
+		looseFrontalCheckBox.setForeground(Color.RED);
+		looseFrontalCheckBox.setBackground(Color.WHITE);
+		looseFrontalCheckBox.setBounds(403, 508, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(looseFrontalCheckBox);
+		
+		button_17 = new JButton("Add");
+		button_17.setForeground(Color.WHITE);
+		button_17.setBackground(new Color(51, 0, 102));
+		button_17.setBounds(448, 508, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_17);
+		
+		bodyFrontalCheckBox = new JCheckBox("");
+		bodyFrontalCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(bodyFrontalString);
+			}
+		});
+		bodyFrontalCheckBox.setForeground(Color.RED);
+		bodyFrontalCheckBox.setBackground(Color.WHITE);
+		bodyFrontalCheckBox.setBounds(403, 532, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(bodyFrontalCheckBox);
+		
+		button_18 = new JButton("Add");
+		button_18.setForeground(Color.WHITE);
+		button_18.setBackground(new Color(0, 0, 51));
+		button_18.setBounds(448, 533, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_18);
+		
+		deepFrontalCheckBox = new JCheckBox("");
+		deepFrontalCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(deepFrontalString);
+			}
+		});
+		deepFrontalCheckBox.setForeground(Color.RED);
+		deepFrontalCheckBox.setBackground(Color.WHITE);
+		deepFrontalCheckBox.setBounds(403, 558, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(deepFrontalCheckBox);
+		
+		button_19 = new JButton("Add");
+		button_19.setForeground(Color.WHITE);
+		button_19.setBackground(new Color(51, 0, 102));
+		button_19.setBounds(448, 558, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_19);
+		
+		rareFrontalCheckBox = new JCheckBox("");
+		rareFrontalCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(rareFrontalString);
+			}
+		});
+		rareFrontalCheckBox.setForeground(Color.RED);
+		rareFrontalCheckBox.setBackground(Color.WHITE);
+		rareFrontalCheckBox.setBounds(403, 582, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(rareFrontalCheckBox);
+		
+		button_20 = new JButton("Add");
+		button_20.setForeground(Color.WHITE);
+		button_20.setBackground(new Color(0, 0, 51));
+		button_20.setBounds(448, 583, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_20);
+		
+		steam1FrontalCheckBox = new JCheckBox("");
+		steam1FrontalCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(steam1FrontalString);
+			}
+		});
+		steam1FrontalCheckBox.setForeground(Color.RED);
+		steam1FrontalCheckBox.setBackground(Color.WHITE);
+		steam1FrontalCheckBox.setBounds(403, 608, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(steam1FrontalCheckBox);
+		
+		button_21 = new JButton("Add");
+		button_21.setForeground(Color.WHITE);
+		button_21.setBackground(new Color(51, 0, 102));
+		button_21.setBounds(448, 608, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_21);
+		
+		steam2FrontalCheckBox = new JCheckBox("");
+		steam2FrontalCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(steam2FrontalString);
+			}
+		});
+		steam2FrontalCheckBox.setForeground(Color.RED);
+		steam2FrontalCheckBox.setBackground(Color.WHITE);
+		steam2FrontalCheckBox.setBounds(403, 632, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(steam2FrontalCheckBox);
+		
+		button_22 = new JButton("Add");
+		button_22.setForeground(Color.WHITE);
+		button_22.setBackground(new Color(0, 0, 51));
+		button_22.setBounds(448, 633, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_22);
+		
+		blondeFrontalCheckBox = new JCheckBox("");
+		blondeFrontalCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(blondeFrontalString);
+			}
+		});
+		blondeFrontalCheckBox.setForeground(Color.RED);
+		blondeFrontalCheckBox.setBackground(Color.WHITE);
+		blondeFrontalCheckBox.setBounds(403, 658, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(blondeFrontalCheckBox);
+		
+		button_23 = new JButton("Add");
+		button_23.setForeground(Color.WHITE);
+		button_23.setBackground(new Color(51, 0, 102));
+		button_23.setBounds(448, 658, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_23);
+		
+		greyFrontalCheckBox = new JCheckBox("");
+		greyFrontalCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textArea.setText(greyFrontalString);
+			}
+		});
+		greyFrontalCheckBox.setForeground(Color.RED);
+		greyFrontalCheckBox.setBackground(Color.WHITE);
+		greyFrontalCheckBox.setBounds(403, 685, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(greyFrontalCheckBox);
+		
+		button_24 = new JButton("Add");
+		button_24.setForeground(Color.WHITE);
+		button_24.setBackground(new Color(51, 0, 102));
+		button_24.setBounds(448, 685, 63, 22);
+		frmHairProductsCalculator.getContentPane().add(button_24);
+		
+		JCheckBox straightCheckBox = new JCheckBox("");
+		straightCheckBox.setForeground(Color.RED);
+		straightCheckBox.setBackground(Color.WHITE);
+		straightCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(straightCheckBox.isSelected())
+				{
+					textArea.append(straightString);
+				}
+			}
+		});
+		straightCheckBox.setBounds(403, 30, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(straightCheckBox);
+		
+		JCheckBox looseCheckBox = new JCheckBox("");
+		looseCheckBox.setForeground(Color.RED);
+		looseCheckBox.setBackground(Color.WHITE);
+		looseCheckBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(looseCheckBox.isSelected())
+				{
+					textArea.append(looseString);
+				}
+			}
+		});
+		looseCheckBox.setBounds(403, 56, 26, 23);
+		frmHairProductsCalculator.getContentPane().add(looseCheckBox);
 	
 		subTotal_txtField = new JTextField();
 		subTotal_txtField.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -3185,63 +3683,37 @@ public class hairquoter {
 		
 		
 		addButtonForStraight = new JButton("Add");
-		addButtonForStraight.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try
-				{	
-					straightString = "Straight\n";
-					if((straightLengths.getSelectedIndex() > 0) && (straightQuantity.getSelectedIndex() > 0))
-					{	
-						straightOrder();
-						sub += straight * quantity_Of_Straight;
-						quantity_Counter += straightQuantity.getSelectedIndex();
-						subTotal_txtField.setText("$" + Double.toString(sub));
-					}
-					else {
-						straightString = "";
-					}
-				}
-				catch(Exception ex)
-				{
-					ex.printStackTrace();
-				}
-				
+		addButtonForStraight.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				straightOrder();
+				sub += straight * quantity_Of_Straight;
+				quantity_Counter += straightQuantity.getSelectedIndex();
+				subTotal_txtField.setText("$" + Double.toString(sub));
+				textArea.append(straightString);
 			}
 		});
 		addButtonForStraight.setBackground(new Color(0, 0, 51));
 		addButtonForStraight.setForeground(new Color(255, 255, 255));
-		addButtonForStraight.setBounds(397, 31, 63, 22);
+		addButtonForStraight.setBounds(448, 31, 63, 22);
 		frmHairProductsCalculator.getContentPane().add(addButtonForStraight);
 		
 		
 		
 		addButtonForLoose = new JButton("Add");
-		addButtonForLoose.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try
-				{
-					looseString = "Loose Wave\n";
-					if((looseLengths.getSelectedIndex() > 0) && (looseQuantity.getSelectedIndex() > 0))
-					{	
-						looseOrder();
-						sub += loose * quantity_Of_Loose;
-						quantity_Counter += looseQuantity.getSelectedIndex();
-						subTotal_txtField.setText("$" + Double.toString(sub));
-					}
-					else {
-						looseString = "";
-					}
-				}
-				catch(Exception ex)
-				{
-					ex.printStackTrace();
-				}
-				
+		addButtonForLoose.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				looseOrder();
+				sub += loose * quantity_Of_Loose;
+				quantity_Counter += looseQuantity.getSelectedIndex();
+				subTotal_txtField.setText("$" + Double.toString(sub));
+				textArea.append(looseString);
 			}
 		});
 		addButtonForLoose.setForeground(Color.WHITE);
 		addButtonForLoose.setBackground(new Color(51, 0, 102));
-		addButtonForLoose.setBounds(397, 56, 63, 22);
+		addButtonForLoose.setBounds(448, 56, 63, 22);
 		frmHairProductsCalculator.getContentPane().add(addButtonForLoose);
 
 		// STANDARD SHIPPING CHECKBOX
@@ -3283,17 +3755,17 @@ public class hairquoter {
 		expressshipping_checkbox.setBounds(577, 184, 270, 23);
 		frmHairProductsCalculator.getContentPane().add(expressshipping_checkbox);
 			
-		UPStxtfield = new JTextField("UPS Shipping Amount");
+		UPStxtfield = new JTextField("UPS/USPS Shipping Amount");
 		UPStxtfield.setForeground(Color.WHITE);
 		UPStxtfield.setSelectionColor(SystemColor.activeCaptionBorder);
 		UPStxtfield.setBackground(Color.DARK_GRAY);
 		UPStxtfield.setHorizontalAlignment(SwingConstants.CENTER);
 		UPStxtfield.setFont(new Font("Consolas", Font.PLAIN, 11));
 		UPStxtfield.setEditable(true);
-		UPStxtfield.setBounds(586, 210, 167, 20);
+		UPStxtfield.setBounds(577, 213, 167, 20);
 		frmHairProductsCalculator.getContentPane().add(UPStxtfield);
 		
-		UPS_checkbox = new JCheckBox("UPS");
+		UPS_checkbox = new JCheckBox("UPS/USPS");
 		UPS_checkbox.setBackground(SystemColor.control);
 		UPS_checkbox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -3308,7 +3780,7 @@ public class hairquoter {
 				}
 			}
 		});
-		UPS_checkbox.setBounds(755, 207, 71, 23);
+		UPS_checkbox.setBounds(746, 210, 86, 23);
 		frmHairProductsCalculator.getContentPane().add(UPS_checkbox);
 		
 		// CALCULATE BUTTON - CALCULATING THE GRAND TOTAL WITH AND WITHOUT PAYPAL FEE
@@ -3330,8 +3802,6 @@ public class hairquoter {
 
 					// Formatting operation
 					totalOut = myFormatter.format(totalWithPaypalFee);
-					
-					textArea.setText(straightString + looseString);
 
 					// Displaying total quantity, total with and without PayPal fee to appropriate
 					// text fields
@@ -3355,6 +3825,7 @@ public class hairquoter {
 		calculate_button.setBounds(618, 256, 152, 74);
 		frmHairProductsCalculator.getContentPane().add(calculate_button);
 		
+		//CLEAR BUTTON
 		JButton clearButton = new JButton("Clear");
 		clearButton.setForeground(SystemColor.control);
 		clearButton.setBackground(new Color(102, 0, 0));
@@ -3396,14 +3867,19 @@ public class hairquoter {
 				looseFrontalString = "Loose Wave Frontal\n"; bodyFrontalString = "Body Wave Frontal\n"; deepFrontalString = "Deep Wave Frontal\n"; rareFrontalString = "Rare Curly Frontal\n"; 
 				steam1FrontalString = "Steam #1 Frontal\n"; steam2FrontalString = "Steam #2 Frontal\n"; blondeFrontalString = "Straight Blonde Frontal\n"; greyFrontalString = "Grey Frontal\n";
 				
+				//Unchecking checkboxes
+				straightCheckBox.setSelected(false);looseCheckBox.setSelected(false);bodyCheckBox.setSelected(false);deepCheckBox.setSelected(false);rareCheckBox.setSelected(false);steam1CheckBox.setSelected(false);
+				steam2CheckBox.setSelected(false);blondeCheckBox.setSelected(false);greyCheckBox.setSelected(false);strCloCheckBox.setSelected(false);looseCloCheckBox.setSelected(false);bodyCloCheckBox.setSelected(false);
+				deepCloCheckBox.setSelected(false);rareCloCheckBox.setSelected(false);steam1CloCheckBox.setSelected(false);steam2CloCheckBox.setSelected(false);blondeCloCheckBox.setSelected(false);greyCloCheckBox.setSelected(false);
+				strFrontalCheckBox.setSelected(false);looseFrontalCheckBox.setSelected(false);bodyFrontalCheckBox.setSelected(false);deepFrontalCheckBox.setSelected(false);rareFrontalCheckBox.setSelected(false);steam1FrontalCheckBox.setSelected(false);
+				steam2FrontalCheckBox.setSelected(false);blondeFrontalCheckBox.setSelected(false);greyFrontalCheckBox.setSelected(false);
+				
 				UPS_Amount = 0; //Setting the UPS shipping fee to default(0)
 				UPStxtfield.setText("Enter Shipping Amount");
 				UPS_checkbox.setSelected(false); //Unchecking the UPS checkbox
 				//Clearing text in the text area
-				textArea.setText("");
-				totals_textArea.setText("");
+				textArea.setText(""); totals_textArea.setText("");
 				sub = 0;
-				subtotal = 0; //Setting sub total to zero
 				subTotal_txtField.setText(Double.toString(0.0)); //Setting the sub total text field's value to zero
 				standardshipping_checkbox.setSelected(false); // Unchecking the standard shipping checkbox
 				expressshipping_checkbox.setSelected(false); // Unchecking the express shipping checkbox
@@ -3417,23 +3893,9 @@ public class hairquoter {
 		clearButton.setFont(new Font("Consolas", Font.BOLD, 23));
 		frmHairProductsCalculator.getContentPane().add(clearButton);
 		
-		JButton intructions_Button = new JButton("Instructions");
-		intructions_Button.setForeground(new Color(255, 255, 204));
-		intructions_Button.setBackground(new Color(51, 0, 0));
-		intructions_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				try
-				{
-					JOptionPane.showMessageDialog(null, instructions());
-				}
-				catch(Exception ex)
-				{
-					ex.printStackTrace();
-				}
-			}
-		});
-		intructions_Button.setBounds(551, 676, 139, 23);
-		frmHairProductsCalculator.getContentPane().add(intructions_Button);
+		
+		
+		
 		
 		
 		
@@ -3443,30 +3905,28 @@ public class hairquoter {
 	public void straightOrder()
 	{
 		int numOfStraight = straightQuantity.getSelectedIndex();
-		if((straightLengths.getSelectedIndex() == 0) && (straightQuantity.getSelectedIndex() == 0))
-			straightString = "";
 		if(straightLengths.getSelectedIndex() == 1)
-			straightString += "10\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "10\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 2)
-			straightString += "12\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "12\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 3)
-			straightString += "14\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "14\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 4)
-			straightString += "16\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "16\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 5)
-			straightString += "18\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "18\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 6)
-			straightString += "20\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "20\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 7)
-			straightString += "22\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "22\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 8)
-			straightString += "24\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "24\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 9)
-			straightString += "26\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "26\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 10)
-			straightString += "28\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "28\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 		if(straightLengths.getSelectedIndex() == 11)
-			straightString += "30\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
+			straightString = "30\" x " + numOfStraight + " - " + straight + "*" + numOfStraight + "\n";
 	}
 	
 	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
@@ -3474,28 +3934,26 @@ public class hairquoter {
 	public void looseOrder()
 	{
 		int numOfLoose = looseQuantity.getSelectedIndex();
-		if((looseLengths.getSelectedIndex() == 0) && (looseQuantity.getSelectedIndex() == 0))
-			looseString = "";
 		if(looseLengths.getSelectedIndex() == 1)
-			looseString += "12\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
+			looseString = "12\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 2)
-			looseString += "14\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
+			looseString = "14\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 3)
-			looseString += "16\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
+			looseString = "16\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 4)
-			looseString += "18\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
+			looseString = "18\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 5)
-			looseString += "20\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
+			looseString = "20\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 6)
-			looseString += "22\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
+			looseString = "22\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 7)
-			looseString += "24\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
+			looseString = "24\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 8)
-			looseString += "26\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
+			looseString = "26\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 9)
-			looseString += "28\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
+			looseString = "28\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 		if(looseLengths.getSelectedIndex() == 10)
-			looseString += "30\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
+			looseString = "30\" x " + numOfLoose + " - " + loose + "*" + numOfLoose + "\n";
 	}
 	
 	/*THIS TRACKS WHAT LENGTH AND QUANTITY USERS SELECT FROM COMBO BOX
@@ -4088,6 +4546,7 @@ public class hairquoter {
 		return greyFrontalString;
 	}
 	
+
 	//Instructions on how to use the calculator
 	public String instructions()
 	{
