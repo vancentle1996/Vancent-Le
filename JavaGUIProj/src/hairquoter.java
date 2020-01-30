@@ -374,6 +374,7 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(subTotal_Label);
 
 		JTextArea totals_textArea = new JTextArea();
+		totals_textArea.setBackground(SystemColor.control);
 		totals_textArea.setWrapStyleWord(true);
 		totals_textArea.setText("");
 		totals_textArea.setFont(new Font("Monospaced", Font.PLAIN, 13));
@@ -399,13 +400,9 @@ public class hairquoter {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		scrollPane.setBounds(551, 381, 139, 284);
+		scrollPane.setBounds(551, 381, 139, 318);
 		scrollPane.setViewportView(textArea);
 		frmHairProductsCalculator.getContentPane().add(scrollPane);
-		
-		
-		
-		
 		
 		JCheckBox deepCheckBox = new JCheckBox("");
 		deepCheckBox.addActionListener(new ActionListener() {
@@ -419,6 +416,16 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(deepCheckBox);
 		
 		JButton deepButton = new JButton("Add");
+		deepButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				deepOrder();
+				sub += deep * quantity_Of_Deep;
+				quantity_Counter += deepQuantity.getSelectedIndex();
+				subTotal_txtField.setText("$" + Double.toString(sub));
+				textArea.append(deepString);
+			}
+		});
 		deepButton.setForeground(Color.WHITE);
 		deepButton.setBackground(new Color(51, 0, 102));
 		deepButton.setBounds(448, 107, 63, 22);
@@ -436,6 +443,16 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(rareCheckBox);
 		
 		JButton rareButton = new JButton("Add");
+		rareButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				rareOrder();
+				sub += rare * quantity_Of_Rare;
+				quantity_Counter += rareQuantity.getSelectedIndex();
+				subTotal_txtField.setText("$" + Double.toString(sub));
+				textArea.append(rareString);
+			}
+		});
 		rareButton.setForeground(Color.WHITE);
 		rareButton.setBackground(new Color(0, 0, 51));
 		rareButton.setBounds(448, 132, 63, 22);
@@ -453,6 +470,16 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam1CheckBox);
 		
 		JButton steam1Button = new JButton("Add");
+		steam1Button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				steam1Order();
+				sub +=steam1 * quantity_Of_Steam1;
+				quantity_Counter += steam1Quantity.getSelectedIndex();
+				subTotal_txtField.setText("$" + Double.toString(sub));
+				textArea.append(steam1String);
+			}
+		});
 		steam1Button.setForeground(Color.WHITE);
 		steam1Button.setBackground(new Color(51, 0, 102));
 		steam1Button.setBounds(448, 157, 63, 22);
@@ -470,6 +497,16 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam2CheckBox);
 		
 		steam2Button = new JButton("Add");
+		steam2Button.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				steam2Order();
+				sub += steam2 * quantity_Of_Steam2;
+				quantity_Counter += steam2Quantity.getSelectedIndex();
+				subTotal_txtField.setText("$" + Double.toString(sub));
+				textArea.append(steam2String);
+			}
+		});
 		steam2Button.setForeground(Color.WHITE);
 		steam2Button.setBackground(new Color(0, 0, 51));
 		steam2Button.setBounds(448, 182, 63, 22);
@@ -487,6 +524,16 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(blondeCheckBox);
 		
 		blondeButton = new JButton("Add");
+		blondeButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				blondeOrder();
+				sub += blonde * quantity_Of_Blonde;
+				quantity_Counter += blondeQuantity.getSelectedIndex();
+				subTotal_txtField.setText("$" + Double.toString(sub));
+				textArea.append(blondeString);
+			}
+		});
 		blondeButton.setForeground(Color.WHITE);
 		blondeButton.setBackground(new Color(51, 0, 102));
 		blondeButton.setBounds(448, 207, 63, 22);
@@ -504,6 +551,16 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(greyCheckBox);
 		
 		greyButton = new JButton("Add");
+		greyButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				greyOrder();
+				sub += grey * quantity_Of_Grey;
+				quantity_Counter += greyQuantity.getSelectedIndex();
+				subTotal_txtField.setText("$" + Double.toString(sub));
+				textArea.append(greyString);
+			}
+		});
 		greyButton.setForeground(Color.WHITE);
 		greyButton.setBackground(new Color(0, 0, 51));
 		greyButton.setBounds(448, 232, 63, 22);
@@ -521,6 +578,22 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(strCloCheckBox);
 		
 		strCloButton = new JButton("Add");
+		strCloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(strCloCheckBox.isSelected())
+				{
+					straightClosureOrder();
+					sub += straightClosure * quantity_Of_StraightClosure;
+					quantity_Counter += straightClosureQuantity.getSelectedIndex();
+					subTotal_txtField.setText("$" + Double.toString(sub));
+					textArea.append(straightClosureString);
+				} else {
+					JOptionPane.showMessageDialog(null, "Please check the checkbox before clicking \"add\"");
+				}
+				
+			}
+		});
 		strCloButton.setForeground(Color.WHITE);
 		strCloButton.setBackground(new Color(51, 0, 102));
 		strCloButton.setBounds(448, 257, 63, 22);
@@ -538,6 +611,22 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(looseCloCheckBox);
 		
 		looseCloButton = new JButton("Add");
+		looseCloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(looseCloCheckBox.isSelected())
+				{
+					looseClosureOrder();
+					sub += looseClosure * quantity_Of_LooseClosure;
+					quantity_Counter += looseClosureQuantity.getSelectedIndex();
+					subTotal_txtField.setText("$" + Double.toString(sub));
+					textArea.append(looseClosureString);
+				} else {
+					JOptionPane.showMessageDialog(null, "Please check the checkbox before clicking \"add\"");
+				}
+			}
+			
+		});
 		looseCloButton.setForeground(Color.WHITE);
 		looseCloButton.setBackground(new Color(0, 0, 51));
 		looseCloButton.setBounds(448, 282, 63, 22);
@@ -555,6 +644,21 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(bodyCloCheckBox);
 		
 		bodyCloButton = new JButton("Add");
+		bodyCloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(bodyCloCheckBox.isSelected())
+				{
+					bodyClosureOrder();
+					sub += bodyClosure * quantity_Of_BodyClosure;
+					quantity_Counter += bodyClosureQuantity.getSelectedIndex();
+					subTotal_txtField.setText("$" + Double.toString(sub));
+					textArea.append(bodyClosureString);
+				} else {
+					JOptionPane.showMessageDialog(null, "Please check the checkbox before clicking \"add\"");
+				}
+			}
+		});
 		bodyCloButton.setForeground(Color.WHITE);
 		bodyCloButton.setBackground(new Color(51, 0, 102));
 		bodyCloButton.setBounds(448, 307, 63, 22);
@@ -572,6 +676,21 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(deepCloCheckBox);
 		
 		deepCloButton = new JButton("Add");
+		deepCloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(deepCloCheckBox.isSelected())
+				{
+					deepClosureOrder();
+					sub += deepClosure * quantity_Of_DeepClosure;
+					quantity_Counter += deepClosureQuantity.getSelectedIndex();
+					subTotal_txtField.setText("$" + Double.toString(sub));
+					textArea.append(deepClosureString);
+				} else {
+					JOptionPane.showMessageDialog(null, "Please check the checkbox before clicking \"add\"");
+				}
+			}
+		});
 		deepCloButton.setForeground(Color.WHITE);
 		deepCloButton.setBackground(new Color(0, 0, 51));
 		deepCloButton.setBounds(448, 333, 63, 22);
@@ -589,6 +708,21 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(rareCloCheckBox);
 		
 		rareCloButton = new JButton("Add");
+		rareCloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(rareCloCheckBox.isSelected())
+				{
+					rareClosureOrder();
+					sub += rareClosure * quantity_Of_RareClosure;
+					quantity_Counter += rareClosureQuantity.getSelectedIndex();
+					subTotal_txtField.setText("$" + Double.toString(sub));
+					textArea.append(rareClosureString);
+				} else {
+					JOptionPane.showMessageDialog(null, "Please check the checkbox before clicking \"add\"");
+				}
+			}
+		});
 		rareCloButton.setForeground(Color.WHITE);
 		rareCloButton.setBackground(new Color(51, 0, 102));
 		rareCloButton.setBounds(448, 358, 63, 22);
@@ -606,6 +740,21 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam1CloCheckBox);
 		
 		steam1CloButton = new JButton("Add");
+		steam1CloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(steam1CloCheckBox.isSelected())
+				{
+					steam1ClosureOrder();
+					sub += steam1Closure * quantity_Of_Steam1Closure;
+					quantity_Counter += steam1ClosureQuantity.getSelectedIndex();
+					subTotal_txtField.setText("$" + Double.toString(sub));
+					textArea.append(steam1ClosureString);
+				} else {
+					JOptionPane.showMessageDialog(null, "Please check the checkbox before clicking \"add\"");
+				}
+			}
+		});
 		steam1CloButton.setForeground(Color.WHITE);
 		steam1CloButton.setBackground(new Color(0, 0, 51));
 		steam1CloButton.setBounds(448, 382, 63, 22);
@@ -623,6 +772,21 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(steam2CloCheckBox);
 		
 		steam2CloButton = new JButton("Add");
+		steam2CloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(steam2CloCheckBox.isSelected())
+				{
+					steam2ClosureOrder();
+					sub += steam2Closure * quantity_Of_Steam2Closure;
+					quantity_Counter += steam2ClosureQuantity.getSelectedIndex();
+					subTotal_txtField.setText("$" + Double.toString(sub));
+					textArea.append(steam2ClosureString);
+				} else {
+					JOptionPane.showMessageDialog(null, "Please check the checkbox before clicking \"add\"");
+				}
+			}
+		});
 		steam2CloButton.setForeground(Color.WHITE);
 		steam2CloButton.setBackground(new Color(51, 0, 102));
 		steam2CloButton.setBounds(448, 407, 63, 22);
@@ -640,6 +804,21 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(blondeCloCheckBox);
 		
 		blondeCloButton = new JButton("Add");
+		blondeCloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(blondeCloCheckBox.isSelected())
+				{
+					blondeClosureOrder();
+					sub += blondeClosure * quantity_Of_BlondeClosure;
+					quantity_Counter += blondeClosureQuantity.getSelectedIndex();
+					subTotal_txtField.setText("$" + Double.toString(sub));
+					textArea.append(blondeClosureString);
+				} else {
+					JOptionPane.showMessageDialog(null, "Please check the checkbox before clicking \"add\"");
+				}
+			}
+		});
 		blondeCloButton.setForeground(Color.WHITE);
 		blondeCloButton.setBackground(new Color(0, 0, 51));
 		blondeCloButton.setBounds(448, 433, 63, 22);
@@ -657,6 +836,21 @@ public class hairquoter {
 		frmHairProductsCalculator.getContentPane().add(greyCloCheckBox);
 		
 		greyCloButton = new JButton("Add");
+		greyCloButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if(greyCloCheckBox.isSelected())
+				{
+					greyClosureOrder();
+					sub += greyClosure * quantity_Of_GreyClosure;
+					quantity_Counter += greyClosureQuantity.getSelectedIndex();
+					subTotal_txtField.setText("$" + Double.toString(sub));
+					textArea.append(greyClosureString);
+				} else {
+					JOptionPane.showMessageDialog(null, "Please check the checkbox before clicking \"add\"");
+				}
+			}
+		});
 		greyCloButton.setForeground(Color.WHITE);
 		greyCloButton.setBackground(new Color(51, 0, 102));
 		greyCloButton.setBounds(448, 458, 63, 22);
@@ -3909,7 +4103,7 @@ public class hairquoter {
 				totalWithOutPaypalFee = 0;
 			}
 		});
-		clearButton.setBounds(715, 636, 132, 64);
+		clearButton.setBounds(700, 636, 132, 64);
 		clearButton.setFont(new Font("Consolas", Font.BOLD, 23));
 		frmHairProductsCalculator.getContentPane().add(clearButton);
 	}
