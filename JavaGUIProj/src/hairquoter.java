@@ -4117,13 +4117,19 @@ public class hairquoter {
 		standardshipping_checkbox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					int max = 20;
-					// Calculates total with standard shipping + $1 a piece
-					total_With_Shipping = sub + STANDARD_SHIPPING + quantity_Counter;
+					
+					if(quantity_Counter < max)
+					{
+						// Calculates total with standard shipping + $1 a piece
+						total_With_Shipping = sub + STANDARD_SHIPPING + quantity_Counter;
+					}
 					//Checking if the total quantity is greater than 20 pieces
-					if(quantity_Counter > max)
+					else {
 						JOptionPane.showMessageDialog(null, "Total quantity is greater than 20 pieces, should you consider enter a higher shipping rate instead?");
-					//Uncheck the checkbox
-					standardshipping_checkbox.setSelected(false);
+						//Uncheck the checkbox
+						standardshipping_checkbox.setSelected(false);
+					}
+						
 			}
 		});
 		standardshipping_checkbox.setBounds(577, 161, 270, 23);
@@ -4136,12 +4142,18 @@ public class hairquoter {
 		expressshipping_checkbox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					int max = 20;
-					// Calculates total with express shipping + $1 a piece
-					total_With_Shipping = sub + EXPRESS_SHIPPING + quantity_Counter;
-					if(quantity_Counter > max)
+					
+					if(quantity_Counter < max)
+					{
+						// Calculates total with express shipping + $1 a piece
+						total_With_Shipping = sub + EXPRESS_SHIPPING + quantity_Counter;
+					}
+					else{
 						JOptionPane.showMessageDialog(null, "Total quantity is greater than 20 pieces, should you consider enter a higher shipping rate instead?");
-					//Uncheck the checkbox
-					expressshipping_checkbox.setSelected(false);
+						//Uncheck the checkbox
+						expressshipping_checkbox.setSelected(false);
+					}
+						
 			}
 		});
 		expressshipping_checkbox.setBounds(577, 184, 270, 23);
